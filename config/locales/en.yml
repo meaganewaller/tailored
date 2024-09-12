@@ -213,7 +213,7 @@ en:
 
   scaffold:
     edit:
-      title: "Edit %{model}"
+      title: "Edit %{resource}"
     new:
       title: "New %{model}"
     actions: "Actions"

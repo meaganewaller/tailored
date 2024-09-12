@@ -1,0 +1,18 @@
+---
+application_name: Tailored
+business_name: My Company, LLC
+business_address: 
+domain: example.com
+support_email: support@example.com
+default_from_email: Tailored <no-reply@example.com>
+background_job_processor: good_job
+email_provider: 
+personal_accounts: true
+apns: false
+fcm: false
+integrations:
+omniauth_providers:
+payment_processors:
+multitenancy:
+gems:
+- acts_as_tenant

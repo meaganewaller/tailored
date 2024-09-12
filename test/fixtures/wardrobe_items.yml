@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: MyString
+  color: MyString
+  season: MyString
+  occasion: MyString
+  cost: 9.99
+  condition: MyString
+  account: one
+
+two:
+  name: MyString
+  category: MyString
+  color: MyString
+  season: MyString
+  occasion: MyString
+  cost: 9.99
+  condition: MyString
+  account: two

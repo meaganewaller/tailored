@@ -1,0 +1,37 @@
+<div id="<%= dom_id wardrobe_item %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Name</p>
+    <%= wardrobe_item.name %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Category</p>
+    <%= wardrobe_item.category %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Color</p>
+    <%= wardrobe_item.color %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Season</p>
+    <%= wardrobe_item.season %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Occasion</p>
+    <%= wardrobe_item.occasion %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Cost</p>
+    <%= wardrobe_item.cost %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Condition</p>
+    <%= wardrobe_item.condition %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Account</p>
+    <%= wardrobe_item.account_id %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this wardrobe item", wardrobe_item, class: "btn btn-secondary" %>
+  <% end %>
+</div>
