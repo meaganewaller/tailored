@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_12_011343) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_12_015835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -463,6 +463,41 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_12_011343) do
     t.index ["account_id"], name: "index_wardrobe_items_on_account_id"
   end
 
+  create_table "wardrobe_items_wishlist_items", id: false, force: :cascade do |t|
+    t.bigint "wishlist_item_id", null: false
+    t.bigint "wardrobe_item_id", null: false
+    t.index ["wardrobe_item_id"], name: "index_wardrobe_items_wishlist_items_on_wardrobe_item_id"
+    t.index ["wishlist_item_id"], name: "index_wardrobe_items_wishlist_items_on_wishlist_item_id"
+  end
+
+  create_table "wishlist_items", force: :cascade do |t|
+    t.string "name"
+    t.string "store"
+    t.decimal "price"
+    t.string "status"
+    t.decimal "savings_goal"
+    t.decimal "current_savings"
+    t.date "purchase_date"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_wishlist_items_on_account_id"
+  end
+
+  create_table "wistlist_items", force: :cascade do |t|
+    t.string "name"
+    t.string "store"
+    t.decimal "price"
+    t.string "status"
+    t.decimal "savings_goal"
+    t.decimal "current_savings"
+    t.date "purchase_date"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_wistlist_items_on_account_id"
+  end
+
   add_foreign_key "account_invitations", "accounts"
   add_foreign_key "account_invitations", "users", column: "invited_by_id"
   add_foreign_key "account_users", "accounts"
@@ -474,4 +509,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_12_011343) do
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
   add_foreign_key "wardrobe_items", "accounts"
+  add_foreign_key "wishlist_items", "accounts"
+  add_foreign_key "wistlist_items", "accounts"
 end

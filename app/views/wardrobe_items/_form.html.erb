@@ -1,46 +1,44 @@
 <%= form_with(model: wardrobe_item) do |form| %>
   <%= render "error_messages", resource: form.object %>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :category %>
+      <%= form.select :category, options_for_select(['Tops', 'Bottoms', 'Outerwear', 'Shoes', 'Accessories', 'Dresses'], wardrobe_item.category), class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :color %>
+      <%= form.text_field :color, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :season %>
+      <%= form.select :season, options_for_select(['Spring', 'Summer', 'Fall', 'Winter', 'All-Season'], wardrobe_item.season), class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :occasion %>
+      <%= form.select :occasion, options_for_select(['Casual', 'Work', 'Evening', 'Formal', 'Party', 'Lounge'], wardrobe_item.occasion), class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :cost %>
+      <%= form.number_field :cost, step: 0.01, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :condition %>
+      <%= form.select :condition, options_for_select(['New', 'Like New', 'Good', 'Worn'], wardrobe_item.condition), class: "form-control" %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= form.label :category %>
-    <%= form.text_field :category, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :color %>
-    <%= form.text_field :color, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :season %>
-    <%= form.text_field :season, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :occasion %>
-    <%= form.text_field :occasion, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :cost %>
-    <%= form.text_field :cost, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :condition %>
-    <%= form.text_field :condition, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.hidden_field :account_id, class: "form-control" %>
-  </div>
-
-  <div>
+  <div class="mt-4">
     <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
 
     <% if form.object.new_record? %>

@@ -13,6 +13,7 @@ class Account < ApplicationRecord
   has_many :users, through: :account_users
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :wardrobe_items, dependent: :destroy
+  has_many :wishlist_items, dependent: :destroy
 
   scope :personal, -> { where(personal: true) }
   scope :team, -> { where(personal: false) }

@@ -1,37 +1,22 @@
-<div id="<%= dom_id wardrobe_item %>">
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Name</p>
-    <%= wardrobe_item.name %>
+<div id="<%= dom_id wardrobe_item %>" class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow space-y-4">
+  <div class="flex justify-between items-center">
+     <h2 class="font-semibold text-lg text-gray-900 dark:text-gray-200">
+      <%= wardrobe_item.name %>
+    </h2>
+    <% if action_name != "show"  %>
+      <%= link_to "View", wardrobe_item, class: "btn btn-sm btn-primary" %>
+    <% end %>
   </div>
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Category</p>
-    <%= wardrobe_item.category %>
+
+  <p class="text-sm font-medium text-gray-500">Category: <%= wardrobe_item.category %></p>
+  <p class="text-sm font-medium text-gray-500">Color: <%= wardrobe_item.color %></p>
+  <p class="text-sm font-medium text-gray-500">Season: <%= wardrobe_item.season %></p>
+  <p class="text-sm font-medium text-gray-500">Occasion: <%= wardrobe_item.occasion %></p>
+  <p class="text-sm font-medium text-gray-500">Cost: <%= number_to_currency(wardrobe_item.cost) %></p>
+  <p class="text-sm font-medium text-gray-500">Condition: <%= wardrobe_item.condition %></p>
+
+  <div class="flex space-x-2">
+    <%= link_to "Edit", edit_wardrobe_item_path(wardrobe_item), class: "btn btn-sm btn-secondary" %> 
+    <%= button_to "Delete", wardrobe_item, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
   </div>
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Color</p>
-    <%= wardrobe_item.color %>
-  </div>
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Season</p>
-    <%= wardrobe_item.season %>
-  </div>
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Occasion</p>
-    <%= wardrobe_item.occasion %>
-  </div>
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Cost</p>
-    <%= wardrobe_item.cost %>
-  </div>
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Condition</p>
-    <%= wardrobe_item.condition %>
-  </div>
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Account</p>
-    <%= wardrobe_item.account_id %>
-  </div>
-  <% if action_name != "show" %>
-    <%= link_to "View this wardrobe item", wardrobe_item, class: "btn btn-secondary" %>
-  <% end %>
 </div>

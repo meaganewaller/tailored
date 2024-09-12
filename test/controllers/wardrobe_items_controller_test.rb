@@ -2,6 +2,8 @@ require "test_helper"
 
 class WardrobeItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
+    sign_in @user
     @wardrobe_item = wardrobe_items(:one)
   end
 
@@ -17,7 +19,7 @@ class WardrobeItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create wardrobe_item" do
     assert_difference("WardrobeItem.count") do
-      post wardrobe_items_url, params: {wardrobe_item: {account_id: @wardrobe_item.account_id, category: @wardrobe_item.category, color: @wardrobe_item.color, condition: @wardrobe_item.condition, cost: @wardrobe_item.cost, name: @wardrobe_item.name, occasion: @wardrobe_item.occasion, season: @wardrobe_item.season}}
+      post wardrobe_items_url, params: {wardrobe_item: {category: @wardrobe_item.category, color: @wardrobe_item.color, condition: @wardrobe_item.condition, cost: @wardrobe_item.cost, name: @wardrobe_item.name, occasion: @wardrobe_item.occasion, season: @wardrobe_item.season}}
     end
 
     assert_redirected_to wardrobe_item_url(WardrobeItem.last)
