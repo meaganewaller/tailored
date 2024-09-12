@@ -4,4 +4,7 @@ class WardrobeItem < ApplicationRecord
   broadcasts_refreshes
 
   has_and_belongs_to_many :wishlist_items
+  has_and_belongs_to_many :outfits
+
+  has_many_attached :images
 end

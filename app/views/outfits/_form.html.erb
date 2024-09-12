@@ -1,0 +1,43 @@
+<%= form_with(model: outfit) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :occasion %>
+    <%= form.select :occasion, options_for_select(['Casual', 'Work', 'Evening', 'Formal']), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :season %>
+    <%= form.select :season, options_for_select(['Spring', 'Summer', 'Fall', 'Winter']), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rating %>
+    <%= form.number_field :rating, class: "form-control", step: 1, min: 1, max: 5 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :wardrobe_items, "Select Wardrobe Items" %>
+    <%= form.collection_select :wardrobe_item_ids, @wardrobe_items, :id, :name, { include_hidden: false }, { class: "form-control multi-select", multiple: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :wishlist_items, "Select Wishlist Items (Optional)" %>
+    <%= form.collection_select :wishlist_item_ids, @wishlist_items, :id, :name, { include_hidden: false }, { class: "form-control multi-select", multiple: true } %>
+  </div>
+
+  <div>
+    <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
+
+    <% if form.object.new_record? %>
+      <%= link_to t("cancel"), outfits_path, class: "btn btn-secondary" %>
+    <% else %>
+      <%= link_to t("cancel"), outfit_path(@outfit), class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_12_015835) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_12_031417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -294,6 +294,31 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_12_015835) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
   end
 
+  create_table "outfits", force: :cascade do |t|
+    t.string "name"
+    t.string "occasion"
+    t.string "season"
+    t.integer "rating"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_outfits_on_account_id"
+  end
+
+  create_table "outfits_wardrobe_items", id: false, force: :cascade do |t|
+    t.bigint "outfit_id", null: false
+    t.bigint "wardrobe_item_id", null: false
+    t.index ["outfit_id"], name: "index_outfits_wardrobe_items_on_outfit_id"
+    t.index ["wardrobe_item_id"], name: "index_outfits_wardrobe_items_on_wardrobe_item_id"
+  end
+
+  create_table "outfits_wishlist_items", id: false, force: :cascade do |t|
+    t.bigint "outfit_id", null: false
+    t.bigint "wishlist_item_id", null: false
+    t.index ["outfit_id"], name: "index_outfits_wishlist_items_on_outfit_id"
+    t.index ["wishlist_item_id"], name: "index_outfits_wishlist_items_on_wishlist_item_id"
+  end
+
   create_table "pay_charges", force: :cascade do |t|
     t.string "processor_id", null: false
     t.integer "amount", null: false
@@ -505,6 +530,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_12_015835) do
   add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "outfits", "accounts"
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"

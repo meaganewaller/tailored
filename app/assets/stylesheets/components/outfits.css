@@ -1,0 +1,17 @@
+.outfit-container {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wardrobe-item, .wishlist-item {
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.wardrobe-item img, .wishlist-item img {
+  border-radius: 4px;
+}
+

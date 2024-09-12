@@ -36,6 +36,14 @@
       <%= form.label :condition %>
       <%= form.select :condition, options_for_select(['New', 'Like New', 'Good', 'Worn'], wardrobe_item.condition), class: "form-control" %>
     </div>
+
+    <div class="form-group">
+      <% wardrobe_item.images.each do |image| %>
+        <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+      <% end %>
+      <%= form.label :images %>
+      <%= form.file_field :images, multiple: true %>
+    </div>
   </div>
 
   <div class="mt-4">

@@ -1,5 +1,6 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  resources :outfits
   resources :wishlist_items
   resources :wardrobe_items
   draw :accounts
