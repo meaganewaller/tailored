@@ -26,11 +26,6 @@
     <%= form.collection_select :wardrobe_item_ids, @wardrobe_items, :id, :name, { include_hidden: false }, { class: "form-control multi-select", multiple: true } %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :wishlist_items, "Select Wishlist Items (Optional)" %>
-    <%= form.collection_select :wishlist_item_ids, @wishlist_items, :id, :name, { include_hidden: false }, { class: "form-control multi-select", multiple: true } %>
-  </div>
-
   <div>
     <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
 

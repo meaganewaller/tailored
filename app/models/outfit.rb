@@ -3,7 +3,6 @@ class Outfit < ApplicationRecord
   broadcasts_refreshes
 
   has_and_belongs_to_many :wardrobe_items
-  has_and_belongs_to_many :wishlist_items, optional: true
 
   validates :name, presence: true
 end

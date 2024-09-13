@@ -17,7 +17,6 @@ class OutfitsController < ApplicationController
   def new
     @outfit = Outfit.new
     @wardrobe_items = WardrobeItem.all
-    @wishlist_items = WishlistItem.all
 
     # Uncomment to authorize with Pundit
     # authorize @outfit
@@ -73,7 +72,6 @@ class OutfitsController < ApplicationController
   def set_outfit
     @outfit = Outfit.find(params[:id])
     @wardrobe_items = WardrobeItem.all
-    @wishlist_items = WishlistItem.all
 
     # Uncomment to authorize with Pundit
     # authorize @outfit
@@ -83,7 +81,7 @@ class OutfitsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def outfit_params
-    params.require(:outfit).permit(:name, :occasion, :season, :rating, wardrobe_item_ids: [], wishlist_item_ids: [])
+    params.require(:outfit).permit(:name, :occasion, :season, :rating, wardrobe_item_ids: [])
 
     # Uncomment to use Pundit permitted attributes
     # params.require(:outfit).permit(policy(@outfit).permitted_attributes)

@@ -2,6 +2,8 @@ require "test_helper"
 
 class OutfitsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:one)
+    sign_in @user
     @outfit = outfits(:one)
   end
 

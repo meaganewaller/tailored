@@ -46,29 +46,6 @@
     </div>
   </div>
 
-  <!-- Wishlist Items -->
-  <div class="mb-4">
-    <% if outfit.wishlist_items.count > 0 %>
-      <p class="text-sm font-medium text-gray-500">Wishlist Items</p>
-      <div class="grid grid-cols-2 gap-4">
-        <% outfit.wishlist_items.each do |wishlist_item| %>
-          <div class="wishlist-item">
-            <p><%= wishlist_item.name %></p>
-            <% if wishlist_item.images.attached? %>
-              <div class="grid grid-cols-2 gap-2">
-                <% wishlist_item.images.each do |image| %>
-                  <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "rounded shadow" %>
-                <% end %>
-              </div>
-            <% else %>
-              <p class="text-sm text-gray-400">No images available</p>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
   <!-- View Link -->
   <% if action_name != "show" %>
     <%= link_to "View this outfit", outfit, class: "btn btn-secondary" %>
