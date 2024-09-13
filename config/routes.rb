@@ -1,7 +1,12 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   resources :outfits
-  resources :wardrobe_items
+  resources :wardrobe_items do
+    collection do
+      get 'bulk_upload', to: 'bulk_uploads#new', defaults: { resource_type: 'wardrobe_item' }
+      post 'bulk_upload', to: 'bulk_uploads#create', defaults: { resource_type: 'wardrobe_item' }
+    end
+  end
   draw :accounts
   draw :api
   draw :billing
@@ -49,4 +54,5 @@ Rails.application.routes.draw do
 
   # Public marketing homepage
   root to: "static#index"
+  mount GoodJob::Engine => 'good_job'
 end
