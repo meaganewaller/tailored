@@ -21,11 +21,19 @@
   <% end %>
 
   <p class="text-sm font-medium text-gray-500">Category: <%= wardrobe_item.category %></p>
-  <p class="text-sm font-medium text-gray-500">Color: <%= wardrobe_item.color %></p>
+  <p class="text-sm font-medium text-gray-500">Subcategories: <%= wardrobe_item.subcategories %></p>
+  <p class="text-sm font-medium text-gray-500">Colors: <%= wardrobe_item.colors %></p>
   <p class="text-sm font-medium text-gray-500">Season: <%= wardrobe_item.season %></p>
-  <p class="text-sm font-medium text-gray-500">Occasion: <%= wardrobe_item.occasion %></p>
+  <p class="text-sm font-medium text-gray-500">Occasions: <%= wardrobe_item.occasions %></p>
   <p class="text-sm font-medium text-gray-500">Cost: <%= number_to_currency(wardrobe_item.cost) %></p>
   <p class="text-sm font-medium text-gray-500">Condition: <%= wardrobe_item.condition %></p>
+
+  <h2>Tags</h2>
+  <ul>
+    <% wardrobe_item.tags.each do |tag| %>
+      <li><%= tag %></li>
+    <% end %>
+  </ul>
 
   <div class="flex space-x-2">
     <%= link_to "Edit", edit_wardrobe_item_path(wardrobe_item), class: "btn btn-sm btn-secondary" %> 

@@ -1,21 +1,26 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  category: MyString
-  color: MyString
-  season: MyString
-  occasion: MyString
-  cost: 9.99
-  condition: MyString
+  name: "Blue Denim Jacket"
+  category: ~
+  subcategories: []
+  colors: {}
+  tags: []
+  season: ~
+  occasions: []
+  cost: ~
+  condition: ~
   account: one
 
 two:
-  name: MyString
-  category: MyString
-  color: MyString
-  season: MyString
-  occasion: MyString
-  cost: 9.99
-  condition: MyString
+  name: "Black Leather Boots"
+  category: "Footwear"
+  subcategories: ["boots"]
+  colors: 
+    - { hex: "#000000", score: 0.9 }
+  tags: ["leather", "boots", "black"]
+  season: "winter"
+  occasions: ["formal", "outdoor"]
+  cost: 120.00
+  condition: "used"
   account: two

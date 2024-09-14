@@ -79,7 +79,16 @@ class WardrobeItemsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def wardrobe_item_params
-    params.require(:wardrobe_item).permit(:name, :category, :color, :season, :occasion, :cost, :condition, images: [])
+    params.require(:wardrobe_item).permit(
+      :name,
+      :category,
+      :colors,
+      :season,
+      :cost,
+      :condition,
+      :subcategories,
+      images: [],
+    )
 
     # Uncomment to use Pundit permitted attributes
     # params.require(:wardrobe_item).permit(policy(@wardrobe_item).permitted_attributes)

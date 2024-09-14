@@ -470,9 +470,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_12_031334) do
   create_table "wardrobe_items", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.string "color"
+    t.jsonb "subcategories", default: [], null: false
+    t.jsonb "colors", default: [], null: false
+    t.jsonb "tags", default: [], null: false
     t.string "season"
-    t.string "occasion"
+    t.string "occasions", default: [], array: true
     t.decimal "cost"
     t.string "condition"
     t.bigint "account_id", null: false

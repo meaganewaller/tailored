@@ -3,9 +3,11 @@ class CreateWardrobeItems < ActiveRecord::Migration[7.2]
     create_table :wardrobe_items do |t|
       t.string :name
       t.string :category
-      t.string :color
+      t.jsonb :subcategories, null: false, default: []
+      t.jsonb :colors, null: false, default: []
+      t.jsonb :tags, null: false, default: []
       t.string :season
-      t.string :occasion
+      t.string :occasions, array: true, default: []
       t.decimal :cost
       t.string :condition
       t.references :account, null: false, foreign_key: true
