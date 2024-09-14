@@ -2,31 +2,41 @@ class BulkUploadsController < ApplicationController
   before_action :set_resource_class
 
   def new
+    @resource_item = @resource_class.new
   end
 
   def create
-    if params[:images].present?
-      params[:images].each do |image|
-        next if image.blank?
-
-        resource_item = @resource_class.new
-        resource_item.images.attach(image) if resource_item.respond_to?(:images)
-
-        if resource_item.save
-          resource_item.images.each do |attached_image|
-            BulkUploadProcessingJob.perform_later(resource_item.id, @resource_class.to_s, attached_image.key)
-          end
-        else
-          flash[:alert] ||= "Some items could not be uploaded."
-        end
-      end
-      flash[:notice] ||= "Your wardrobe items are being processed."
-    else
-      flash[:alert] = "Please upload at least one image."
+    blanks_removed = params[:images].reject { |img| img.blank? }
+    unless blanks_removed.present?
+      flash.now[:alert] = "Please upload at least one image."
+      render :new and return
     end
 
-    flash[:notice] = "Your #{resource_name.pluralize} are being processed. You will be notified when complete."
-    redirect_to root_path # Adjust redirection as needed
+    errors = []
+
+    blanks_removed.each do |image|
+      next if image.blank?
+
+      resource_item = @resource_class.new
+      resource_item.images.attach(image) if resource_item.respond_to?(:images)
+
+      unless resource_item.save
+        errors << "Some items could not be uploaded."
+        next
+      end
+
+      resource_item.images.each do |attached_image|
+        BulkUploadProcessingJob.perform_later(resource_item.id, @resource_class.to_s, attached_image.key)
+      end
+    end
+
+    if errors.any?
+      flash.now[:alert] = errors.join(', ')
+      render :new
+    else
+      flash[:notice] = "Your #{resource_name.pluralize} are being processed. You will be notified when complete."
+      redirect_to wardrobe_items_path
+    end
   end
 
   private
@@ -36,8 +46,6 @@ class BulkUploadsController < ApplicationController
     @resource_class = case params[:resource_type]
     when 'wardrobe_item'
       WardrobeItem
-    # when 'outfit'
-    #   Outfit
     else
       raise 'Unknown resource type'
     end

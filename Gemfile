@@ -44,6 +44,8 @@ gem "image_processing", "~> 1.12"
 
 gem 'google-cloud-vision'
 
+gem "simplecov", require: false, group: :test
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
@@ -64,6 +66,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", ">= 3.39"
   gem "selenium-webdriver", ">= 4.20.1"
+  gem 'mocha', require: false
 end
 
 # Jumpstart Pro dependencies
