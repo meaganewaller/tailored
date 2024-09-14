@@ -2,9 +2,8 @@ require "test_helper"
 
 class OutfitsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
-    sign_in @user
     @outfit = outfits(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -19,7 +18,17 @@ class OutfitsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create outfit" do
     assert_difference("Outfit.count") do
-      post outfits_url, params: {outfit: {account_id: @outfit.account_id, name: @outfit.name, occasion: @outfit.occasion, rating: @outfit.rating, season: @outfit.season}}
+      post outfits_url,
+        params: {
+          outfit: {
+            account_id: @outfit.account_id,
+            name: @outfit.name,
+            occasion: @outfit.occasion,
+            rating: @outfit.rating,
+            season: @outfit.season,
+            wardrobe_item_ids: @outfit.wardrobe_items.map(&:id),
+          }
+        }
     end
 
     assert_redirected_to outfit_url(Outfit.last)
