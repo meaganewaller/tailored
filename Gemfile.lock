@@ -261,7 +261,7 @@ GEM
     hashdiff (1.1.1)
     hashids (1.0.6)
     hashie (5.0.0)
-    i18n (1.14.5)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
@@ -596,7 +596,7 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.6)
+    turbo-rails (2.0.7)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
@@ -690,7 +690,7 @@ DEPENDENCIES
   sprockets-rails (>= 3.4.1)
   standard
   stimulus-rails (~> 1.0, >= 1.0.2)
-  turbo-rails (~> 2.0.3)
+  turbo-rails (~> 2.0.7)
   tzinfo-data
   web-console (>= 4.1.0)
   webmock
