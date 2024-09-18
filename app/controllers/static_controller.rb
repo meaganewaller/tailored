@@ -18,4 +18,10 @@ class StaticController < ApplicationController
   def privacy
     @agreement = Rails.application.config.agreements.find { _1.id == :privacy_policy }
   end
+
+  def wardrobe_items
+  end
+
+  def outfits
+  end
 end

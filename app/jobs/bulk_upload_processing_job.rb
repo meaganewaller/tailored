@@ -27,25 +27,20 @@ class BulkUploadProcessingJob < ApplicationJob
     image_file = StringIO.new(image.download)
     response = vision.image_properties_detection(image: image_file)
 
-    return {} if response.responses.empty? || response.responses.first.image_properties_annotation.nil?
+    return [] if response.responses.empty? || response.responses.first.image_properties_annotation.nil?
 
     # Extract dominant colors from the response
     dominant_colors = response.responses.first.image_properties_annotation.dominant_colors.colors
 
     # Get hex values or descriptive colors from the dominant colors
     scored_colors = dominant_colors.map do |color_info|
-      [
-        [:color_score, color_info.score],
-        [:hex, hex_color_from_rgb(color_info.color)]
-      ]
+      {
+        hex: hex_color_from_rgb(color_info.color),
+        score: color_info.score
+      }
     end
 
-    return {} if scored_colors.empty?
-
-    scored_colors.inject({}) do |result, dc|
-      result[dc.first] = dc.last
-      result
-    end
+    return scored_colors
   end
 
   def tag_image_with_ai(image)
