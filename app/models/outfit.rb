@@ -13,7 +13,7 @@ class Outfit < ApplicationRecord
   private
 
   def set_default_name
-    if self.name.blank?
+    if name.blank?
       self.name = "Outfit ##{Outfit.where(account_id: account.id).maximum(:id).to_i + 1}"
     end
   end

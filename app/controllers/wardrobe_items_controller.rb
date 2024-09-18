@@ -87,7 +87,7 @@ class WardrobeItemsController < ApplicationController
       :cost,
       :condition,
       :subcategories,
-      images: [],
+      images: []
     )
 
     # Uncomment to use Pundit permitted attributes

@@ -26,7 +26,7 @@ class OutfitsControllerTest < ActionDispatch::IntegrationTest
             occasion: @outfit.occasion,
             rating: @outfit.rating,
             season: @outfit.season,
-            wardrobe_item_ids: @outfit.wardrobe_items.map(&:id),
+            wardrobe_item_ids: @outfit.wardrobe_items.map(&:id)
           }
         }
     end

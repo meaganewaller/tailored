@@ -14,7 +14,7 @@ class WardrobeItemTest < ActiveSupport::TestCase
 
   test "should delete wardrobe items when account is deleted" do
     account = accounts(:one)
-    assert_difference 'WardrobeItem.count', -account.wardrobe_items.count do
+    assert_difference "WardrobeItem.count", -account.wardrobe_items.count do
       account.destroy
     end
   end
@@ -26,7 +26,7 @@ class WardrobeItemTest < ActiveSupport::TestCase
   end
 
   test "should attach images" do
-    @wardrobe_item.images.attach(io: File.open(Rails.root.join('test', 'fixtures', 'files', 'test_image.jpg')), filename: 'test_image.jpg')
+    @wardrobe_item.images.attach(io: File.open(Rails.root.join("test", "fixtures", "files", "test_image.jpg")), filename: "test_image.jpg")
     assert @wardrobe_item.images.attached?
   end
 
@@ -73,8 +73,8 @@ class WardrobeItemTest < ActiveSupport::TestCase
   test "should auto-generate name for multiple wardrobe items" do
     first_item = WardrobeItem.create!(tags: ["dress"], account: accounts(:one))
     second_item = WardrobeItem.create!(tags: ["dress"], account: accounts(:one))
-    assert_match /Wardrobe Item #\d+/, first_item.name
-    assert_match /Wardrobe Item #\d+/, second_item.name
+    assert_match(/Wardrobe Item #\d+/, first_item.name)
+    assert_match(/Wardrobe Item #\d+/, second_item.name)
     assert_not_equal first_item.name, second_item.name
   end
 
@@ -122,13 +122,13 @@ class WardrobeItemTest < ActiveSupport::TestCase
   # Colors Validation Tests
   # ----------------------
   test "should not save wardrobe item with invalid colors" do
-    @wardrobe_item.colors = [{ "hex" => "ZZZZZZ", "score" => "high" }]  # Invalid hex and score
+    @wardrobe_item.colors = [{"hex" => "ZZZZZZ", "score" => "high"}]  # Invalid hex and score
     assert_not @wardrobe_item.save, "Saved the wardrobe item with invalid colors"
     assert_includes @wardrobe_item.errors[:colors], "Each color must have a valid hex value and score."
   end
 
   test "should save wardrobe item with valid colors" do
-    @wardrobe_item.colors = [{ "hex" => "#ffffff", "score" => 0.9 }]  # Valid hex and score
+    @wardrobe_item.colors = [{"hex" => "#ffffff", "score" => 0.9}]  # Valid hex and score
     assert @wardrobe_item.save, "Failed to save the wardrobe item with valid colors"
   end
 

@@ -10,14 +10,23 @@ class BulkUploadProcessingJob < ApplicationJob
 
     Google::Cloud::Vision.configure { |vision| vision.credentials = Rails.application.credentials.dig(:google, :service_key) }
 
-    image = resource.images.joins(:blob).find_by(active_storage_blobs: { key: image_key })
+    image = resource.images.joins(:blob).find_by(active_storage_blobs: {key: image_key})
+
+    saved = 0
+    unsaved = 0
 
     if image
       tags = tag_image_with_ai(image)
       colors = detect_colors(image)
       resource.update(tags:, colors:)
-      resource.save!
+      if resource.save
+        saved + 1
+      else
+        unsaved + 1
+      end
     end
+
+    BulkUploadWardrobeItemsNotifier.with(account:).deliver(resource.owner)
   end
 
   private
@@ -33,14 +42,12 @@ class BulkUploadProcessingJob < ApplicationJob
     dominant_colors = response.responses.first.image_properties_annotation.dominant_colors.colors
 
     # Get hex values or descriptive colors from the dominant colors
-    scored_colors = dominant_colors.map do |color_info|
+    dominant_colors.map do |color_info|
       {
         hex: hex_color_from_rgb(color_info.color),
         score: color_info.score
       }
     end
-
-    return scored_colors
   end
 
   def tag_image_with_ai(image)
@@ -51,12 +58,12 @@ class BulkUploadProcessingJob < ApplicationJob
     response = vision.label_detection(image: image_file)
 
     response.responses.each do |res|
-    res.label_annotations.each do |label|
-      arr.push(label.description) if label.score > 0.85
+      res.label_annotations.each do |label|
+        arr.push(label.description) if label.score > 0.85
       end
     end
 
-    return arr
+    arr
   end
 
   def hex_color_from_rgb(color)
@@ -66,4 +73,3 @@ class BulkUploadProcessingJob < ApplicationJob
     "#%02x%02x%02x" % [red, green, blue]
   end
 end
-

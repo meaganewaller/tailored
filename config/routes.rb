@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   authenticated :user, lambda { |u| u.admin? } do
     draw :admin
-    mount GoodJob::Engine => 'good_job'
+    mount GoodJob::Engine => "good_job"
   end
 
   resources :announcements, only: [:index, :show]
@@ -39,8 +39,8 @@ Rails.application.routes.draw do
     resources :outfits
     resources :wardrobe_items do
       collection do
-        get 'bulk_upload', to: 'bulk_uploads#new', defaults: { resource_type: 'wardrobe_item' }
-        post 'bulk_upload', to: 'bulk_uploads#create', defaults: { resource_type: 'wardrobe_item' }
+        get "bulk_upload", to: "bulk_uploads#new", defaults: {resource_type: "wardrobe_item"}
+        post "bulk_upload", to: "bulk_uploads#create", defaults: {resource_type: "wardrobe_item"}
       end
     end
 

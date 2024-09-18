@@ -31,7 +31,7 @@ class BulkUploadsController < ApplicationController
     end
 
     if errors.any?
-      flash.now[:alert] = errors.join(', ')
+      flash.now[:alert] = errors.join(", ")
       render :new
     else
       flash[:notice] = "Your #{resource_name.pluralize} are being processed. You will be notified when complete."
@@ -44,10 +44,10 @@ class BulkUploadsController < ApplicationController
   def set_resource_class
     # Determine the resource class dynamically from the resource_type parameter
     @resource_class = case params[:resource_type]
-    when 'wardrobe_item'
+    when "wardrobe_item"
       WardrobeItem
     else
-      raise 'Unknown resource type'
+      raise "Unknown resource type"
     end
   end
 

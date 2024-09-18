@@ -1,6 +1,6 @@
-if ENV['COVERAGE']
+if ENV["COVERAGE"]
   require "simplecov"
-  SimpleCov.start 'rails'
+  SimpleCov.start "rails"
 end
 
 ENV["RAILS_ENV"] ||= "test"
@@ -10,7 +10,7 @@ require "minitest/mock"
 require "webmock/minitest"
 
 # Uncomment to view full stack trace in tests
-#Rails.backtrace_cleaner.remove_silencers!
+# Rails.backtrace_cleaner.remove_silencers!
 
 if defined?(Sidekiq)
   require "sidekiq/testing"

@@ -42,7 +42,7 @@ gem "kamal", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.12"
 
-gem 'google-cloud-vision'
+gem "google-cloud-vision"
 
 gem "simplecov", require: false, group: :test
 

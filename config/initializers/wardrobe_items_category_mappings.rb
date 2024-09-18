@@ -1,19 +1,19 @@
 WARDROBE_ITEMS_CATEGORIES = {
   # Tops like shirts, t-shirts, blouses
   "tops" => [
-    "t-shirt", "blouse", "dress shirt", "polo", "sweater", "hoodie", 
+    "t-shirt", "blouse", "dress shirt", "polo", "sweater", "hoodie",
     "tank top", "shirt", "long sleeve shirt", "crop top", "bustier", "bodysuit"
   ],
 
   # Bottoms like pants, shorts, skirts
   "bottoms" => [
-    "pants", "jeans", "shorts", "trousers", "leggings", "skirt", "chinos", 
+    "pants", "jeans", "shorts", "trousers", "leggings", "skirt", "chinos",
     "joggers", "cargo pants", "culottes"
   ],
 
   # Dresses
   "dresses" => [
-    "casual dress", "formal dress", "sundress", "maxi dress", "sheath dress", 
+    "casual dress", "formal dress", "sundress", "maxi dress", "sheath dress",
     "cocktail dress", "evening gown", "day dress", "dress"
   ],
 
@@ -24,26 +24,26 @@ WARDROBE_ITEMS_CATEGORIES = {
 
   # Outerwear like jackets, coats, blazers
   "outerwear" => [
-    "jacket", "coat", "blazer", "trench coat", "raincoat", "cardigan", 
+    "jacket", "coat", "blazer", "trench coat", "raincoat", "cardigan",
     "puffer jacket", "vest", "parka"
   ],
 
   # Shoes and footwear
   "footwear" => [
-    "sneakers", "boots", "sandals", "heels", "loafers", "flats", "mules", 
+    "sneakers", "boots", "sandals", "heels", "loafers", "flats", "mules",
     "slippers", "oxfords", "wedges", "ankle boots", "clogs"
   ],
 
   # Accessories like handbags, belts, scarves
   "accessories" => [
-    "bag", "handbag", "belt", "hat", "scarf", "gloves", "sunglasses", 
-    "watch", "earrings", "bracelet", "necklace", "tie", "bowtie", 
+    "bag", "handbag", "belt", "hat", "scarf", "gloves", "sunglasses",
+    "watch", "earrings", "bracelet", "necklace", "tie", "bowtie",
     "hairband", "headband", "hair clip"
   ],
 
   # Activewear specific categories
   "activewear" => [
-    "sports bra", "leggings", "joggers", "track jacket", "cycling shorts", 
+    "sports bra", "leggings", "joggers", "track jacket", "cycling shorts",
     "bicycle bibs", "bicycle jerseys", "yoga pants", "running shorts"
   ],
 
@@ -59,13 +59,13 @@ WARDROBE_ITEMS_CATEGORIES = {
 
   # Underwear and socks
   "underwear_socks" => [
-    "bra", "boxers", "briefs", "panties", "thong", "boxer briefs", "lingerie", 
+    "bra", "boxers", "briefs", "panties", "thong", "boxer briefs", "lingerie",
     "shapewear", "socks", "tights", "leggings", "undershirt"
   ],
 
   # Baby & Toddler clothing
   "baby_toddler" => [
-    "baby dress", "baby onesie", "baby pants", "baby swimwear", 
+    "baby dress", "baby onesie", "baby pants", "baby swimwear",
     "baby shoes", "toddler pants", "toddler tops"
   ],
 
@@ -74,4 +74,3 @@ WARDROBE_ITEMS_CATEGORIES = {
     "costume", "costume cape", "costume hat", "costume gloves", "pretend jewelry"
   ]
 }
-

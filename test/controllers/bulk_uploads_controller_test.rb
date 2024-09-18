@@ -13,11 +13,11 @@ class BulkUploadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create wardrobe items and enqueue background jobs" do
-    image_file = fixture_file_upload(Rails.root.join('test', 'fixtures', 'files', 'test_image.jpg'), 'image/jpeg')
+    image_file = fixture_file_upload(Rails.root.join("test", "fixtures", "files", "test_image.jpg"), "image/jpeg")
 
     assert_difference -> { WardrobeItem.count }, 1 do
       assert_enqueued_jobs 1, only: BulkUploadProcessingJob do
-        post bulk_upload_wardrobe_items_path, params: { images: [image_file] }
+        post bulk_upload_wardrobe_items_path, params: {images: [image_file]}
       end
     end
 
@@ -26,12 +26,12 @@ class BulkUploadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should handle multiple image uploads and enqueue multiple jobs" do
-    image_file1 = fixture_file_upload(Rails.root.join('test', 'fixtures', 'files', 'test_image.jpg'), 'image/jpeg')
-    image_file2 = fixture_file_upload(Rails.root.join('test', 'fixtures', 'files', 'test_image_2.jpg'), 'image/jpeg')
+    image_file1 = fixture_file_upload(Rails.root.join("test", "fixtures", "files", "test_image.jpg"), "image/jpeg")
+    image_file2 = fixture_file_upload(Rails.root.join("test", "fixtures", "files", "test_image_2.jpg"), "image/jpeg")
 
     assert_difference -> { WardrobeItem.count }, 2 do
       assert_enqueued_jobs 2, only: BulkUploadProcessingJob do
-        post bulk_upload_wardrobe_items_path, params: { images: [image_file1, image_file2] }
+        post bulk_upload_wardrobe_items_path, params: {images: [image_file1, image_file2]}
       end
     end
 
@@ -40,8 +40,8 @@ class BulkUploadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not create wardrobe item if no images uploaded and re-render form" do
-    assert_no_difference 'WardrobeItem.count' do
-      post bulk_upload_wardrobe_items_path, params: { images: [] }
+    assert_no_difference "WardrobeItem.count" do
+      post bulk_upload_wardrobe_items_path, params: {images: []}
     end
 
     assert_response :success
@@ -61,4 +61,3 @@ class BulkUploadsControllerTest < ActionDispatch::IntegrationTest
   #   assert_match "Some items could not be uploaded.", response.body
   # end
 end
-

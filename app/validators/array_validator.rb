@@ -5,4 +5,3 @@ class ArrayValidator < ActiveModel::EachValidator
     end
   end
 end
-

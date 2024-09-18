@@ -1,10 +1,10 @@
-require 'pry'
+# frozen_string_literal: true
+
+# Represents each individual piece in a user's wardrobe, e.g., tops, pants, hats, etc.
 class WardrobeItem < ApplicationRecord
   acts_as_tenant :account
 
   broadcasts_refreshes
-
-  has_and_belongs_to_many :outfits
 
   has_many_attached :images
 
@@ -13,7 +13,7 @@ class WardrobeItem < ApplicationRecord
   before_validation :set_default_values
 
   validate :colors_must_be_valid_json
-  validates :cost, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :cost, numericality: {greater_than_or_equal_to: 0}, allow_nil: true
 
   private
 
@@ -23,20 +23,19 @@ class WardrobeItem < ApplicationRecord
   end
 
   def set_default_name
-    if self.name.blank?
-      self.name = "Wardrobe Item ##{WardrobeItem.maximum(:id).to_i + 1}"
-    end
+    self.name = "Wardrobe Item ##{WardrobeItem.maximum(:id).to_i + 1}" if name.blank?
   end
 
   def colors_must_be_valid_json
-    return true if self.colors.empty?
-    self.colors.each do |color|
+    return true if colors.empty?
+
+    colors.each do |color|
       if color.is_a?(Hash)
         unless valid_hex?(color["hex"]) && color["score"].is_a?(Numeric)
           errors.add(:colors, "Each color must have a valid hex value and score.")
         end
       else
-        errors.add(:colors, 'must be a valid JSON object')
+        errors.add(:colors, "must be a valid JSON object")
       end
     end
   end
