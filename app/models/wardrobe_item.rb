@@ -29,6 +29,7 @@ class WardrobeItem < ApplicationRecord
   end
 
   def colors_must_be_valid_json
+    return true if self.colors.empty?
     self.colors.each do |color|
       if color.is_a?(Hash)
         unless valid_hex?(color["hex"]) && color["score"].is_a?(Numeric)

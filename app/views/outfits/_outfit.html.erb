@@ -1,54 +1,72 @@
-<div id="<%= dom_id outfit %>" class="outfit-container">
+<li id="<%= dom_id outfit %>" class="card card-image p-1 outfit-card flex flex-col justify-between" >
+  <% @wardrobe_items = outfit.wardrobe_items %>
   <!-- Outfit Details -->
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Name</p>
-    <%= outfit.name %>
+  <div class="relative">
+    <% if outfit.images.any? %>
+      <%= image_tag outfit.images.first, alt: wardrobe_item.name, class: "object-cover w-full h-full" %>
+    <% else %>
+      <%= image_tag "placeholder_image.jpg", alt: "No Image Available", class: "object-cover w-full h-full" %>
+    <% end %>
+
+    <!-- Category Badge -->
+    <span class="absolute top-0 right-0 mr-2 mt-1 pill pill-accent">
+      <%= outfit.category || "Uncategorized" %>
+    </span>
   </div>
 
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Occasion</p>
-    <%= outfit.occasion %>
-  </div>
+  <!-- Card Body: Main Content -->
+  <div class="flex-1 flex flex-col">
+    <h3>
+      <%= outfit.name.presence || "Untitled Outfit" %>
+    </h3>
 
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Season</p>
-    <%= outfit.season %>
-  </div>
+    <p>
+      <strong>Subcategories:</strong> <%= outfit.subcategories.any? ? outfit.subcategories.join(", ") : "<em>Not specified</em>".html_safe %>
+    </p>
 
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Rating</p>
-    <%= outfit.rating %>
-  </div>
-
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Account</p>
-    <%= outfit.account_id %>
-  </div>
-
-  <!-- Wardrobe Items -->
-  <div class="mb-4">
-    <p class="text-sm font-medium text-gray-500">Wardrobe Items</p>
-    <div class="grid grid-cols-2 gap-4">
-      <% outfit.wardrobe_items.each do |wardrobe_item| %>
-        <div class="wardrobe-item">
-          <p><%= wardrobe_item.name %></p>
-          <% if wardrobe_item.images.attached? %>
-            <div class="grid grid-cols-2 gap-2">
-              <% wardrobe_item.images.each do |image| %>
-                <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "rounded shadow" %>
-              <% end %>
-            </div>
+    <!-- Outfit details -->
+    <div class="flex-grow">
+      <p><strong>Season:</strong> <%= outfit.season.presence || "All Seasons" %></p>
+      <p><strong>Occasions:</strong> <%= outfit.occasions.any? ? outfit.occasions.join(", ") : "<em>Not specified</em>".html_safe %></p>
+      <p><strong>Rating:</strong>
+      <span class="inline-flex align-middle">
+      <% if outfit.rating.presence %>
+        <% 5.times do |i| %>
+          <% if outfit.rating && outfit.rating > i %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-yellow-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+            </svg>
           <% else %>
-            <p class="text-sm text-gray-400">No images available</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+            </svg>
           <% end %>
-        </div>
+        <% end %>
+        <span class="ml-2 text-sm text-gray-500 sr-only"><%= outfit.rating %>/5</span>
+      <% else %>
+        <em>Not specified</em>
       <% end %>
+      </span>
+      </p>
+    </div>
+
+    <!-- Wardrobe Items Carousel -->
+    <% if outfit.wardrobe_items.any? %>
+      <%= render "outfits/wardrobe_items" %>
+    <% end %>
+
+    <!-- Action Buttons -->
+    <div class="pt-4 mt-auto flex justify-between">
+      <% if action_name != "show" %>
+        <%= link_to "View this outfit", outfit, class: "btn btn-primary btn-outline btn-xs sm:btn-sm" %>
+      <% else %>
+      <% end %>
+      <div class="flex justify-around">
+        <a href="<%= edit_outfit_path(outfit) %>" class="btn btn-secondary btn-outline btn-xs sm:btn-sm">
+          Edit
+        </a>
+        <%= link_to t("delete"), outfit, class: "btn btn-danger btn-outline btn-xs sm:btn-sm", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
+      </div>
     </div>
   </div>
-
-  <!-- View Link -->
-  <% if action_name != "show" %>
-    <%= link_to "View this outfit", outfit, class: "btn btn-secondary" %>
-  <% end %>
-</div>
-
+</li>

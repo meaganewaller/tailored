@@ -19,3 +19,6 @@ application.register('slideover', Slideover)
 
 import Flatpickr from 'stimulus-flatpickr'
 application.register('flatpickr', Flatpickr)
+
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)

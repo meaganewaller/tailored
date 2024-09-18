@@ -40,6 +40,7 @@ en:
   something_went_wrong: "Something went wrong"
   unauthorized: "You are not authorized to perform this action."
   reveal: "Reveal"
+  Bulk Upload: Bulk Upload
 
   account_invitations_mailer:
     invite:
@@ -439,6 +440,7 @@ en:
     system: "Sync with system"
     light: "Light"
     dark: "Dark"
+    y2k: "Y2K"
 
   users:
     agreements:

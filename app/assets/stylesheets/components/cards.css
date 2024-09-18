@@ -1,4 +1,9 @@
 @layer components {
+  .wardrobe-item-card:hover,
+  .outfit-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
   .card {
     background: var(--base-bg-low);
     color: var(--base-text);
@@ -44,4 +49,4 @@
       width: 50%;
     }
   }
-} 
+}

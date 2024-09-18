@@ -1,12 +1,5 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  resources :outfits
-  resources :wardrobe_items do
-    collection do
-      get 'bulk_upload', to: 'bulk_uploads#new', defaults: { resource_type: 'wardrobe_item' }
-      post 'bulk_upload', to: 'bulk_uploads#create', defaults: { resource_type: 'wardrobe_item' }
-    end
-  end
   draw :accounts
   draw :api
   draw :billing
@@ -16,6 +9,7 @@ Rails.application.routes.draw do
 
   authenticated :user, lambda { |u| u.admin? } do
     draw :admin
+    mount GoodJob::Engine => 'good_job'
   end
 
   resources :announcements, only: [:index, :show]
@@ -33,6 +27,8 @@ Rails.application.routes.draw do
     get :terms
     get :privacy
     get :pricing
+    # get :wardrobe_items
+    # get :outfits
   end
 
   match "/404", via: :all, to: "errors#not_found"
@@ -40,6 +36,14 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root to: "dashboard#show", as: :user_root
+    resources :outfits
+    resources :wardrobe_items do
+      collection do
+        get 'bulk_upload', to: 'bulk_uploads#new', defaults: { resource_type: 'wardrobe_item' }
+        post 'bulk_upload', to: 'bulk_uploads#create', defaults: { resource_type: 'wardrobe_item' }
+      end
+    end
+
     # Alternate route to use if logged in users should still see public root
     # get "/dashboard", to: "dashboard#show", as: :user_root
   end
@@ -54,5 +58,4 @@ Rails.application.routes.draw do
 
   # Public marketing homepage
   root to: "static#index"
-  mount GoodJob::Engine => 'good_job'
 end
