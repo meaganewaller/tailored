@@ -11,6 +11,7 @@ personal_accounts: true
 apns: false
 fcm: false
 integrations:
+- honeybadger
 omniauth_providers:
 - google-oauth2
 payment_processors:

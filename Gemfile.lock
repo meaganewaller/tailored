@@ -261,6 +261,7 @@ GEM
     hashdiff (1.1.1)
     hashids (1.0.6)
     hashie (5.0.0)
+    honeybadger (5.15.6)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.13.0)
@@ -337,8 +338,6 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
-    mocha (2.4.5)
-      ruby2_keywords (>= 0.0.5)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
@@ -465,6 +464,10 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_semantic_logger (4.17.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.16)
     railties (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
@@ -530,7 +533,6 @@ GEM
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -548,6 +550,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_logger (4.16.1)
+      concurrent-ruby (~> 1.0)
     signet (0.19.0)
       addressable (~> 2.8)
       faraday (>= 0.17.5, < 3.a)
@@ -653,6 +657,7 @@ DEPENDENCIES
   erb_lint
   good_job
   google-cloud-vision
+  honeybadger
   image_processing (~> 1.12)
   inline_svg (~> 1.6)
   invisible_captcha (~> 2.0)
@@ -662,7 +667,6 @@ DEPENDENCIES
   kamal
   local_time (~> 3.0)
   mailbin
-  mocha
   name_of_person (~> 1.0)
   nokogiri (>= 1.12.5)
   noticed (~> 2.2)
@@ -679,6 +683,7 @@ DEPENDENCIES
   puma (~> 6.0)
   pundit (~> 2.1)
   rails (~> 7.2.0)
+  rails_semantic_logger
   receipts (~> 2.1)
   redis (~> 5.1)
   rotp (~> 6.2)

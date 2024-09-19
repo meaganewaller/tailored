@@ -77,3 +77,4 @@ eval_gemfile "Gemfile.jumpstart"
 # gem "strong_migrations"
 
 gem "pry", "~> 0.14.2"
+gem "rails_semantic_logger"
