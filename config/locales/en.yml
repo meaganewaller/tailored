@@ -584,3 +584,7 @@ en:
         name: "Steve Jobs"
         email: "you@example.com"
         password: "password"
+administrate:
+  field_hints:
+    plan:
+      unit_label: "Describes how you sell your product, e.g. seats, tiers. Appears on each line item. Appears on receipts, invoices, at checkout, and on the customer portal."

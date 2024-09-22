@@ -24,7 +24,7 @@ as well as a link to its edit page.
   </h1>
 
   <div>
-    <%= link_to("View on Stripe", "#{stripe_base_url}/plans/#{page.resource.stripe_id}", class: "button", target: :_blank) if Jumpstart.config.stripe? && accessible_action?(page.resource, :edit) && page.resource.stripe_id.present? %>
+    <%= link_to("View on Stripe", "#{stripe_base_url}/prices/#{page.resource.stripe_id}", class: "button", target: :_blank) if Jumpstart.config.stripe? && accessible_action?(page.resource, :edit) && page.resource.stripe_id.present? %>
     <%= link_to("View on Braintree", "#{braintree_base_url}/merchants/#{Pay::Braintree.merchant_id}/plans/#{page.resource.braintree_id}", class: "button", target: :_blank) if Jumpstart.config.braintree? && accessible_action?(page.resource, :edit) && page.resource.braintree_id.present? %>
 
     <%= link_to(

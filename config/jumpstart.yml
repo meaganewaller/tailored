@@ -15,6 +15,7 @@ integrations:
 omniauth_providers:
 - google-oauth2
 payment_processors:
+- stripe
 multitenancy:
 gems:
 - acts_as_tenant
