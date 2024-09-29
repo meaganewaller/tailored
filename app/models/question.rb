@@ -1,0 +1,14 @@
+class Question < ApplicationRecord
+  broadcasts_refreshes
+
+  belongs_to :creator, class_name: "Account"
+  has_many :question_options
+
+  validates :name, presence: true
+
+  accepts_nested_attributes_for(
+    :question_options,
+    reject_if: :all_blank,
+    allow_destroy: true
+  )
+end

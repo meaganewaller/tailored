@@ -20,6 +20,9 @@ namespace :admin do
     resources :payment_methods
     resources :subscriptions
   end
+  resources :quizzes
+  resources :questions
+  resources :question_options, except: :index
 
   root to: "dashboard#show"
 end

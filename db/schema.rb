@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_184652) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_29_154510) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,6 +131,26 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_184652) do
     t.datetime "updated_at", null: false
     t.index ["token"], name: "index_api_tokens_on_token", unique: true
     t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "parent_id"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_categories_on_account_id"
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.bigint "category_id"
+    t.string "categorizable_type"
+    t.bigint "categorizable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categorizable_type", "categorizable_id"], name: "index_categorizations_on_categorizable"
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
   end
 
   create_table "connected_accounts", force: :cascade do |t|
@@ -428,6 +448,36 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_184652) do
     t.string "contact_url"
   end
 
+  create_table "question_options", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "optionable_type"
+    t.integer "optionable_id"
+    t.integer "score", default: 0
+    t.integer "order", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["optionable_type", "optionable_id"], name: "index_question_options_on_optionable_type_and_optionable_id"
+    t.index ["question_id"], name: "index_question_options_on_question_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "content"
+    t.bigint "creator_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_questions_on_creator_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.bigint "creator_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_quizzes_on_creator_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -472,8 +522,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_184652) do
 
   create_table "wardrobe_items", force: :cascade do |t|
     t.string "name"
-    t.string "category"
-    t.jsonb "subcategories", default: [], null: false
     t.jsonb "colors", default: [], null: false
     t.jsonb "tags", default: [], null: false
     t.string "season"
@@ -493,9 +541,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_184652) do
   add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "categories", "accounts"
+  add_foreign_key "categories", "categories", column: "parent_id"
+  add_foreign_key "categorizations", "categories"
   add_foreign_key "outfits", "accounts"
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
+  add_foreign_key "question_options", "questions"
+  add_foreign_key "questions", "accounts", column: "creator_id"
+  add_foreign_key "quizzes", "accounts", column: "creator_id"
   add_foreign_key "wardrobe_items", "accounts"
 end
