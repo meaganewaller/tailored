@@ -23,6 +23,7 @@ namespace :admin do
   resources :quizzes
   resources :questions
   resources :question_options, except: :index
+  resources :quiz_questions, except: :index
 
   root to: "dashboard#show"
 end

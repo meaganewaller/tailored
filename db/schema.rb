@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_29_154510) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_29_200605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -469,6 +469,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_154510) do
     t.index ["creator_id"], name: "index_questions_on_creator_id"
   end
 
+  create_table "quiz_questions", force: :cascade do |t|
+    t.bigint "quiz_id", null: false
+    t.bigint "question_id", null: false
+    t.integer "display_order", default: 0
+    t.boolean "shuffleable", default: false
+    t.boolean "required", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_quiz_questions_on_question_id"
+    t.index ["quiz_id"], name: "index_quiz_questions_on_quiz_id"
+  end
+
   create_table "quizzes", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
@@ -550,6 +562,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_154510) do
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
   add_foreign_key "question_options", "questions"
   add_foreign_key "questions", "accounts", column: "creator_id"
+  add_foreign_key "quiz_questions", "questions"
+  add_foreign_key "quiz_questions", "quizzes"
   add_foreign_key "quizzes", "accounts", column: "creator_id"
   add_foreign_key "wardrobe_items", "accounts"
 end

@@ -28,7 +28,7 @@ class QuestionOptionDashboard < Administrate::BaseDashboard
   ].freeze
 
   COLLECTION_ATTRIBUTES = %i[
-    id
+    content
     score
     display_order
   ].freeze
