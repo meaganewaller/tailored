@@ -36,10 +36,11 @@
 @import "components/wells";
 @import "components/braintree";
 @import "components/outfits";
+@import "components/quizzes";
 
 @import "tailwindcss/utilities";
 
 @import "flatpickr/dist/flatpickr.css";
 @import "tippy.js/dist/tippy.css";
 @import "tom-select/dist/css/tom-select.css";
-@import 'actiontext.css';
+@import "actiontext.css";

@@ -1,0 +1,21 @@
+<div id="<%= dom_id quiz %>" class="card card-image p-1 quiz-card flex flex-col justify-between">
+  <div class="relative">
+    <%= image_tag "placeholder_image.jpg", alt: "No Image Available", class: "object-cover w-full h-full" %>
+  </div>
+
+  <div class="px-6 py-4">
+    <h3>
+      <%= quiz.title.presence || "Unnamed Quiz" %>
+    </h3>
+
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+    <%= quiz.description.presence || "No description" %>
+    </p>
+  </div>
+
+  <div class="px-6 py-4 flex justify-between">
+    <a href="<%= quiz_path(quiz) %>" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded flex items-center">
+      Show
+    </a>
+  </div>
+</div>

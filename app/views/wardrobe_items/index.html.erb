@@ -18,7 +18,7 @@
     <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary" %>
   </div>
 
-  <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 dark:bg-gray-900-8" do %>
+  <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 dark:bg-gray-900" do %>
     <%= render partial: "wardrobe_items/wardrobe_item", collection: @wardrobe_items, as: :wardrobe_item, cached: true %>
 
     <div class="hidden only:block text-center">

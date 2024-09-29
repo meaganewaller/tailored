@@ -43,6 +43,7 @@ Rails.application.routes.draw do
         post "bulk_upload", to: "bulk_uploads#create", defaults: {resource_type: "wardrobe_item"}
       end
     end
+    resources :quizzes, only: [:index, :show]
 
     # Alternate route to use if logged in users should still see public root
     # get "/dashboard", to: "dashboard#show", as: :user_root
