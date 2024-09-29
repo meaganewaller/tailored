@@ -1,0 +1,16 @@
+<div class="nested-fields">
+  <%= f.fields_for :question_options do |qf| %>
+    <div class="nested-field">
+      <%= qf.label :content, "Option Content" %>
+      <%= qf.text_area :content %>
+
+      <%= qf.label :score, "Option Score" %>
+      <%= qf.number_field :score %>
+
+      <%= qf.label :_destroy, "Remove" %>
+      <%= qf.check_box :_destroy %>
+    </div>
+  <% end %>
+
+  <%= link_to_add_association "Add Option", f, :question_options, partial: "fields/question_option_field/form" %>
+</div>

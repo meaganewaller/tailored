@@ -453,7 +453,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_154510) do
     t.string "optionable_type"
     t.integer "optionable_id"
     t.integer "score", default: 0
-    t.integer "order", default: 0
+    t.integer "display_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["optionable_type", "optionable_id"], name: "index_question_options_on_optionable_type_and_optionable_id"

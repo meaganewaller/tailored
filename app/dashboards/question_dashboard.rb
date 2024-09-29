@@ -8,7 +8,7 @@ class QuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    question_options: Field::NestedHasMany.with_options,
+    question_options: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     content: Field::Text,
@@ -26,6 +26,7 @@ class QuestionDashboard < Administrate::BaseDashboard
     id
     name
     content
+    question_options
     creator
   ].freeze
 

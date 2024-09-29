@@ -1,0 +1,14 @@
+<div class="field">
+  <%= f.label :content, "Option Content" %>
+  <%= f.rich_text_area :content %> <!-- Using Action Text for rich content -->
+
+  <%= f.label :score, "Score (optional)" %>
+  <%= f.number_field :score %>
+
+  <%= f.label :display_order, "Display order (optional)" %>
+  <%= f.number_field :display_order %>
+
+  <%= f.hidden_field :_destroy %>
+  <button data-action="click->question-options#removeOption">Remove</button>
+</div>
+

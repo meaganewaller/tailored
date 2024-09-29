@@ -5,7 +5,7 @@ class CreateQuestionOptions < ActiveRecord::Migration[7.2]
       t.string :optionable_type # Polymorphic association
       t.integer :optionable_id   # Polymorphic association ID
       t.integer :score, default: 0
-      t.integer :order, default: 0
+      t.integer :display_order, default: 0
 
       t.timestamps
     end

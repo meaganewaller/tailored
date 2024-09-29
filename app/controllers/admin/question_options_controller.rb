@@ -1,5 +1,5 @@
 module Admin
-  class QuestionsController < Admin::ApplicationController
+  class QuestionOptionsController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #
@@ -34,17 +34,18 @@ module Admin
     # empty values into nil values. It uses other APIs such as `resource_class`
     # and `dashboard`:
     #
-    def resource_params
-      params.require(:question).
-        permit(
-          :content,
-          :name,
-          :creator_id,
-          question_options_attributes: [:id, :content, :score, :display_order, :_destroy]
-        )
-    end
+    # def resource_params
+    #   params.require(:question).
+    #     permit(
+    #       :content,
+    #       :name,
+    #       :creator_id,
+    #       question_options_attributes: [:id, :content, :score, :display_order, :_destroy]
+    #     )
+    # end
 
     # See https://administrate-demo.herokuapp.com/customizing_controller_actions
     # for more information
   end
 end
+

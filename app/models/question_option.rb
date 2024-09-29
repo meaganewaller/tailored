@@ -5,5 +5,5 @@ class QuestionOption < ApplicationRecord
   has_rich_text :content
 
   attribute :score, :integer, default: 0
-  attribute :order, :integer, default: 0
+  attribute :display_order, :integer, default: 0
 end
