@@ -14,6 +14,9 @@ class Account < ApplicationRecord
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :wardrobe_items, dependent: :destroy
   has_many :outfits, dependent: :destroy
+  has_many :quiz_attempts, dependent: :destroy
+  has_many :questions, foreign_key: :creator_id, dependent: :destroy
+  has_many :quizzes, foreign_key: :creator_id, dependent: :destroy
 
   scope :personal, -> { where(personal: true) }
   scope :team, -> { where(personal: false) }

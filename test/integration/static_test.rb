@@ -7,8 +7,9 @@ class Jumpstart::StaticTest < ActionDispatch::IntegrationTest
   end
 
   test "dashboard" do
-    sign_in users(:one)
+    user = users(:one)
+    sign_in user
     get root_path
-    assert_select "h1", I18n.t("dashboard.show.title")
+    assert_select "h1", I18n.translate("dashboard.show.title", name: user.name)
   end
 end

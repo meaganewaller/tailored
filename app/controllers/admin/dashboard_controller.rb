@@ -8,6 +8,7 @@ module Admin
       @last_month = last_month
       @this_month = this_month
       @users = ::User.all.count
+      @quizzes = ::Quiz.all.where(creator_id: current_user.id)
       @subscriptions = ::Pay::Subscription.active.count
     end
 

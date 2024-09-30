@@ -1,6 +1,6 @@
 Honeybadger.configure do |config|
   config.before_notify do |notice|
-    notice.halt! if notice.error_message =~ /sensitive data/
+    notice.halt! if /sensitive data/.match?(notice.error_message)
 
     # Avoid using all your quota for non-production errors by allowing
     # only 10 errors to be sent per minute

@@ -1,0 +1,27 @@
+.answered {
+  @apply bg-green-50/50 border-green-200;
+}
+
+.active {
+  @apply opacity-100;
+}
+
+.inactive {
+  @apply opacity-50;
+}
+
+.answered h3 {
+  @apply text-green-700;
+}
+
+.answered input[type="radio"] {
+  @apply border-green-500 text-green-500;
+}
+
+.answered label {
+  @apply text-green-700;
+}
+
+.unanswered-required {
+  background-color: rgba(255, 0, 0, 0.1);
+}

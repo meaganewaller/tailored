@@ -39,5 +39,14 @@
       <h4 class="font-normal mb-2">Active Subscriptions</h4>
       <p class="text-3xl font-bold"><%= @subscriptions %></p>
     </div>
+
+    <% if @quizzes.any? %>
+      <div class="flex-1 shadow rounded p-4 m-4 text-center">
+        <h4 class="font-normal mb-2">Your Quizzes</h4>
+        <% @quizzes.each do |quiz| %>
+          <%= link_to quiz.title, admin_quiz_path(quiz), class: "text-3xl font-bold" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </section>

@@ -1,0 +1,16 @@
+<!-- app/views/quizzes/_quiz_question_fields.html.erb -->
+<div class="field">
+  <%= f.collection_select :question_id, Question.all, :id, :content, prompt: "Select a Question" %>
+
+  <%= f.label :display_order, "Display Order" %>
+  <%= f.number_field :display_order %>
+
+  <%= f.label :shuffleable, "Shuffleable?" %>
+  <%= f.check_box :shuffleable %>
+
+  <%= f.label :required, "Required?" %>
+  <%= f.check_box :required %>
+
+  <%= f.hidden_field :_destroy %>
+  <button data-action="click->quiz-questions#removeQuestion">Remove Question</button>
+</div>
