@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     resources :quiz_attempts, only: [:show, :create, :update] do
       resources :answers, only: [:create]
 
-      post 'complete', on: :member
+      post "complete", on: :member
     end
 
     # Alternate route to use if logged in users should still see public root

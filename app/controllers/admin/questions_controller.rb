@@ -35,8 +35,8 @@ module Admin
     # and `dashboard`:
     #
     def resource_params
-      params.require(:question).
-        permit(
+      params.require(:question)
+        .permit(
           :content,
           :name,
           :creator_id,

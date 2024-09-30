@@ -6,10 +6,10 @@ class AnswersController < ApplicationController
 
     if @answer.save
       # Handle successful answer saving (e.g., show the next question or a success message)
-      redirect_to @quiz_attempt, notice: 'Answer submitted successfully!'
+      redirect_to @quiz_attempt, notice: "Answer submitted successfully!"
     else
       # Handle errors
-      redirect_to @quiz_attempt, alert: 'There was a problem submitting your answer.'
+      redirect_to @quiz_attempt, alert: "There was a problem submitting your answer."
     end
   end
 
@@ -23,4 +23,3 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:question_option_id, :quiz_question_id)
   end
 end
-

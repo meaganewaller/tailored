@@ -24,7 +24,7 @@ class QuizzesController < ApplicationController
 
   def set_quiz_attempt
     @quiz_attempt = QuizAttempt.find_or_create_by(
-      account: current_account, 
+      account: current_account,
       quiz: @quiz,
       status: QuizAttempt.statuses[:in_progress]
     ) do |attempt|

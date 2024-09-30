@@ -8,7 +8,7 @@ class QuestionOptionDashboard < Administrate::BaseDashboard
     display_order: Field::Number,
     content: Field::RichText,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   FORM_ATTRIBUTES = %i[
@@ -18,12 +18,12 @@ class QuestionOptionDashboard < Administrate::BaseDashboard
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
-    question 
-    id 
-    content 
+    question
+    id
+    content
     score
     display_order
-    created_at 
+    created_at
     updated_at
   ].freeze
 
@@ -33,4 +33,3 @@ class QuestionOptionDashboard < Administrate::BaseDashboard
     display_order
   ].freeze
 end
-

@@ -4,5 +4,5 @@ class QuizAttempt < ApplicationRecord
 
   has_many :answers, dependent: :destroy
 
-  enum status: { in_progress: 0, completed: 1 }
+  enum status: {in_progress: 0, completed: 1}
 end
