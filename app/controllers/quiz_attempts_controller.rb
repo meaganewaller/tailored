@@ -5,7 +5,7 @@ class QuizAttemptsController < ApplicationController
   def complete
     # Mark the quiz attempt as completed
     if @quiz_attempt.update(status: :completed, completed_at: Time.now)
-      redirect_to @quiz_attempt, notice: "Quiz completed successfully!"
+      redirect_to quizzes_path, notice: "Quiz completed successfully!"
     else
       redirect_to @quiz_attempt, alert: "There was a problem completing the quiz."
     end
