@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_29_200605) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -117,6 +117,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_200605) do
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "quiz_attempt_id", null: false
+    t.bigint "quiz_question_id", null: false
+    t.bigint "question_option_id", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_answers_on_account_id"
+    t.index ["question_option_id"], name: "index_answers_on_question_option_id"
+    t.index ["quiz_attempt_id"], name: "index_answers_on_quiz_attempt_id"
+    t.index ["quiz_question_id"], name: "index_answers_on_quiz_question_id"
   end
 
   create_table "api_tokens", force: :cascade do |t|
@@ -469,6 +482,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_200605) do
     t.index ["creator_id"], name: "index_questions_on_creator_id"
   end
 
+  create_table "quiz_attempts", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "quiz_id", null: false
+    t.integer "score", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_quiz_attempts_on_account_id"
+    t.index ["quiz_id"], name: "index_quiz_attempts_on_quiz_id"
+  end
+
   create_table "quiz_questions", force: :cascade do |t|
     t.bigint "quiz_id", null: false
     t.bigint "question_id", null: false
@@ -552,6 +578,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_200605) do
   add_foreign_key "account_users", "users"
   add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "accounts"
+  add_foreign_key "answers", "question_options"
+  add_foreign_key "answers", "quiz_attempts"
+  add_foreign_key "answers", "quiz_questions"
   add_foreign_key "api_tokens", "users"
   add_foreign_key "categories", "accounts"
   add_foreign_key "categories", "categories", column: "parent_id"
@@ -562,6 +592,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_200605) do
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
   add_foreign_key "question_options", "questions"
   add_foreign_key "questions", "accounts", column: "creator_id"
+  add_foreign_key "quiz_attempts", "accounts"
+  add_foreign_key "quiz_attempts", "quizzes"
   add_foreign_key "quiz_questions", "questions"
   add_foreign_key "quiz_questions", "quizzes"
   add_foreign_key "quizzes", "accounts", column: "creator_id"

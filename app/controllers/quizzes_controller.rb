@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show]
+  before_action :set_quiz_attempt, only: [:show]
 
   def index
     @pagy, @quizzes = pagy(Quiz.sort_by_params(params[:sort], sort_direction))
@@ -19,5 +20,15 @@ class QuizzesController < ApplicationController
     # authorize @quiz
   rescue ActiveRecord::RecordNotFound
     redirect_to quizzes_path
+  end
+
+  def set_quiz_attempt
+    @quiz_attempt = QuizAttempt.find_or_create_by(
+      account: current_account, 
+      quiz: @quiz,
+      status: QuizAttempt.statuses[:in_progress]
+    ) do |attempt|
+      attempt.started_at = Time.now
+    end
   end
 end

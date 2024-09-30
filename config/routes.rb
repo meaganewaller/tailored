@@ -45,6 +45,12 @@ Rails.application.routes.draw do
     end
     resources :quizzes, only: [:index, :show]
 
+    resources :quiz_attempts, only: [:show, :create, :update] do
+      resources :answers, only: [:create]
+
+      post 'complete', on: :member
+    end
+
     # Alternate route to use if logged in users should still see public root
     # get "/dashboard", to: "dashboard#show", as: :user_root
   end

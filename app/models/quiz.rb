@@ -4,6 +4,7 @@ class Quiz < ApplicationRecord
   belongs_to :creator, class_name: "Account"
   has_many :quiz_questions, dependent: :destroy
   has_many :questions, through: :quiz_questions
+  has_many :quiz_attempts
 
   validates :title, presence: true
 
