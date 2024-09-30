@@ -584,6 +584,10 @@ en:
         name: "Steve Jobs"
         email: "you@example.com"
         password: "password"
+
+  outfits:
+    edit: "Edit this outfit"
+    destroy: "Destroy this outfit"
 administrate:
   field_hints:
     plan:

@@ -65,7 +65,7 @@
         <a href="<%= edit_outfit_path(outfit) %>" class="btn btn-secondary btn-outline btn-xs sm:btn-sm">
           Edit
         </a>
-        <%= link_to t("delete"), outfit, class: "btn btn-danger btn-outline btn-xs sm:btn-sm", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
+        <%= link_to t("outfits.destroy"), outfit, class: "btn btn-danger btn-outline btn-xs sm:btn-sm", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
       </div>
     </div>
   </div>

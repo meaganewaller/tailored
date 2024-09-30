@@ -2,7 +2,7 @@
 
 one:
   name: "Blue Denim Jacket"
-  colors: {}
+  colors: []
   tags: []
   season: ~
   occasions: []
@@ -12,8 +12,7 @@ one:
 
 two:
   name: "Black Leather Boots"
-  colors: 
-    - { hex: "#000000", score: 0.9 }
+  colors: []
   tags: ["leather", "boots", "black"]
   season: "winter"
   occasions: ["formal", "outdoor"]

@@ -2,53 +2,39 @@ require "application_system_test_case"
 
 class WardrobeItemsTest < ApplicationSystemTestCase
   setup do
+    @user = users(:one)
     @wardrobe_item = wardrobe_items(:one)
+    login_as @user, scope: :user
   end
 
   test "visiting the index" do
     visit wardrobe_items_url
-    assert_selector "h1", text: "Wardrobe items"
+    assert_selector "h1", text: "Wardrobe Items"
   end
 
   test "should create wardrobe item" do
     visit wardrobe_items_url
-    click_on "New wardrobe item"
+    click_on "New Wardrobe Item"
 
-    fill_in "Account", with: @wardrobe_item.account_id
-    fill_in "Category", with: @wardrobe_item.category
-    fill_in "Color", with: @wardrobe_item.color
-    fill_in "Condition", with: @wardrobe_item.condition
-    fill_in "Cost", with: @wardrobe_item.cost
     fill_in "Name", with: @wardrobe_item.name
-    fill_in "Occasion", with: @wardrobe_item.occasion
-    fill_in "Season", with: @wardrobe_item.season
     click_on "Create Wardrobe item"
 
     assert_text "Wardrobe item was successfully created"
-    click_on "Back"
   end
 
   test "should update Wardrobe item" do
     visit wardrobe_item_url(@wardrobe_item)
-    click_on "Edit this wardrobe item", match: :first
+    click_on "Edit", match: :first
 
-    fill_in "Account", with: @wardrobe_item.account_id
-    fill_in "Category", with: @wardrobe_item.category
-    fill_in "Color", with: @wardrobe_item.color
-    fill_in "Condition", with: @wardrobe_item.condition
-    fill_in "Cost", with: @wardrobe_item.cost
     fill_in "Name", with: @wardrobe_item.name
-    fill_in "Occasion", with: @wardrobe_item.occasion
-    fill_in "Season", with: @wardrobe_item.season
     click_on "Update Wardrobe item"
 
     assert_text "Wardrobe item was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy Wardrobe item" do
     visit wardrobe_item_url(@wardrobe_item)
-    click_on "Destroy this wardrobe item", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Wardrobe item was successfully destroyed"
   end

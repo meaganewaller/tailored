@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  occasion: MyString
-  season: MyString
-  rating: 1
+  name: Casual Outfit
+  occasion: Casual
+  season: Spring
+  rating: 3
   account: one
   wardrobe_items:
     - one
 
 two:
-  name: MyString
-  occasion: MyString
-  season: MyString
-  rating: 1
+  name: Work Outfit
+  occasion: Work
+  season: Winter
+  rating: 4
   account: two
   wardrobe_items:
     - two
