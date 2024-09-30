@@ -4,13 +4,8 @@
     <% if wardrobe_item.images.any? %>
       <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "object-cover w-full h-full" %>
     <% else %>
-      <img src="placeholder_image_url.jpg" alt="No Image Available" class="object-cover w-full h-full" />
+      <img src="placeholder_image.jpg" alt="No Image Available" class="object-cover w-full h-full" />
     <% end %>
-
-    <!-- Category Badge -->
-    <span class="absolute top-0 right-0 mr-2 mt-1 pill pill-accent">
-      <%= wardrobe_item.category&.capitalize || "Uncategorized" %>
-    </span>
   </div>
 
   <!-- Card Body: Main Content -->
@@ -19,11 +14,6 @@
     <h3>
       <%= wardrobe_item.name.presence || "Unnamed Item" %>
     </h3>
-
-    <!-- Subcategories -->
-    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-      <strong>Subcategories:</strong> <%= wardrobe_item.subcategories.any? ? wardrobe_item.subcategories.join(", ") : "<em>Not specified</em>".html_safe %>
-    </p>
 
     <!-- Color Palette -->
     <div class="mb-4">

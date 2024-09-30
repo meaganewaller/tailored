@@ -19,7 +19,7 @@ class WardrobeItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create wardrobe_item" do
     assert_difference("WardrobeItem.count") do
-      post wardrobe_items_url, params: {wardrobe_item: {category: @wardrobe_item.category, colors: @wardrobe_item.colors, condition: @wardrobe_item.condition, cost: @wardrobe_item.cost, name: @wardrobe_item.name, occasions: @wardrobe_item.occasions, season: @wardrobe_item.season}}
+      post wardrobe_items_url, params: {wardrobe_item: {colors: @wardrobe_item.colors, condition: @wardrobe_item.condition, cost: @wardrobe_item.cost, name: @wardrobe_item.name, occasions: @wardrobe_item.occasions, season: @wardrobe_item.season}}
     end
 
     assert_redirected_to wardrobe_item_url(WardrobeItem.last)
@@ -36,7 +36,7 @@ class WardrobeItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update wardrobe_item" do
-    patch wardrobe_item_url(@wardrobe_item), params: {wardrobe_item: {account_id: @wardrobe_item.account_id, category: @wardrobe_item.category, colors: @wardrobe_item.colors, condition: @wardrobe_item.condition, cost: @wardrobe_item.cost, name: @wardrobe_item.name, occasions: @wardrobe_item.occasions, season: @wardrobe_item.season}}
+    patch wardrobe_item_url(@wardrobe_item), params: {wardrobe_item: {account_id: @wardrobe_item.account_id, colors: @wardrobe_item.colors, condition: @wardrobe_item.condition, cost: @wardrobe_item.cost, name: @wardrobe_item.name, occasions: @wardrobe_item.occasions, season: @wardrobe_item.season}}
     assert_redirected_to wardrobe_item_url(@wardrobe_item)
   end
 

@@ -2,8 +2,6 @@
 
 one:
   name: "Blue Denim Jacket"
-  category: ~
-  subcategories: []
   colors: {}
   tags: []
   season: ~
@@ -14,8 +12,6 @@ one:
 
 two:
   name: "Black Leather Boots"
-  category: "Footwear"
-  subcategories: ["boots"]
   colors: 
     - { hex: "#000000", score: 0.9 }
   tags: ["leather", "boots", "black"]

@@ -34,7 +34,7 @@ class WardrobeItemTest < ActiveSupport::TestCase
   # Validation Tests
   # ----------------------
   test "should not save wardrobe item without account" do
-    wardrobe_item = WardrobeItem.new(name: "Test Item", category: "Footwear")
+    wardrobe_item = WardrobeItem.new(name: "Test Item")
     assert_not wardrobe_item.save, "Saved the wardrobe item without an account"
     assert_includes wardrobe_item.errors[:account], "must exist"
   end
@@ -76,46 +76,6 @@ class WardrobeItemTest < ActiveSupport::TestCase
     assert_match(/Wardrobe Item #\d+/, first_item.name)
     assert_match(/Wardrobe Item #\d+/, second_item.name)
     assert_not_equal first_item.name, second_item.name
-  end
-
-  # ----------------------
-  # Category & Subcategory Inference Tests
-  # ----------------------
-  test "should infer the category and multiple subcategories" do
-    @wardrobe_item.update(tags: ["Sheath dress", "Day dress", "waist", "sleeve", "footwear"])
-
-    @wardrobe_item.save
-
-    assert_equal "Dresses", @wardrobe_item.reload.category
-    assert_equal ["Sheath dress", "Day dress"], @wardrobe_item.reload.subcategories
-  end
-
-  test "should handle empty tags gracefully" do
-    @wardrobe_item.update(tags: [])
-
-    assert_nil @wardrobe_item.category
-    assert_empty @wardrobe_item.subcategories
-  end
-
-  test "should handle non-matching tags" do
-    @wardrobe_item.update(tags: ["random", "non-clothing"])
-
-    assert_nil @wardrobe_item.category
-    assert_empty @wardrobe_item.subcategories
-  end
-
-  test "should avoid duplicates in subcategories" do
-    @wardrobe_item.update(tags: ["Sheath dress", "Sheath dress", "Day dress"])
-
-    @wardrobe_item.save
-
-    assert_equal ["Sheath dress", "Day dress"], @wardrobe_item.reload.subcategories
-  end
-
-  test "should infer category with one subcategory" do
-    @wardrobe_item.update(tags: ["Sheath dress"])
-    assert_equal "Dresses", @wardrobe_item.reload.category
-    assert_equal ["Sheath dress"], @wardrobe_item.reload.subcategories
   end
 
   # ----------------------

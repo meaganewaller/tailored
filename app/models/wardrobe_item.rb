@@ -7,8 +7,9 @@ class WardrobeItem < ApplicationRecord
   broadcasts_refreshes
 
   has_many_attached :images
+  has_and_belongs_to_many :outfits
 
-  before_save :set_categories, if: :will_save_change_to_tags?
+  # before_save :set_categories, if: :will_save_change_to_tags?
   before_validation :set_default_name, on: :create
   before_validation :set_default_values
 

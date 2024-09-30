@@ -186,7 +186,7 @@ en:
 
   dashboard:
     show:
-      title: "Dashboard"
+      title: "Welcome, %{name}!"
 
   oauth:
     sign_in_with: "Sign in with %{provider}"

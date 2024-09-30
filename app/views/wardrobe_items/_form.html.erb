@@ -8,16 +8,6 @@
     </div>
 
     <div class="form-group">
-      <%= form.label :category %>
-      <%= form.select :category, options_for_select([nil, 'Tops', 'Bottoms', 'Outerwear', 'Shoes', 'Accessories', 'Dresses'], wardrobe_item.category), class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :subcategories %>
-      <%= form.select :subcategories, options_for_select([nil, 'Blouses', 'Button Down Shirts', 'T-Shirts'], wardrobe_item.subcategories), class: "form-control" %>
-    </div>
-
-    <div class="form-group">
       <%= form.label :colors %>
       <%= form.text_field :colors, class: "form-control" %>
     </div>

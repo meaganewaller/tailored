@@ -2,14 +2,14 @@
 
 one:
   question: one
-  option_type: MyString
-  option_id: 1
+  optionable_type: ~
+  optionable_id: ~
   score: 1
-  order: 1
+  display_order: 1
 
 two:
   question: two
-  option_type: MyString
-  option_id: 1
+  optionable_type: ~
+  optionable_id: ~
   score: 1
-  order: 1
+  display_order: 1
