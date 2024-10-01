@@ -1,4 +1,4 @@
-require 'minitest/cc'
+require "minitest/cc"
 Minitest::Cc.start
 
 ENV["RAILS_ENV"] ||= "test"

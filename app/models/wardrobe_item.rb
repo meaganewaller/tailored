@@ -4,47 +4,77 @@
 #
 # Table name: wardrobe_items
 #
-#  id         :bigint           not null, primary key
-#  colors     :jsonb            not null
-#  condition  :string
-#  cost       :decimal(, )
-#  name       :string
-#  occasions  :string           default([]), is an Array
-#  season     :string
-#  tags       :jsonb            not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  account_id :bigint           not null
+#  id          :bigint           not null, primary key
+#  colors      :jsonb            not null
+#  condition   :string
+#  cost        :decimal(, )
+#  metadata    :jsonb
+#  name        :string
+#  occasions   :string           default([]), is an Array
+#  season      :string
+#  tags        :jsonb            not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  account_id  :bigint           not null
+#  category_id :bigint
 #
 # Indexes
 #
-#  index_wardrobe_items_on_account_id  (account_id)
+#  index_wardrobe_items_on_account_id   (account_id)
+#  index_wardrobe_items_on_category_id  (category_id)
+#  index_wardrobe_items_on_metadata     (metadata) USING gin
 #
 # Foreign Keys
 #
 #  fk_rails_...  (account_id => accounts.id)
+#  fk_rails_...  (category_id => categories.id)
 #
-# Represents each individual piece in a user's wardrobe, e.g., tops, pants, hats, etc.
 class WardrobeItem < ApplicationRecord
   acts_as_tenant :account
 
   broadcasts_refreshes
 
+  belongs_to :category, optional: true
+  has_and_belongs_to_many :subcategories, class_name: "Category", join_table: "wardrobe_item_subcategories"
   has_many_attached :images
   has_and_belongs_to_many :outfits
 
-  # before_save :set_categories, if: :will_save_change_to_tags?
   before_validation :set_default_name, on: :create
   before_validation :set_default_values
 
+  before_save :populate_combined_metadata
+
   validate :colors_must_be_valid_json
   validates :cost, numericality: {greater_than_or_equal_to: 0}, allow_nil: true
+  validate :subcategories_belong_to_category, unless: -> { category.nil? || subcategories.empty? }
 
   private
+
+  def subcategories_belong_to_category
+    subcategories.each do |subcategory|
+      unless subcategory.parent == category
+        errors.add(:subcategories, I18n.t("wardrobe_items.errors.invalid_subcategory_parent_id"))
+      end
+    end
+  end
 
   def set_default_values
     self.season ||= "All Season"
     self.occasions ||= []
+  end
+
+  def populate_combined_metadata
+    return unless category.present?
+
+    combined_metadata = category.metadata_schema.deep_dup
+
+    subcategories.each do |subcategory|
+      subcategory.metadata_schema.each do |key, value|
+        combined_metadata[key] ||= value
+      end
+    end
+
+    self.metadata = combined_metadata
   end
 
   def set_default_name

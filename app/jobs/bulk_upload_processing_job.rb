@@ -12,17 +12,22 @@ class BulkUploadProcessingJob < ApplicationJob
 
     image = resource.images.joins(:blob).find_by(active_storage_blobs: {key: image_key})
 
-    saved = 0
-    unsaved = 0
-
     if image
       tags = tag_image_with_ai(image)
       colors = detect_colors(image)
       resource.update(tags:, colors:)
+
+      if tags
+        matcher = CategoryMatcherService.new(tags)
+        matched = matcher.infer_categories
+        resource.category = matched[:category] if matched[:category]
+        resource.subcategories = matched[:subcategories] if matched[:subcategories]
+      end
+
       if resource.save
-        saved + 1
+        Rails.logger.info("Wardrobe item successfully created for image #{image.id}")
       else
-        unsaved + 1
+        Rails.logger.error("Failed to create wardrobe item for image #{image.id}: #{wardrobe_item.errors.full_messages}")
       end
     end
 
