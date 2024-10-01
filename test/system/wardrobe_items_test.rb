@@ -35,6 +35,7 @@ class WardrobeItemsTest < ApplicationSystemTestCase
   test "should destroy wardrobe item" do
     visit wardrobe_item_url(@wardrobe_item)
     click_on "Delete", match: :first
+    click_on "Confirm", match: :first
 
     assert_text "Wardrobe item was successfully destroyed"
   end
