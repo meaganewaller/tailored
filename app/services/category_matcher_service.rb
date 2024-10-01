@@ -21,9 +21,9 @@ class CategoryMatcherService
 
     found_category, found_subcategories = @potential_categories.max_by { |_, subcats| subcats.size }
 
-    return { category: nil, subcategories: [] } unless found_category
+    return {category: nil, subcategories: []} unless found_category
 
-    { category: found_category, subcategories: found_subcategories }
+    {category: found_category, subcategories: found_subcategories}
   end
 
   private

@@ -30,7 +30,7 @@ class Category < ApplicationRecord
   has_many :wardrobe_items
 
   validates :name, presence: true
-  validates :name, uniqueness: { scope: [:account_id, :global], message: I18n.t("categories.errors.unique_validation")}
+  validates :name, uniqueness: {scope: [:account_id, :global], message: I18n.t("categories.errors.unique_validation")}
 
   scope :global, -> { where(global: true) }
   scope :account_specific, ->(account) { where(account: account, global: false) }
