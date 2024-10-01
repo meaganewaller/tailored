@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_01_202835) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "account_invitations", force: :cascade do |t|
@@ -147,23 +148,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.bigint "parent_id"
     t.bigint "account_id"
+    t.bigint "parent_id"
+    t.citext "name", null: false
+    t.boolean "global", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "metadata_schema", default: {}
+    t.index ["account_id", "name"], name: "index_categories_on_account_id_and_name", unique: true
     t.index ["account_id"], name: "index_categories_on_account_id"
     t.index ["parent_id"], name: "index_categories_on_parent_id"
-  end
-
-  create_table "categorizations", force: :cascade do |t|
-    t.bigint "category_id"
-    t.string "categorizable_type"
-    t.bigint "categorizable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["categorizable_type", "categorizable_id"], name: "index_categorizations_on_categorizable"
-    t.index ["category_id"], name: "index_categorizations_on_category_id"
   end
 
   create_table "connected_accounts", force: :cascade do |t|
@@ -335,9 +329,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
     t.string "occasions", default: [], array: true
-    t.jsonb "subcategories", default: [], null: false
     t.index ["account_id"], name: "index_outfits_on_account_id"
   end
 
@@ -558,6 +550,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wardrobe_item_subcategories", id: false, force: :cascade do |t|
+    t.bigint "wardrobe_item_id", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_wardrobe_item_subcategories_on_category_id"
+    t.index ["wardrobe_item_id"], name: "index_wardrobe_item_subcategories_on_wardrobe_item_id"
+  end
+
   create_table "wardrobe_items", force: :cascade do |t|
     t.string "name"
     t.jsonb "colors", default: [], null: false
@@ -569,7 +568,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.jsonb "metadata", default: {}
     t.index ["account_id"], name: "index_wardrobe_items_on_account_id"
+    t.index ["category_id"], name: "index_wardrobe_items_on_category_id"
+    t.index ["metadata"], name: "index_wardrobe_items_on_metadata", using: :gin
   end
 
   add_foreign_key "account_invitations", "accounts"
@@ -585,7 +588,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
   add_foreign_key "api_tokens", "users"
   add_foreign_key "categories", "accounts"
   add_foreign_key "categories", "categories", column: "parent_id"
-  add_foreign_key "categorizations", "categories"
   add_foreign_key "outfits", "accounts"
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
@@ -597,5 +599,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_29_235912) do
   add_foreign_key "quiz_questions", "questions"
   add_foreign_key "quiz_questions", "quizzes"
   add_foreign_key "quizzes", "accounts", column: "creator_id"
+  add_foreign_key "wardrobe_item_subcategories", "categories"
+  add_foreign_key "wardrobe_item_subcategories", "wardrobe_items"
   add_foreign_key "wardrobe_items", "accounts"
+  add_foreign_key "wardrobe_items", "categories"
 end

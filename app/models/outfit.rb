@@ -2,17 +2,15 @@
 #
 # Table name: outfits
 #
-#  id            :bigint           not null, primary key
-#  category      :string
-#  name          :string
-#  occasion      :string
-#  occasions     :string           default([]), is an Array
-#  rating        :integer
-#  season        :string
-#  subcategories :jsonb            not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  account_id    :bigint           not null
+#  id         :bigint           not null, primary key
+#  name       :string
+#  occasion   :string
+#  occasions  :string           default([]), is an Array
+#  rating     :integer
+#  season     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  account_id :bigint           not null
 #
 # Indexes
 #

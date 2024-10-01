@@ -2,8 +2,6 @@ class CreateWardrobeItems < ActiveRecord::Migration[7.2]
   def change
     create_table :wardrobe_items do |t|
       t.string :name
-      t.string :category
-      t.jsonb :subcategories, null: false, default: []
       t.jsonb :colors, null: false, default: []
       t.jsonb :tags, null: false, default: []
       t.string :season
