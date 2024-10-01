@@ -46,8 +46,6 @@
     <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded flex items-center">
       Edit
     </a>
-    <%= button_to wardrobe_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded flex items-center" do %>
-      Delete
-    <% end %>
+    <%= link_to t("delete"), wardrobe_item, class: "btn btn-danger btn-outline btn-xs sm:btn-sm", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
   </div>
 </div>
