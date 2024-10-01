@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: quizzes
+#
+#  id          :bigint           not null, primary key
+#  description :text
+#  title       :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  creator_id  :bigint           not null
+#
+# Indexes
+#
+#  index_quizzes_on_creator_id  (creator_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (creator_id => accounts.id)
+#
 class Quiz < ApplicationRecord
   broadcasts_refreshes
 

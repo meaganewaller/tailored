@@ -26,7 +26,7 @@ class BulkUploadProcessingJob < ApplicationJob
       end
     end
 
-    BulkUploadWardrobeItemsNotifier.with(account:).deliver(resource.owner)
+    # BulkUploadWardrobeItemsNotifier.with(account:).deliver(resource.owner)
   end
 
   private
