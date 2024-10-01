@@ -109,6 +109,7 @@ GEM
     administrate-field-active_storage (1.0.3)
       administrate (>= 0.2.2)
       rails (>= 7.0)
+    ansi (1.5.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -338,6 +339,12 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
+    minitest-cc (1.0.0)
+    minitest-reporters (1.7.1)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
@@ -667,6 +674,8 @@ DEPENDENCIES
   kamal
   local_time (~> 3.0)
   mailbin
+  minitest-cc
+  minitest-reporters
   name_of_person (~> 1.0)
   nokogiri (>= 1.12.5)
   noticed (~> 2.2)

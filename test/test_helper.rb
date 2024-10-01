@@ -1,13 +1,15 @@
-if ENV["COVERAGE"]
-  require "simplecov"
-  SimpleCov.start "rails"
-end
+require 'minitest/cc'
+Minitest::Cc.start
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "minitest/mock"
 require "webmock/minitest"
+require "minitest/autorun"
+require "minitest/reporters"
+
+Minitest::Reporters.use!
 
 # Uncomment to view full stack trace in tests
 # Rails.backtrace_cleaner.remove_silencers!

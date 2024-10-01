@@ -22,7 +22,7 @@ class WardrobeItemsTest < ApplicationSystemTestCase
     assert_text "Wardrobe item was successfully created"
   end
 
-  test "should update Wardrobe item" do
+  test "should update wardrobe item" do
     visit wardrobe_item_url(@wardrobe_item)
     click_on "Edit", match: :first
 
@@ -32,7 +32,7 @@ class WardrobeItemsTest < ApplicationSystemTestCase
     assert_text "Wardrobe item was successfully updated"
   end
 
-  test "should destroy Wardrobe item" do
+  test "should destroy wardrobe item" do
     visit wardrobe_item_url(@wardrobe_item)
     click_on "Delete", match: :first
 
