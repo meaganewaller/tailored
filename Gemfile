@@ -43,6 +43,7 @@ gem "kamal", require: false
 gem "image_processing", "~> 1.12"
 
 gem "google-cloud-vision"
+gem "google-cloud-storage", "~> 1.8", require: false
 
 gem "simplecov", require: false, group: :test
 

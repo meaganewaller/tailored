@@ -1,5 +1,5 @@
 web: bin/rails server -p $PORT
 css: yarn build:css --watch
-js: yarn start --watch
+js: yarn build --reload
 worker: bundle exec good_job start
 #stripe: stripe listen --forward-to localhost:3000/webhooks/stripe
