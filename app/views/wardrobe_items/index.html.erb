@@ -1,10 +1,10 @@
-<%= content_for :title, "Wardrobe Items" %>
+<%= content_for :title, "My Wardrobe" %>
 <%= turbo_stream_from :wardrobe_items %>
 
 <div class="container px-4 mx-auto my-8">
   <div class="flex items-center justify-between mb-4">
     <div>
-      <h1 class="h3">Wardrobe Items</h1>
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">My Wardrobe</h1>
 
       <div class="text-sm font-medium">
         <span class="text-gray-500 dark:text-gray-30/75">Sort by:</span>
@@ -14,7 +14,10 @@
         <%= sortable @wardrobe_items, :condition, "Condition", class: "text-gray-700 dark:text-gray-300 mr-1" %>
       </div>
     </div>
-    <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary" %>
+    <div class="flex space-x-2">
+      <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary" %>
+      <%= link_to t("Bulk Upload"), bulk_upload_wardrobe_items_path, class: "btn btn-outline" %>
+    </div>
   </div>
 
   <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 dark:bg-gray-900" do %>

@@ -1,42 +1,12 @@
 <!-- app/views/dashboard/index.html.erb -->
 <%= content_for :title, "Dashboard" %>
 
-<div class="container px-4 mx-auto my-8">
-  <!-- Welcome Message -->
-  <h1 class="text-3xl font-bold mb-6">
-    <%= t("dashboard.show.title", name: current_user.name) %>
-  </h1>
-
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-    <!-- Wardrobe Snapshot -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-      <h2 class="text-xl font-semibold mb-4">Wardrobe Snapshot</h2>
-      <p><strong>Total Items:</strong> <%= @total_items %></p>
-      <p><strong>Top Categories:</strong></p>
-      <ul class="list-disc list-inside">
-      </ul>
-      <h3 class="text-lg font-semibold mt-4">Recently Added:</h3>
-      <ul>
-        <% @wardrobe_items.each do |item| %>
-          <li><%= link_to item.name.presence || "Unnamed Item", wardrobe_item_path(item) %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <!-- Quick Access + Outfit Suggestions -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-      <h2 class="text-xl font-semibold mb-4">Quick Access</h2>
-      <div class="space-y-4">
-        <%= link_to 'Add New Wardrobe Item', new_wardrobe_item_path, class: "btn btn-primary btn-lg" %>
-        <%= link_to 'Bulk Upload Wardrobe Items', bulk_upload_wardrobe_items_path, class: "btn btn-secondary btn-lg" %>
-      </div>
-
-      <h2 class="text-xl font-semibold mt-6">Outfit Suggestions</h2>
-      <% if @outfit_suggestions.any? %>
-        <p>Check out <%= link_to @outfit_suggestions.first.name, outfit_path(@outfit_suggestions.first) %>!</p>
-      <% else %>
-        <p>No suggestions right now</p>
-      <% end %>
-    </div>
-  </div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-x-0 lg:gap-x-6 lg:gap-y-0 mx-auto">
+  <%= render "dashboard/widgets/wardrobe_summary" %>
+  <%= render "dashboard/widgets/outfit_recommendations" %>
+  <%= render "dashboard/widgets/style_evolution" %>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-0 lg:gap-x-6 lg:gap-y-0 mx-auto">
+  <%= render "dashboard/widgets/shopping_recommendations" %>
+  <%= render "dashboard/widgets/seasonal_wardrobe_planner" %>
 </div>

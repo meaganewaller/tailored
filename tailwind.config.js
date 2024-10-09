@@ -10,7 +10,7 @@ module.exports = {
 
   plugins: [
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
+    require('@tailwindcss/forms')({ strategy: "base" }),
     require('@tailwindcss/typography'),
   ],
 
@@ -109,6 +109,7 @@ module.exports = {
           900: "#614A00",
           950: "#2E2300"
         },
+        primary: colors.coral,
         danger: colors.red,
         success: colors.emerald,
         warning: colors.orange,
@@ -117,10 +118,28 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
+      borderRadius: {
+        none: "0px",
+        sm: "7px",
+        md: "18px",
+        full: "50%",
+        "2xl": "30px",
+        "3xl": "50rem",
+      },
+      boxShadow: {
+        sm: '0 0.5rem 1rem rgba(0,0,0,0.15)',
+        md: "0px 2px 6px rgba(37,83,185,0.1)",
+        xl: "inset 0 1px 2px rgba(90,106,133,0.075)",
+      },
+    },
+    container: {
+      center: true,
+      padding: "20px",
     },
   },
 
   // Opt-in to TailwindCSS future changes
   future: {
   },
+  variants: {},
 }
