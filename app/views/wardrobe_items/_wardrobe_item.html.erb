@@ -1,6 +1,7 @@
-  <!-- WardrobeItem Item -->
-  <div id="<%= dom_id wardrobe_item %>" class="card card-image p-1 wardrobe-item-card flex flex-col justify-between">
-    <div class="relative">
+<!-- WardrobeItem Item -->
+<div id="<%= dom_id wardrobe_item %>" class="max-w-sm w-full lg:max-w-xs bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+  <!-- Item image -->
+  <div class="h-48 w-full bg-gray-200">
     <% if wardrobe_item.images.any? %>
       <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "object-cover w-full h-full" %>
     <% else %>
@@ -8,44 +9,27 @@
     <% end %>
   </div>
 
-  <!-- Card Body: Main Content -->
-  <div class="px-6 py-4">
-    <!-- Item Name -->
-    <h3>
-      <%= wardrobe_item.name.presence || "Unnamed Item" %>
-    </h3>
+  <!-- Item details -->
+  <div class="p-4">
+    <!-- Item Name and Category -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-1"><%= wardrobe_item.name.presence || "Unnamed Item" %></h3>
+    <p class="text-sm text-gray-500"><%= wardrobe_item.category&.name %></p>
 
-    <!-- Color Palette -->
-    <div class="mb-4">
-      <strong>Colors:</strong>
-      <div class="flex space-x-2 mt-2">
-        <% if wardrobe_item.colors.any? %>
-          <% wardrobe_item.colors.each do |color_info| %>
-            <div class="h-4 w-4 rounded-full border" style="background-color: <%= color_info["hex"] %>;" title="Hex: <%= color_info['hex'] %>, Score: <%= (color_info['score'] * 100).round(2) %>%">
-              <!-- Accessible tooltip for score -->
-              <span class="sr-only"><%= color_info["score"] %></span>
-            </div>
-          <% end %>
-        <% else %>
-          <p class="text-gray-500 text-sm"><em>No colors detected</em></p>
-        <% end %>
-      </div>
+    <!-- Item Attributes (optional) -->
+    <div class="mt-2 flex items-center space-x-2 text-xs text-gray-400">
+      <span>Color: Black</span>
+      <span>|</span>
+      <span>Fabric: Leather</span>
     </div>
 
-    <!-- Additional Info -->
-    <div class="text-sm text-gray-600 dark:text-gray-400">
-      <p><strong>Season:</strong> <%= wardrobe_item.season.presence || "All Seasons" %></p>
-      <p><strong>Occasions:</strong> <%= wardrobe_item.occasions.any? ? wardrobe_item.occasions.join(", ") : "<em>Not specified</em>".html_safe %></p>
-      <p><strong>Cost:</strong> <%= wardrobe_item.cost.present? ? number_to_currency(wardrobe_item.cost) : "<em>Not specified</em>".html_safe %></p>
-      <p><strong>Condition:</strong> <%= wardrobe_item.condition.present? ? wardrobe_item.condition.capitalize : "<em>Not specified</em>".html_safe %></p>
+    <!-- Action Buttons -->
+    <div class="mt-4 flex justify-between items-center">
+      <%= link_to "View Details", wardrobe_item, class: "text-sm text-blue-500 hover:underline" %>
+      <button class="text-sm text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
     </div>
-  </div>
-
-  <!-- Action Buttons -->
-  <div class="px-6 py-4 flex justify-between">
-    <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded flex items-center">
-      Edit
-    </a>
-    <%= link_to t("delete"), wardrobe_item, class: "btn btn-danger btn-outline btn-xs sm:btn-sm", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
   </div>
 </div>

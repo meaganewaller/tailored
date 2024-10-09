@@ -1,5 +1,6 @@
 class OutfitsController < ApplicationController
   before_action :set_outfit, only: [:show, :edit, :update, :destroy]
+  layout 'dashboard'
 
   # GET /outfits
   def index
