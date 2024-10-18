@@ -17,7 +17,16 @@
 
     <!-- Item Attributes (optional) -->
     <div class="mt-2 flex items-center space-x-2 text-xs text-gray-400">
-      <span>Color: Black</span>
+      <% if wardrobe_item.colors.any? %>
+        <% wardrobe_item.colors.each do |color_info| %>
+          <div class="h-4 w-4 rounded-full border" style="background-color: <%= color_info["hex"] %>;" title="Hex: <%= color_info['hex'] %>, Score: <%= (color_info['score'] * 100).round(2) %>%">
+          <!-- Accessible tooltip for score -->
+          <span class="sr-only"><%= color_info["score"] %></span>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-gray-500 text-sm"><em>No colors detected</em></p>
+      <% end %>
       <span>|</span>
       <span>Fabric: Leather</span>
     </div>
