@@ -156,6 +156,8 @@ en:
       announcements: "What's New"
     dashboard:
       header:
+        admin: "Admin"
+        dashboard: "Dashboard"
         profile: "Profile"
         password: "Password"
         connected_accounts: "Connected Accounts"
