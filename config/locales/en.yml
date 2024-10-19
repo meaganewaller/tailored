@@ -11,6 +11,7 @@ en:
   something_went_wrong: "Something went wrong"
   unauthorized: "You are not authorized to perform this action."
   reveal: "Reveal"
+  submit: "Submit"
   Bulk Upload: "Bulk Upload"
 
   account_invitations_mailer:
@@ -165,7 +166,7 @@ en:
         accounts: "Accounts"
         sign_out: "Sign Out"
 
-  categories: 
+  categories:
     errors:
       unique_validation: "must be unique within the same account"
 
