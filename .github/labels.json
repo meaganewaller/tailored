@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Feature",
+    "description": "A new feature or enhancement to be added to the application.",
+    "color": "#1D72B8",
+    "aliases": ["enhancement", "new feature"]
+  },
+  {
+    "name": "Bug",
+    "description": "A report for something that isn't working as expected.",
+    "color": "#D73A4A",
+    "aliases": ["defect", "issue"]
+  },
+  {
+    "name": "Chore",
+    "description": "Routine maintenance tasks, s uch as updates or refactoring",
+    "color": "#BFD4F2",
+    "aliases": ["maintenance", "task"]
+  },
+  {
+    "name": "Documentation",
+    "description": "Tasks related to writing or updating documentation.",
+    "color": "#006B75",
+    "aliases": ["docs", "writing"]
+  },
+  {
+    "name": "Urgent",
+    "description": "Issues that need immediate attention.",
+    "color": "#FF0000",
+    "aliases": ["critical", "immediate"]
+  },
+  {
+    "name": "Discussion",
+    "description": "Open-ended conversations or brainstorming sessions.",
+    "color": "#8E44AD",
+    "aliases": ["debate", "conversation"]
+  },
+  {
+    "name": "Design",
+    "description": "Issues related to UI/UX design tasks.",
+    "color": "#FFD700",
+    "aliases": ["ui", "ux"]
+  },
+  {
+    "name": "Blocked",
+    "description": "Tasks that cannot move forward until a blocker is resolved.",
+    "color": "#FF8C00",
+    "aliases": ["waiting", "stuck"]
+  },
+  {
+    "name": "High Priority",
+    "description": "Needs immediate attention and is a critical task.",
+    "color": "#FF4500",
+    "aliases": ["urgent", "critical"]
+  },
+  {
+    "name": "Medium Priority",
+    "description": "Important but not urgent.",
+    "color": "#FFA500",
+    "aliases": ["important", "normal"]
+  },
+  {
+    "name": "Low Priority",
+    "description": "Non-urgent tasks that can be scheduled for later.",
+    "color": "#32CD32",
+    "aliases": ["low importance", "backlog"]
+  },
+  {
+    "name": "In Progress",
+    "description": "Actively being worked on.",
+    "color": "#007BFF",
+    "aliases": ["working on", "active"]
+  },
+  {
+    "name": "On Hold",
+    "description": "Temporarily paused.",
+    "color": "#FFD700",
+    "aliases": ["paused", "waiting"]
+  },
+  {
+    "name": "Needs Review",
+    "description": "Requires code review or testing before merging.",
+    "color": "#9B59B6",
+    "aliases": ["review", "testing"]
+  },
+  {
+    "name": "Ready for Deployment",
+    "description": "Ready to be deployed to production.",
+    "color": "#2ECC71",
+    "aliases": ["ready", "deploy"]
+  },
+  {
+    "name": "Refactor",
+    "description": "Refactoring code to improve readability or performance without changing functionality.",
+    "color": "#3498DB",
+    "aliases": ["code improvement", "cleanup"]
+  },
+  {
+    "name": "Hotfix",
+    "description": "Critical fix that needs to be addressed immediately.",
+    "color": "#E74C3C",
+    "aliases": ["emergency", "fix"]
+  },
+  {
+    "name": "Research/Spike",
+    "description": "Investigating a new tool, feature, or issue to determine the best course of action.",
+    "color": "#6C3483",
+    "aliases": ["exploration", "investigation"]
+  },
+  {
+    "name": "Tenant-Specific",
+    "description": "Tasks related to a specific tenant in the multi-tenant architecture.",
+    "color": "#34495E",
+    "aliases": ["tenant", "client-specific"]
+  },
+  {
+    "name": "Performance Optimization",
+    "description": "Tasks aimed at improving the performance of the application.",
+    "color": "#F1C40F",
+    "aliases": ["performance", "speed"]
+  },
+  {
+    "name": "Security",
+    "description": "Issues or tasks related to application security.",
+    "color": "#E74C3C",
+    "aliases": ["vulnerability", "security improvement"]
+  },
+  {
+    "name": "Client Feedback",
+    "description": "Issues based on feedback from clients.",
+    "color": "#7D3C98",
+    "aliases": ["user feedback", "customer issue"]
+  },
+  {
+    "name": "SLA Breach Imminent",
+    "description": "An issue that is approaching the SLA breach window.",
+    "color": "#E67E22",
+    "aliases": ["urgent", "service-level"]
+  },
+  {
+    "name": "Backlog",
+    "description": "Tasks in the backlog, waiting to be scheduled.",
+    "color": "#95A5A6",
+    "aliases": ["to-do", "waiting"]
+  },
+  {
+    "name": "Ready for QA",
+    "description": "Tasks ready for quality assurance testing.",
+    "color": "#2980B9",
+    "aliases": ["testing", "qa"]
+  }
+]
