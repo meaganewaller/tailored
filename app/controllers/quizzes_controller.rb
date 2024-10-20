@@ -1,7 +1,7 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show]
   before_action :set_quiz_attempt, only: [:show]
-  layout 'dashboard'
+  layout "dashboard"
 
   def index
     @pagy, @quizzes = pagy(Quiz.sort_by_params(params[:sort], sort_direction))
