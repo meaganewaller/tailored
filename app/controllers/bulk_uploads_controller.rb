@@ -1,6 +1,6 @@
 class BulkUploadsController < ApplicationController
   before_action :set_resource_class
-  layout 'dashboard'
+  layout "dashboard"
 
   def new
     @resource_item = @resource_class.new
