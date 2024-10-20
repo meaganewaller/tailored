@@ -47,6 +47,10 @@ gem "google-cloud-storage", "~> 1.8", require: false
 
 gem "simplecov", require: false, group: :test
 
+group :development do
+  gem "hotwire-livereload"
+end
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
