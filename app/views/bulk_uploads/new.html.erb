@@ -10,7 +10,7 @@
       <%= image_tag("placeholder_image.jpg", width: "100px", height: "100px") %>
     </div>
     <div class="my-2">
-      <%= form.label :images, "Select clothing photos" %><br />
+      <%= form.label :images, "Select clothing photos" %><br>
       <%= form.file_field :images, multiple: true, accept: "image/*", class: "form-control-file photo_update", data: { image_preview_target: "input", action: "change->image-preview#preview" } %>
     </div>
 
