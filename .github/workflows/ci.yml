@@ -18,6 +18,7 @@ jobs:
         with:
           node-version-file: '.node-version'
           cache: yarn
+      - name: Install and build frontend dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y -qq libvips
