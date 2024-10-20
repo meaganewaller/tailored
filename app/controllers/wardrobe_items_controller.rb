@@ -1,6 +1,6 @@
 class WardrobeItemsController < ApplicationController
   before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy]
-  layout 'dashboard'
+  layout "dashboard"
 
   # GET /wardrobe_items
   def index
