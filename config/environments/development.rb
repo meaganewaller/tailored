@@ -32,7 +32,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :google_dev
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -87,7 +87,7 @@ Rails.application.configure do
   config.hosts = nil
 
   # You may need to set to include the correct URLs from Turbo, etc
-  # config.action_controller.default_url_options = {host: "lvh.me", port: ENV.fetch("PORT", 3000).to_i}
+  config.action_controller.default_url_options = {host: "lvh.me", port: ENV.fetch("PORT", 3000).to_i}
 
   config.generators.after_generate do |files|
     parsable_files = files.filter { |file| file.end_with?(".rb") }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="<%= class_names("h-full antialiased", "dark": current_user&.dark_theme?) %>" lang="<%= I18n.locale %>">
+<html class="<%= class_names("h-full min-h-screen antialiased", "dark": current_user&.dark_theme?) %>" lang="<%= I18n.locale %>">
   <head>
     <title>
       <% if content_for?(:title) %>
@@ -27,17 +27,27 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
   </head>
-  <body class="h-full font-sans antialiased font-normal leading-normal bg-gray-50 dark:bg-gray-900 dark:text-gray-50" data-controller="theme" data-theme-preference-value="<%= current_user&.theme %>">
+
+  <body data-theme-preference-value="<%= current_user&.theme %>" data-controller="theme">
     <div class="main flex flex-col">
       <header>
         <%= render "impersonation_banner" %>
         <%= render "flash" %>
         <%= render "navbar" %>
       </header>
-      <main class="px-3 lg:px-0 h-full">
-        <%= yield %>
+      <main>
+        <div id="main-wrapper" class="flex p-5 lg:pr-0">
+          <%= render partial: "application/dashboard/sidebar" %>
+
+          <div class="w-full page-wrapper xl:px-6 px-0">
+            <main class="h-full max-w-full">
+              <div class="container full-container p-0 flex flex-col gap-6">
+                <%= yield %>
+              </div>
+            </main>
+          </div>
+        </div>
       </main>
     </div>
-    <%= render partial: "footer" unless turbo_native_app? %>
   </body>
 </html>

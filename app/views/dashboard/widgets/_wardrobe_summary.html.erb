@@ -1,0 +1,91 @@
+<div class="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
+  <div class="flex justify-between items-center mb-4">
+    <div class="flex flex-col">
+    <h2 class="text-xl font-bold text-gray-800">Wardrobe Summary</h2>
+    <div class="text-xs text-gray-500 font-bold">Last updated: <span class="font-normal">Today at 9:00 AM</span></div>
+    </div>
+    <button class="text-gray-400 hover:text-gray-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M3 8h18M3 13h18M3 18h18" />
+      </svg>
+    </button>
+  </div>
+  <div class="mb-6">
+    <div class="text-center mb-4">
+      <div class="text-3xl font-bold text-gray-900">42</div>
+      <p class="text-sm text-gray-500">Total Items</p>
+      <p class="text-xs text-gray-400">Tops: 12, Bottoms: 8, Outerwear: 6, Accessories: 16</p>
+    </div>
+
+    <div class="flex justify-around mb-4">
+
+      <!-- Color Distribution Chart -->
+      <div class="flex flex-col items-center">
+        <div class="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
+          <!-- Placeholder for Color Pie Chart -->
+          <span class="text-sm text-gray-700">Colors</span>
+        </div>
+        <p class="text-xs text-gray-500 mt-2">Color Distribution</p>
+      </div>
+
+      <!-- Fabric Composition Chart -->
+      <div class="flex flex-col items-center">
+        <div class="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
+          <!-- Placeholder for Fabric Pie Chart -->
+          <span class="text-sm text-gray-700">Fabric</span>
+        </div>
+        <p class="text-xs text-gray-500 mt-2">Fabric Composition</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Most Worn Items Section -->
+  <div class="mb-6 flex justify-between">
+    <div class="flex flex-col items-center">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Most Worn Items</h3>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="w-12 h-12 bg-gray-300 rounded-lg">
+          <!-- Placeholder for Item Thumbnail 1 -->
+        </div>
+        <div class="w-12 h-12 bg-gray-300 rounded-lg">
+          <!-- Placeholder for Item Thumbnail 2 -->
+        </div>
+        <div class="w-12 h-12 bg-gray-300 rounded-lg">
+          <!-- Placeholder for Item Thumbnail 3 -->
+        </div>
+        <div class="w-12 h-12 bg-gray-300 rounded-lg">
+          <!-- Placeholder for Item Thumbnail 4 -->
+        </div>
+      </div>
+      <%= link_to "View All", wardrobe_items_path, class: "text-xs text-blue-500 hover:underline mt-2 block" %>
+    </div>
+    <div class="flex flex-col items-center">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Wear This Week</h3>
+      <div class="w-full h-full bg-gray-300 rounded-lg">
+        <!-- Placeholder for Item Thumbnail 1 -->
+      </div>
+      <a href="#" class='text-xs text-blue-500 hover:underline mt-2 block'>See details</a>
+    </div>
+  </div>
+
+  <!-- Wardrobe Gaps & Seasonal Insights -->
+  <div class="flex justify-between">
+    <!-- Wardrobe Gaps -->
+    <div class="bg-gray-100 p-4 rounded-lg w-1/2 mr-2">
+      <h4 class="text-sm font-semibold text-gray-700">Wardrobe Gaps</h4>
+      <ul class="text-xs text-gray-600 mt-2">
+        <li>- Rain Jacket</li>
+        <li>- Formal Shoes</li>
+      </ul>
+    </div>
+
+    <!-- Seasonal Insights -->
+    <div class="bg-gray-100 p-4 rounded-lg w-1/2 ml-2">
+      <h4 class="text-sm font-semibold text-gray-700">Seasonal Insights</h4>
+      <ul class="text-xs text-gray-600 mt-2">
+        <li>- Lightweight Sweater</li>
+        <li>- Casual Sandals</li>
+      </ul>
+    </div>
+  </div>
+</div>

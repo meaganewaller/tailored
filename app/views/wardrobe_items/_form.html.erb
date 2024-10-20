@@ -1,39 +1,37 @@
-<%= form_with(model: wardrobe_item) do |form| %>
+<%= form_with(model: wardrobe_item, class: "bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto space-y-6") do |form| %>
   <%= render "error_messages", resource: form.object %>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="form-group">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
+  <div>
+    <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :name, placeholder: "E.g., Leather Jacket with Fringe" %>
+  </div>
 
-    <div class="form-group">
-      <%= form.label :season %>
-      <%= form.select :season, options_for_select([nil, 'Spring', 'Summer', 'Fall', 'Winter', 'All-Season'], wardrobe_item.season), class: "form-control" %>
-    </div>
+  <div>
+    <%= form.label :season, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.select :season, ["Spring", "Summer", "Fall", "Winter"], { class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" } %>
+  </div>
 
-    <div class="form-group">
-      <%= form.label :occasions %>
-      <%= form.select :occasions, options_for_select([nil, 'Casual', 'Work', 'Evening', 'Formal', 'Party', 'Lounge'], wardrobe_item.occasions), class: "form-control" %>
-    </div>
+  <div class="form-group">
+    <%= form.label :occasions %>
+    <%= form.select :occasions, options_for_select([nil, 'Casual', 'Work', 'Evening', 'Formal', 'Party', 'Lounge'], wardrobe_item.occasions), class: "form-control" %>
+  </div>
 
-    <div class="form-group">
-      <%= form.label :cost %>
-      <%= form.number_field :cost, step: 0.01, class: "form-control" %>
-    </div>
+  <div class="form-group">
+    <%= form.label :cost %>
+    <%= form.number_field :cost, step: 0.01, class: "form-control" %>
+  </div>
 
-    <div class="form-group">
-      <%= form.label :condition %>
-      <%= form.select :condition, options_for_select([nil, 'New', 'Like New', 'Good', 'Worn'], wardrobe_item.condition), class: "form-control" %>
-    </div>
+  <div class="form-group">
+    <%= form.label :condition %>
+    <%= form.select :condition, options_for_select([nil, 'New', 'Like New', 'Good', 'Worn'], wardrobe_item.condition), class: "form-control" %>
+  </div>
 
-    <div class="form-group">
-      <% wardrobe_item.images.each do |image| %>
-        <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
-      <% end %>
-      <%= form.label :images %>
-      <%= form.file_field :images, multiple: true %>
-    </div>
+  <div class="form-group">
+    <% wardrobe_item.images.each do |image| %>
+      <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+    <% end %>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
   </div>
 
   <div class="mt-4">

@@ -1,5 +1,6 @@
 class QuizAttemptsController < ApplicationController
   before_action :set_quiz_attempt, only: [:complete]
+  layout "dashboard"
 
   # Other actions for quiz_attempts (like show, create)...
   def complete

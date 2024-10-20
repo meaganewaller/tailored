@@ -4,6 +4,8 @@ class AccountsController < Accounts::BaseController
   before_action :require_account_admin, only: [:edit, :update, :destroy]
   before_action :prevent_personal_account_deletion, only: [:destroy]
 
+  layout "dashboard"
+
   # GET /accounts
   def index
     @pagy, @accounts = pagy(current_user.accounts)

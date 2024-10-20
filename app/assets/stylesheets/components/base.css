@@ -16,11 +16,11 @@ body {
 }
 
 a {
-  @apply text-primary-600;
+  @apply text-coral-600;
 
   &:hover,
   &:focus {
-    @apply text-primary-500;
+    @apply text-coral-500;
 
     transform: none;
   }
@@ -36,7 +36,9 @@ ol {
 
 .table {
   @apply w-full;
-  th, td {
+
+  th,
+  td {
     @apply align-top;
   }
 

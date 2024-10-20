@@ -79,7 +79,7 @@ async function buildAndReload() {
       ready = true
     })
     .on("all", async (event, path) => {
-      if (ready === false)  return
+      if (ready === false) return
 
       if (path.includes("javascript")) {
         try {
@@ -98,7 +98,7 @@ async function buildAndReload() {
 if (process.argv.includes("--reload")) {
   buildAndReload()
 } else if (process.argv.includes("--watch")) {
-  let context = await esbuild.context({...config, logLevel: 'info'})
+  let context = await esbuild.context({ ...config, logLevel: 'info' })
   context.watch()
 } else {
   esbuild.build(config)
