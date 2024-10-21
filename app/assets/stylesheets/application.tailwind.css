@@ -15,7 +15,7 @@
 /* @import "components/animation"; */
 /* @import "components/announcements"; */
 /* @import "components/avatars"; */
-/* @import "components/buttons"; */
+@import "components/buttons";
 /* @import "components/cards"; */
 /* @import "components/code"; */
 /* @import "components/connected_accounts"; */

@@ -1,0 +1,22 @@
+<nav
+  class='fixed lg:static h-full z-10 w-72 overflow-y-auto border-r border-gray-300 bg-white'
+  data-controller="sidebar"
+  data-expanded="<%= (cookies[:sidebar_expanded] || true) %>">
+  <div class="flex flex-col text-left">
+    <%= link_to root_path do %>
+      <span>🏠</span>
+      <span class="[[data-expanded=false]_&]:hidden">Home</span>
+    <% end %>
+    <%= link_to wardrobe_items_path do %>
+      <span>🔘</span>
+      <span class="[[data-expanded=false]_&]:hidden">Wardrobe Items</span>
+    <% end %>
+  </div>
+  <div class="text-left">
+    <%= button_to nil, data: { action: "click->sidebar#toggle" } do %>
+      <span class="[[data-expanded=true]_&]:hidden">➡️</span>
+      <span class="[[data-expanded=false]_&]:hidden">⬅️</span>
+      <span class="[[data-expanded=false]_&]:hidden">Toggle</span>
+    <% end %>
+  </div>
+</nav>
