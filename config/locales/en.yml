@@ -501,7 +501,17 @@ en:
       view_in_browser: "View this in your browser"
       unsubscribe: "Unsubscribe from this list"
       preferences: "Update subscription preferences"
-
+    dashboard:
+      profile: "Profile"
+      password: "Password"
+      connected_accounts: "Connected Accounts"
+      billing: "Billing"
+      accounts: "Accounts"
+      api_tokens: "API"
+      referrals: "Referrals"
+      sign_out: "Sign Out"
+      admin: "Admin"
+      dashboard: "Dashboard"
   notifications:
     index:
       title: "Notifications"
