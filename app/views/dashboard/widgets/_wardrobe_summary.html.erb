@@ -4,32 +4,36 @@
     <h2 class="text-xl font-bold text-gray-800">Wardrobe Summary</h2>
     <div class="text-xs text-gray-500 font-bold">Last updated: <span class="font-normal">Today at 9:00 AM</span></div>
     </div>
-    <button class="text-gray-400 hover:text-gray-600">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M3 8h18M3 13h18M3 18h18" />
-      </svg>
-    </button>
   </div>
   <div class="mb-6">
     <div class="text-center mb-4">
-      <div class="text-3xl font-bold text-gray-900">42</div>
+      <div class="text-3xl font-bold text-gray-900"><%= @total_items %></div>
       <p class="text-sm text-gray-500">Total Items</p>
-      <p class="text-xs text-gray-400">Tops: 12, Bottoms: 8, Outerwear: 6, Accessories: 16</p>
+      <p class="text-xs text-gray-400">
+        <span class="font-bold">Top categories:</span>
+        <% @top_categories.each do |category| %>
+          <span><%= category[0].name.titleize %> <span class="italic">(<%= category[1] %>)</span></span>
+        <% end %>
+      </p>
     </div>
 
     <div class="flex justify-around mb-4">
 
       <!-- Color Distribution Chart -->
-      <div class="flex flex-col items-center">
-        <div class="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
-          <!-- Placeholder for Color Pie Chart -->
-          <span class="text-sm text-gray-700">Colors</span>
+      <div class="flex flex-col items-center justify-around">
+        <div class="flex">
+          <% @top_colors.each do |tcolor| %>
+            <div class="w-6 h-6 rounded-full flex items-center justify-center"
+              style="background-color: <%= "#{tcolor['hex']}" %>"
+              >
+            </div>
+          <% end %>
         </div>
         <p class="text-xs text-gray-500 mt-2">Color Distribution</p>
       </div>
 
       <!-- Fabric Composition Chart -->
-      <div class="flex flex-col items-center">
+      <div class="flex flex-col items-center justify-around">
         <div class="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
           <!-- Placeholder for Fabric Pie Chart -->
           <span class="text-sm text-gray-700">Fabric</span>
