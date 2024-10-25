@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+.collapsed {
+  display: none;
+}
+
 /*
  * Jumpstart Pro default styles
  * Remove these if you'd like to use TailwindUI which expects a clean slate
