@@ -1,4 +1,5 @@
 <%= content_for :title, "My Wardrobe" %>
+
 <%= turbo_stream_from :wardrobe_items %>
 
 <div class="container px-4 mx-auto my-8">
@@ -22,7 +23,7 @@
 
   <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <%= tag.ul id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8" do %>
+      <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8" do %>
         <%= render partial: "wardrobe_items/wardrobe_item", collection: @wardrobe_items, as: :wardrobe_item, cached: true %>
 
         <div class="hidden only:block text-center">
