@@ -3,7 +3,7 @@
   <div class="text-center flex items-center justify-center p-2 h-fullrounded">
     <div data-controller="carousel" class="h-full overflow-x-hidden overflow-y-hidden flex snap-x snap-mandatory space-x-2">
       <% @wardrobe_items.each_with_index do |wi, idx| %>
-        <div class="snap-center flex-shrink-0 w-1/2 lg:w-1/3 bg-center">
+        <div class="snap-center flex-shrink-0 bg-center mx-auto">
           <% if wi.images.any? %>
             <%= image_tag wi.images.first, class: "w-40 h-full object-contain", id: "image-#{wi.id}" %>
           <% else %>

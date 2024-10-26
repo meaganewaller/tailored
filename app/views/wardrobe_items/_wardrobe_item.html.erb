@@ -1,6 +1,6 @@
 <!-- WardrobeItem Item -->
 <div id="<%= dom_id wardrobe_item %>" class="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-  <%= link_to wardrobe_item, class: "relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" do %>
+  <%= link_to wardrobe_item, class: "relative mt-3 flex h-60 mx-auto overflow-hidden rounded-xl" do %>
     <% if wardrobe_item.images.any? %>
       <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "object-cover" %>
     <% else %>

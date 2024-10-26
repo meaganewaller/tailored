@@ -2,7 +2,7 @@
 
 <%= turbo_stream_from :wardrobe_items %>
 
-<div class="container px-4 mx-auto my-8">
+<div class="container mx-auto my-8">
   <div class="flex items-center justify-between mb-4">
     <div>
       <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">My Wardrobe</h1>
@@ -21,8 +21,8 @@
     </div>
   </div>
 
-  <div class="bg-white">
-    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+  <div class="bg-white w-full">
+    <div class="mx-auto py-16 sm:py-24">
       <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8" do %>
         <%= render partial: "wardrobe_items/wardrobe_item", collection: @wardrobe_items, as: :wardrobe_item, cached: true %>
 
