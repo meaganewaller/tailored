@@ -16,12 +16,11 @@ body {
 }
 
 a {
-  @apply text-coral-600;
+  @apply text-primary-foreground;
 
   &:hover,
   &:focus {
-    @apply text-coral-500;
-
+    @apply text-secondary;
     transform: none;
   }
 }
@@ -41,7 +40,6 @@ ol {
   td {
     @apply align-top;
   }
-
 }
 
 .table-responsive {

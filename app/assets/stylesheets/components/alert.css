@@ -1,7 +1,6 @@
 .alert,
 .notice {
-  background: var(--base-bg-base);
-  color: var(--base-text-secondary);
+  @apply bg-primary text-primary-foreground;
   padding: 16px;
   box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10);
   display: flex;
@@ -11,9 +10,9 @@
   line-height: 20px;
 
   svg {
+    @apply text-accent-foreground;
     height: 20px;
     width: 20px;
-    color: var(--base-icon);
     flex-shrink: 0;
   }
 
@@ -41,7 +40,7 @@
   }
 
   a {
-    color: var(--text-primary);
+    @apply text-primary-foreground;
     display: inline-block;
     font-weight: 600;
     margin-top: 16px;
@@ -49,64 +48,61 @@
   }
 
   li {
-    color: var(--text-primary);
+    @apply text-primary-foreground;
     font-weight: 400;
   }
 
   &.alert-info {
-    background: var(--bg-info-secondary);
-    color: var(--text-on-info-secondary);
+    @apply bg-accent text-accent-foreground;
 
     svg {
-      color: var(--icon-on-info-secondary);
+      @apply text-accent;
     }
 
     a,
     li {
-      color: var(--text-on-info-secondary);
+      @apply text-accent;
     }
   }
 
   &.alert-success {
-    background: var(--bg-success-secondary);
-    color: var(--text-on-success-secondary);
+    @apply bg-secondary text-secondary-foreground;
 
     svg {
-      color: var(--icon-on-success-secondary);
+      @apply text-secondary-foreground;
     }
 
     a,
     li {
+      @apply text-secondary-foreground;
       color: var(--text-on-success-secondary);
     }
   }
 
   &.alert-error {
-    background: var(--bg-danger-secondary);
-    color: var(--text-on-danger-secondary);
+    @apply bg-destructive text-destructive-foreground;
 
 
     svg {
-      color: var(--icon-on-danger-secondary);
+      @apply text-destructive-foreground;
     }
 
     a,
     li {
-      color: var(--text-on-danger-secondary);
+      @apply text-destructive-foreground;
     }
   }
 
   &.alert-warning {
-    background: var(--bg-warning-secondary);
-    color: var(--text-on-warning-secondary);
+    @apply text-destructive-foreground bg-destructive;
 
     svg {
-      color: var(--icon-on-warning-secondary);
+      @apply text-destructive-foreground;
     }
 
     a,
     li {
-      color: var(--text-on-warning-secondary);
+      @apply text-destructive-foreground;
     }
   }
 }
@@ -116,38 +112,34 @@
   gap: 8px;
 
   &.notice-info {
-    background: var(--bg-info-secondary);
-    color: var(--text-on-info-secondary);
+    @apply bg-secondary text-secondary-foreground;
 
     svg {
-      color: var(--icon-on-info-secondary);
+      @apply text-secondary-foreground;
     }
   }
 
   &.notice-success {
-    background: var(--bg-success-secondary);
-    color: var(--text-on-success-secondary);
+    @apply bg-secondary text-secondary-foreground;
 
     svg {
-      color: var(--icon-on-success-secondary);
+      @apply text-secondary-foreground;
     }
   }
 
   &.notice-error {
-    background: var(--bg-danger-secondary);
-    color: var(--text-on-danger-secondary);
+    @apply bg-destructive text-destructive-foreground;
 
     svg {
-      color: var(--icon-on-danger-secondary);
+      @apply text-destructive-foreground;
     }
   }
 
   &.notice-warning {
-    background: var(--bg-warning-secondary);
-    color: var(--text-on-warning-secondary);
+    @apply bg-destructive text-destructive-foreground;
 
     svg {
-      color: var(--icon-on-warning-secondary);
+      @apply text-destructive-foreground;
     }
   }
 }

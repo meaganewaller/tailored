@@ -34,10 +34,10 @@ h6,
 }
 
 .link {
-  @apply text-navy-500;
+  @apply text-accent-foreground;
 
   &:hover,
   &:focus {
-    @apply text-navy-600;
+    @apply text-accent;
   }
 }
