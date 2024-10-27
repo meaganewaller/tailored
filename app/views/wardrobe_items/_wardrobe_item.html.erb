@@ -1,10 +1,10 @@
 <!-- WardrobeItem Item -->
 <div id="<%= dom_id wardrobe_item %>" class="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-  <%= link_to wardrobe_item, class: "relative mt-3 flex h-60 mx-auto overflow-hidden rounded-xl" do %>
+  <%= link_to wardrobe_item, class: "relative mt-3 flex h-60 lg:h-80 mx-auto overflow-hidden rounded-xl" do %>
     <% if wardrobe_item.images.any? %>
-      <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "object-cover" %>
+      <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "object-center" %>
     <% else %>
-      <% image_tag "placeholder_image.jpg", alt: "No Image Available", class: "object-cover" %>
+      <%= image_tag "placeholder_image.jpg", alt: "No Image Available", class: "object-cover" %>
     <% end %>
     <span class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white"><%= wardrobe_item.category&.name %></span>
   <% end %>
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Additional info -->
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col leading-6">
       <p><strong>Season:</strong> <%= wardrobe_item.season.presence || "All Season" %></p>
       <p><strong>Occasions:</strong> <%= wardrobe_item.occasions.any? ? wardrobe_item.occasions.join(", ") : "<em>Not specified</em>".html_safe %></p>
       <p><strong>Cost:</strong> <%= wardrobe_item.cost.present? ? number_to_currency(wardrobe_item.cost) : "<em>Not specified</em>".html_safe %></p>
@@ -37,10 +37,10 @@
   </div>
 
   <!-- Action Buttons -->
-  <div class="z-[100] flex justify-around py-2">
-    <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>">
+  <div class="z-10 flex text-center">
+    <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>" class="bg-yellow-200 w-1/2 py-2 text-yellow-900 hover:bg-yellow-300">
       Edit
     </a>
-    <%= link_to t("delete"), wardrobe_item, data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
+    <%= link_to t("delete"), wardrobe_item, class: "bg-red-200 w-1/2 py-2 text-red-900 hover:bg-red-300", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
   </div>
 </div>
