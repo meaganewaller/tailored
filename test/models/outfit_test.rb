@@ -3,7 +3,7 @@
 # Table name: outfits
 #
 #  id         :bigint           not null, primary key
-#  name       :string
+#  name       :string           not null
 #  occasion   :string
 #  occasions  :string           default([]), is an Array
 #  rating     :integer

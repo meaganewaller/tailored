@@ -583,6 +583,9 @@ en:
   outfits:
     edit: "Edit this outfit"
     destroy: "Destroy this outfit"
+    empty:
+      title: "You haven't created any outfits yet"
+      subtitle: "Create your first outfit"
 
   wardrobe_items:
     errors:

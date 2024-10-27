@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: outfits
 #
 #  id         :bigint           not null, primary key
-#  name       :string
+#  name       :string           not null
 #  occasion   :string
 #  occasions  :string           default([]), is an Array
 #  rating     :integer
@@ -29,14 +31,4 @@ class Outfit < ApplicationRecord
   has_many_attached :images
 
   validates :name, presence: true
-
-  before_validation :set_default_name, on: :create
-
-  private
-
-  def set_default_name
-    if name.blank?
-      self.name = "Outfit ##{Outfit.where(account_id: account.id).maximum(:id).to_i + 1}"
-    end
-  end
 end

@@ -1,28 +1,12 @@
 <%= content_for :title, "Outfits" %>
 <%= turbo_stream_from :outfits %>
 
-<div class="container px-4 mx-auto my-8">
-  <div class="flex items-center justify-between mb-4">
-    <div>
-      <h1 class="h3">Outfits</h1>
-
-      <div class="text-sm font-medium">
-        <span class="text-gray-500 dark:text-gray-30/75">Sort by:</span>
-        <%= sortable @outfits, :name, "Name", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-        <%= sortable @outfits, :category, "Category", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-        <%= sortable @outfits, :season, "Season", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-        <%= sortable @outfits, :rating, "Rating", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-      </div>
-    </div>
-    <%= link_to t("scaffold.new.title", model: "Outfit"), new_outfit_path, class: "btn btn-primary" %>
-  </div>
-
-  <%= tag.ul id: ("outfits" if first_page?), class: "grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8" do %>
+<div class="mx-auto align-center">
+  <%= tag.div id: ("outfits" if first_page?), class: "grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8" do %>
     <%= render partial: "outfits/outfit", collection: @outfits, as: :outfit, cached: true %>
 
-    <div class="hidden only:block text-center">
-      <p class="mb-4 h3">Create your first Outfit</p>
-      <%= link_to t("scaffold.new.title", model: "Outfit"), new_outfit_path, class: "btn btn-primary" %>
+    <div class="hidden only:block only:w-full only:mx-auto">
+      <%= empty_state t("outfits.empty.title"), subtitle: t("outfits.empty.subtitle"), path: new_outfit_path %>
     </div>
   <% end %>
 
