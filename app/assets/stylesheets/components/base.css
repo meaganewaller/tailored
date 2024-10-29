@@ -16,17 +16,17 @@ body {
 }
 
 a {
-  @apply text-primary-foreground;
+  @apply text-rose-800;
 
   &:hover,
   &:focus {
-    @apply text-secondary;
+    @apply text-sky-700;
     transform: none;
   }
 }
 
 ul {
-  @apply list-disc list-inside;
+  @apply list-none list-inside;
 }
 
 ol {

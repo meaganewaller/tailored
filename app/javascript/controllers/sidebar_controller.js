@@ -2,19 +2,24 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="sidebar"
 export default class extends Controller {
-  static targets = ["offcanvasNav", "backdrop", "closeMenuButton", "openMenuButton"]
+  static targets = [
+    "backdrop",
+    "offCanvasMenu",
+    "offCanvasMenuWrapper",
+    "offCanvasMenuCloseButton",
+  ]
 
-  toggle() {
-    if (this.offcanvasNavTarget.classList.contains("hidden")) {
-      this.backdropTarget.classList.remove("hidden")
-      this.offcanvasNavTarget.classList.remove("hidden")
-      this.openMenuButtonTarget.classList.add("hidden")
-      this.closeMenuButtonTarget.classList.remove("hidden")
+  toggleOffCanvasMenu() {
+    if (this.offCanvasMenuWrapperTarget.classList.contains("hidden")) {
+      this.offCanvasMenuTarget.setAttribute("aria-hidden", false)
+      this.offCanvasMenuWrapperTarget.classList.remove("hidden")
+      this.backdropTarget.setAttribute("aria-hidden", false)
+      this.offCanvasMenuCloseButtonTarget.classList.add("hidden")
     } else {
-      this.backdropTarget.classList.add("hidden")
-      this.offcanvasNavTarget.classList.add("hidden")
-      this.openMenuButtonTarget.classList.remove("hidden")
-      this.closeMenuButtonTarget.classList.add("hidden")
+      this.backdropTarget.setAttribute("aria-hidden", true)
+      this.offCanvasMenuTarget.classList.add("hidden")
+      this.offCanvasMenuCloseButtonTarget.classList.remove("hidden")
+      this.offCanvasMenuWrapperTarget.classList.add("hidden")
     }
   }
 }

@@ -15,7 +15,7 @@ nav.pagy.nav {
   }
 
   a:not(.gap) {
-    @apply text-accent-foreground border-solid border-accent;
+    /* @apply text-accent-foreground border-solid border-accent; */
     /* background: var(--base-bg-lowest); */
     /* border: 1px solid var(--base-border-tertiary); */
     /* color: var(--text-primary); */
@@ -26,16 +26,16 @@ nav.pagy.nav {
     margin-left: -1px;
 
     &:hover {
-      @apply bg-accent;
+      /* @apply bg-accent; */
     }
 
     &[aria-current="page"].current {
-      @apply bg-accent;
+      /* @apply bg-accent; */
       margin-left: -1px;
     }
 
     &:not([href]) {
-      @apply bg-transparent text-muted-foreground;
+      /* @apply bg-transparent text-muted-foreground; */
       margin-left: -1px;
     }
   }

@@ -97,7 +97,7 @@ button[disabled]        .when-enabled { display: none; }
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground;
+    @apply bg-rose-500 text-slate-200;
 
     &:hover {
       /* background: var(--bg-primary-hover); */

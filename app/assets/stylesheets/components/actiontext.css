@@ -81,7 +81,7 @@
   }
 
   .highlight {
-    @apply bg-accent;
+    @apply bg-lime-200;
     color: #fff;
 
     span {

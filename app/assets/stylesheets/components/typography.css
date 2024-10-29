@@ -34,10 +34,10 @@ h6,
 }
 
 .link {
-  @apply text-accent-foreground;
+  /* @apply text-accent-foreground; */
 
   &:hover,
   &:focus {
-    @apply text-accent;
+    /* @apply text-accent; */
   }
 }

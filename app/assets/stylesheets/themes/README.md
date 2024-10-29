@@ -10,5 +10,3 @@
 - midnight black (hsl(0 0% 7.1%)) #121212
 - graphite gray (hsl(0 0% 18%)) #2E2E2E
 - silver frost (hsl(180 0.8% 75.1%)) #BFC0C0
-
-
