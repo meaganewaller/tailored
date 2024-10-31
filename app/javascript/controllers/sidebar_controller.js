@@ -3,23 +3,17 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="sidebar"
 export default class extends Controller {
   static targets = [
-    "backdrop",
-    "offCanvasMenu",
-    "offCanvasMenuWrapper",
-    "offCanvasMenuCloseButton",
+    "sidebarContainer"
   ]
 
-  toggleOffCanvasMenu() {
-    if (this.offCanvasMenuWrapperTarget.classList.contains("hidden")) {
-      this.offCanvasMenuTarget.setAttribute("aria-hidden", false)
-      this.offCanvasMenuWrapperTarget.classList.remove("hidden")
-      this.backdropTarget.setAttribute("aria-hidden", false)
-      this.offCanvasMenuCloseButtonTarget.classList.add("hidden")
-    } else {
-      this.backdropTarget.setAttribute("aria-hidden", true)
-      this.offCanvasMenuTarget.classList.add("hidden")
-      this.offCanvasMenuCloseButtonTarget.classList.remove("hidden")
-      this.offCanvasMenuWrapperTarget.classList.add("hidden")
-    }
+  toggle(e) {
+    e.preventDefault();
+    this.switchCurrentState();
+  }
+
+  switchCurrentState() {
+    const newState = this.element.dataset.expanded === "true" ? "false" : "true";
+    this.element.dataset.expanded = newState;
+    document.cookie = `sidebar_expanded=${newState}`;
   }
 }

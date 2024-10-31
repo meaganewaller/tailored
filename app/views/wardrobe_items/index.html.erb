@@ -2,28 +2,28 @@
 
 <%= turbo_stream_from :wardrobe_items %>
 
-<div class="mx-20">
+<div class="px-20">
   <div class="md:flex md:items-center md:justify-between mx-auto">
     <div class="min-w-0 flex-1">
-      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">My Wardrobe</h2>
+      <h2 class="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight">My Wardrobe</h2>
     </div>
     <div class="mt-4 flex md:ml-4 md:mt-0">
-      <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
-      <%= link_to t("Bulk Upload"), bulk_upload_wardrobe_items_path, class: "ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset" %>
+      <%= link_to t("Bulk Upload"), bulk_upload_wardrobe_items_path, class: "ml-3 inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" %>
     </div>
   </div>
   <div class="flex items-center justify-between mb-4 mt-2">
     <div class="text-sm font-medium">
-      <span class="text-gray-500 dark:text-gray-30/75">Sort by:</span>
-      <%= sortable @wardrobe_items, :name, "Name", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-      <%= sortable @wardrobe_items, :cost, "Cost", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-      <%= sortable @wardrobe_items, :season, "Season", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-      <%= sortable @wardrobe_items, :condition, "Condition", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+      <span class="">Sort by:</span>
+      <%= sortable @wardrobe_items, :name, "Name", class: "mr-1" %>
+      <%= sortable @wardrobe_items, :cost, "Cost", class: "mr-1" %>
+      <%= sortable @wardrobe_items, :season, "Season", class: "mr-1" %>
+      <%= sortable @wardrobe_items, :condition, "Condition", class: "mr-1" %>
     </div>
   </div>
 </div>
 
-<div class="w-full bg-white md:flex md:justify-around place-items-start">
+<div class="w-full md:flex md:justify-around place-items-start">
   <div class="py-3 sm:py-5">
     <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-10" do %>
       <%= render partial: "wardrobe_items/wardrobe_item", collection: @wardrobe_items, as: :wardrobe_item, cached: true %>
@@ -31,13 +31,13 @@
 
       <div class="hidden only:block text-center">
         <div class="text-center">
-          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
           </svg>
-          <h3 class="mt-2 text-sm font-semibold text-gray-900">Your wardrobe is empty</h3>
-          <p class="mt-1 text-sm text-gray-500">Get started by adding your first item to your wardrobe.</p>
+          <h3 class="mt-2 text-sm font-semibold">Your wardrobe is empty</h3>
+          <p class="mt-1 text-sm">Get started by adding your first item to your wardrobe.</p>
           <div class="mt-6">
-            <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <button type="button" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
               <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                 <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
               </svg>
@@ -54,7 +54,7 @@
 
 <% if @pagy.pages > 1 %>
   <div class="mx-20">
-    <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+    <div class="flex items-center justify-between border-t px-4 py-3 sm:px-6">
       <%== pagy_nav(@pagy) %>
     </div>
   </div>

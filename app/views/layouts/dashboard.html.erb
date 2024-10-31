@@ -14,9 +14,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <% if current_user&.system_theme? %><script>document.documentElement.classList.toggle("dark", window.matchMedia('(prefers-color-scheme: dark)').matches)</script><% end %>
+    <% if current_user&.system_theme? %>
+        <script>
+          document.documentElement.classList.toggle(
+            "dark", window.matchMedia('(prefers-color-scheme: dark)').matches
+          )
+        </script>
+    <% end %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+
+    <% turbo_refreshes_with method: :morph, scroll: :reset %>
     <%# Be sure to add your own custom favicons %>
     <%= render "favicons" %>
     <%= render "payments_dependencies" %>
@@ -26,21 +34,19 @@
     <%= yield :head %>
   </head>
 
-  <body class="h-full bg-white" data-theme-preference-value="<%= current_user&.theme %>" data-controller="theme sidebar">
-    <div>
-      <div id="sidebarnav">
-        <%= render partial: "sidebar" %>
-      </div>
+  <body
+    class="bg-rose-100"
+    data-theme-preference-value="<%= current_user&.theme %>"
+    data-controller="theme sidebar"
+    >
+    <%= render partial: "dashboard_nav" %>
+    <div class="bg-rose-300 flex top-16 overflow-y-auto">
+      <%= render partial: "layouts/sidebar" %>
+      <%= render partial: "back_to_top" %>
 
-      <div class="lg:pl-72">
-        <%= render partial: "dashboard_nav" %>
-
-        <main class="py-10">
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <%= yield %>
-          </div>
-        </main>
-      </div>
+      <main class="bg-rose-100 w-5/6 p-4 flex-grow">
+        <%= yield %>
+      </main>
     </div>
   </body>
 </html>

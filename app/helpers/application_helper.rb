@@ -6,7 +6,7 @@ module ApplicationHelper
 
   # Returns 'active' class if the column is currently being sorted
   def active_sort?(column)
-    params[:sort] == column.to_s ? 'bg-primary-200' : ''
+    params[:sort] == column.to_s ? 'bg-rose-200' : ''
   end
 
   # Returns the empty state display, for use on index pages mostly

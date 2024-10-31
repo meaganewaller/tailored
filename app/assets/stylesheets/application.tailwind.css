@@ -44,6 +44,57 @@
 @import "tom-select/dist/css/tom-select.css";
 @import "actiontext.css";
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog {
+  box-shadow: 0 0 0 100vw rgb(0 0 0 / 0.5);
+}
+
+dialog.slideover[open] {
+  animation: slide-in-from-left 200ms forwards ease-in-out;
+}
+
+dialog.slideover[closing] {
+  pointer-events: none;
+  animation: slide-out-to-left 200ms forwards ease-in-out;
+}
+
+@keyframes slide-in-from-left{
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-out-to-left{
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+ .back-to-top-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 1;
+}
+
+.back-to-top__button {
+  position: fixed;
+  bottom: 1rem;
+  right: 2rem;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s ease;
+}
+
+.back-to-top-container--intersecting .back-to-top__button {
+  opacity: 0;
+  visibility: hidden;
+}
+
 #sidebarnav .sidebar-item .sidebar-link::before {
   @apply bg-rose-600 absolute top-0 bottom-0 left-[-16px] w-0 h-full;
   content: "";
