@@ -1,8 +1,15 @@
-<aside
-  class="bg-rose-400 dark:bg-rose-800"
-  data-controller="sidebar"
-  data-expanded="<%= (cookies[:sidebar_expanded] || true) %>"
-  id="sidebarnav">
+<dialog
+  id="slideovernav"
+  data-slideover-target="dialog"
+  class="slideover h-full max-h-full m-0 w-96 p-8 backdrop:bg-rose-500/80 dark:bg-rose-700 bg-rose-200">
+  <div class="grid place-items-end">
+    <button
+      autofocus
+      data-action="slideover#close"
+      class="px-2.5 py-1 bg-rose-500 text-white text-sm rounded hover:bg-rose-600 dark:bg-rose-800 dark:text-rose-300 dark:hover:bg-rose-900">
+      Close
+    </button>
+  </div>
   <div class="flex flex-col text-left">
     <span class="sidebar-item">
       <%= nav_link_to root_path, class: "sidebar-link" do %>
@@ -29,11 +36,4 @@
       <% end %>
     </span>
   </div>
-  <div class="text-left">
-    <%= button_to nil, data: { action: "click->sidebar#toggle" } do %>
-      <span class="[[data-expanded=true]_&]:hidden">➡️</span>
-      <span class="[[data-expanded=false]_&]:hidden">⬅️</span>
-      <span class="[[data-expanded=false]_&]:hidden">Toggle</span>
-    <% end %>
-  </div>
-</aside>
+</dialog>

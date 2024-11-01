@@ -1,11 +1,11 @@
     <div
-      class="flex grow flex-col gap-y-5 overflow-y-auto bg-rose-300 dark:bg-rose-900 pb-4 px-4"
+      class="flex flex-col gap-y-5 overflow-y-auto bg-rose-300 dark:bg-rose-900 pb-4 px-4"
       id="sidebarnav">
       <div class="flex h-16 shrink-0 items-center">
         <%= render partial: "logo" %>
       </div>
 
-      <nav class="flex flex-1 flex-col z-50">
+      <nav class="flex flex-shrink flex-col z-50">
         <ul role="list" class="text-sm list-none">
           <%= render partial: "sidebar_items" %>
         </ul>

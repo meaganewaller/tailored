@@ -95,7 +95,25 @@ dialog.slideover[closing] {
   visibility: hidden;
 }
 
-#sidebarnav .sidebar-item .sidebar-link::before {
+#slideovernav .sidebar-item .sidebar-link {
+  @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-rose-800 dark:text-rose-200;
+}
+
+#sidebarnav {
+  @apply z-50 px-4 hidden lg:flex flex-col grow gap-y-5 text-center justify-between sticky fixed top-16 max-h-screen h-[calc(100vh-80px)];
+
+  &[data-expanded=false] {
+    @apply flex-grow-0;
+  }
+}
+
+#slideovernav .sidebar-item .sidebar-link:before {
+  @apply border-b-2 border-rose-600 absolute top-0 bottom-0 left-[-16px] w-0 h-full dark:border-rose-200;
+  content: "";
+  z-index: -1;
+  transition: all 0.4s ease-in-out;
+}
+#sidebarnav .sidebar-item .sidebar-link:before {
   @apply bg-rose-600 absolute top-0 bottom-0 left-[-16px] w-0 h-full;
   content: "";
   z-index: -1;
@@ -103,16 +121,35 @@ dialog.slideover[closing] {
   transition: all 0.4s ease-in-out;
 }
 
+#slideovernav .sidebar-item .sidebar-link:hover:before,
 #sidebarnav .sidebar-item .sidebar-link:hover:before {
   width: calc(100% + 16px);
 }
 
+#slideovernav .sidebar-item .sidebar-link.active:before,
 #sidebarnav .sidebar-item .sidebar-link.active:before {
   width: calc(100% + 16px);
 }
 
+#sidebarnav[data-expanded='false'] .sidebar-item .sidebar-link.active span {
+  @apply pr-3;
+}
+
+#slideovernav .sidebar-item .sidebar-link,
+#sidebarnav .sidebar-item .sidebar-link {
+  @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-rose-800 dark:text-rose-200;
+}
+
+#slideovernav .sidebar-item .sidebar-link.active {
+  @apply border-rose-500 text-rose-500 italic dark:text-rose-200 dark:border-rose-200;
+}
+
 #sidebarnav .sidebar-item .sidebar-link.active {
   @apply text-rose-200 bg-rose-600 rounded-full;
+}
+
+#slideovernav .sidebar-item .sidebar-link:hover {
+  @apply text-rose-500 italic dark:text-rose-100;
 }
 
 #sidebarnav .sidebar-item .sidebar-link:hover {

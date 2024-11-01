@@ -12,8 +12,14 @@ export default class extends Controller {
   }
 
   switchCurrentState() {
-    const newState = this.element.dataset.expanded === "true" ? "false" : "true";
-    this.element.dataset.expanded = newState;
-    document.cookie = `sidebar_expanded=${newState}`;
+    const expanded = this.element.dataset.expanded === "true" ? "false" : "true";
+    this.element.dataset.expanded = expanded;
+    document.cookie = `sidebar_expanded=${expanded}`;
+
+    if (expanded) {
+      this.sidebarContainerTarget.classNames.remove("hidden")
+    } else {
+      this.sidebarContainerTarget.classNames.add("hidden")
+    }
   }
 }

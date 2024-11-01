@@ -1,12 +1,10 @@
 <!-- app/views/dashboard/index.html.erb -->
 <%= content_for :title, "Dashboard" %>
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-x-0 lg:gap-x-6 lg:gap-y-0 mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 lg:gap-x-6 lg:gap-y-0 mx-auto">
   <%= render "dashboard/widgets/wardrobe_summary" %>
   <%= render "dashboard/widgets/outfit_recommendations" %>
   <%= render "dashboard/widgets/style_evolution" %>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-0 lg:gap-x-6 lg:gap-y-0 mx-auto">
   <%= render "dashboard/widgets/shopping_recommendations" %>
   <%= render "dashboard/widgets/seasonal_wardrobe_planner" %>
 </div>

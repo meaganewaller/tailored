@@ -34,17 +34,14 @@
     <%= yield :head %>
   </head>
 
-  <body
-    class="bg-rose-100"
-    data-theme-preference-value="<%= current_user&.theme %>"
-    data-controller="theme sidebar"
-    >
+  <body class="bg-rose-100 dark:bg-rose-800" data-theme-preference-value="<%= current_user&.theme %>" data-controller="theme sidebar slideover">
     <%= render partial: "dashboard_nav" %>
-    <div class="bg-rose-300 flex top-16 overflow-y-auto">
+    <div class="bg-rose-300 dark:bg-rose-800 flex">
       <%= render partial: "layouts/sidebar" %>
       <%= render partial: "back_to_top" %>
+      <%= render partial: "layouts/slideover" %>
 
-      <main class="bg-rose-100 w-5/6 p-4 flex-grow">
+      <main class="bg-rose-100 w-full lg:w-5/6 p-4 flex-grow h-screen">
         <%= yield %>
       </main>
     </div>
