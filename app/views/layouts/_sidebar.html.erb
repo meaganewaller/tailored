@@ -28,11 +28,10 @@
       <% end %>
     </span>
   </div>
-  <div class="text-left">
+  <div class="text-center text-2xl">
     <%= button_to nil, data: { action: "click->sidebar#toggle" } do %>
       <span class="[[data-expanded=true]_&]:hidden">➡️</span>
       <span class="[[data-expanded=false]_&]:hidden">⬅️</span>
-      <span class="[[data-expanded=false]_&]:hidden">Toggle</span>
     <% end %>
   </div>
 </aside>

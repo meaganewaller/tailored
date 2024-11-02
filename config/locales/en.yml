@@ -520,6 +520,7 @@ en:
       connected_accounts: "Connected Accounts"
       billing: "Billing"
       dashboard: "Dashboard"
+      api_tokens: "API Tokens"
   notifications:
     index:
       title: "Notifications"
@@ -596,6 +597,8 @@ en:
       subtitle: "Create your first outfit"
 
   wardrobe_items:
+    index:
+      heading: "My Wardrobe"
     errors:
       invalid_subcategory_parent_id: "must belong to the main category"
 

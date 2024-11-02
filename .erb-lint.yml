@@ -1,5 +1,0 @@
----
-exclude:
-  - 'vendor/bundle/**/*'
-  - 'lib/jumpstart/**/*'
-EnableDefaultLinters: true

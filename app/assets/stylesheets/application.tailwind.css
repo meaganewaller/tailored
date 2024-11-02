@@ -13,6 +13,7 @@
 @import "components/actiontext";
 @import "components/alert";
 @import "components/animation";
+
 /* @import "components/announcements"; */
 /* @import "components/avatars"; */
 @import "components/buttons";
@@ -28,6 +29,7 @@
 /* @import "components/notifications"; */
 @import "components/pagination";
 /* @import "components/pills"; */
+@import "components/sidebar";
 /* @import "components/strada"; */
 /* @import "components/tabs"; */
 /* @import "components/tooltips"; */
@@ -95,14 +97,6 @@ dialog.slideover[closing] {
   visibility: hidden;
 }
 
-#sidebarnav {
-  @apply z-50 px-4 hidden lg:flex flex-col grow gap-y-5 text-center justify-between sticky fixed top-20 pb-5 max-h-screen h-[calc(100vh-80px)];
-
-  &[data-expanded=false] {
-    @apply flex-grow-0;
-  }
-}
-
 #slideovernav .sidebar-item .sidebar-link {
   @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md;
   /* text-pink-800 dark:text-pink-200; */
@@ -116,32 +110,15 @@ dialog.slideover[closing] {
   transition: all 0.4s ease-in-out;
 }
 
-
-#sidebarnav .sidebar-item .sidebar-link:before {
-  /* bg-pink-300 */
-  @apply absolute top-0 bottom-0 left-[-16px] w-0 h-full;
-  content: "";
-  z-index: -1;
-  border-radius: 0px 24px 24px 0px;
-  transition: all 0.4s ease-in-out;
-}
-
-#slideovernav .sidebar-item .sidebar-link:hover:before,
-#sidebarnav .sidebar-item .sidebar-link:hover:before {
+#slideovernav .sidebar-item .sidebar-link:hover:before {
   width: calc(100% + 16px);
 }
 
-#slideovernav .sidebar-item .sidebar-link.active:before,
-#sidebarnav .sidebar-item .sidebar-link.active:before {
+#slideovernav .sidebar-item .sidebar-link.active:before {
   width: calc(100% + 16px);
 }
 
-#sidebarnav[data-expanded='false'] .sidebar-item .sidebar-link.active span {
-  @apply pr-3;
-}
-
-#slideovernav .sidebar-item .sidebar-link,
-#sidebarnav .sidebar-item .sidebar-link {
+#slideovernav .sidebar-item .sidebar-link {
   /* text-pink-500 dark:text-pink-200 */
   @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md;
 }
@@ -151,17 +128,8 @@ dialog.slideover[closing] {
   @apply italic;
 }
 
-#sidebarnav .sidebar-item .sidebar-link.active {
-  /* text-pink-900 bg-pink-300 */
-  @apply rounded-full;
-}
-
 #slideovernav .sidebar-item .sidebar-link:hover {
   @apply italic;
-}
-
-#sidebarnav .sidebar-item .sidebar-link:hover {
-  /* @apply text-pink-300; */
 }
 
 .dropdown-menu {

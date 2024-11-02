@@ -1,0 +1,79 @@
+#sidebarnav {
+  @apply
+    hidden
+    pt-20
+    text-cyan-800
+    bg-cyan-100
+    fixed
+    inset-y-0
+    overflow-x-hidden
+    overflow-y-auto
+    lg:flex lg:flex-col
+    justify-between
+    text-center
+    grow
+    px-4 pb-5 gap-y-5
+  ;
+
+  &[data-expanded=false] {
+    @apply flex-grow-0;
+  }
+}
+
+#sidebarnav .sidebar-item .sidebar-link:before {
+  @apply
+    absolute
+    top-0
+    bottom-0
+    left-[-16px]
+    w-0
+    h-full
+    bg-cyan-200
+    content-[""]
+    z-[-1]
+  ;
+  border-radius: 0 24px 24px 0;
+  transition: all 0.4s ease-in-out;
+}
+
+#sidebarnav .sidebar-item .sidebar-link:hover:before {
+  width: calc(100% + 16px);
+}
+
+#sidebarnav .sidebar-item .sidebar-link.active:before {
+  width: calc(100% + 16px);
+}
+
+#sidebarnav[data-expanded='false'] .sidebar-item .sidebar-link.active span {
+  @apply pr-1;
+}
+
+#sidebarnav .sidebar-item .sidebar-link {
+  @apply
+    gap-3
+    py-2.5
+    my-1
+    text-lg
+    flex
+    items-center
+    relative
+    rounded-md
+    pr-5
+  ;
+}
+
+#sidebarnav .sidebar-item .sidebar-link span:first-of-type {
+  @apply text-xl;
+}
+
+#sidebarnav .sidebar-item .sidebar-link.active {
+  @apply
+    rounded-full
+    text-cyan-700
+    bg-cyan-200
+  ;
+}
+
+#sidebarnav .sidebar-item .sidebar-link:hover {
+  @apply text-cyan-700;
+}
