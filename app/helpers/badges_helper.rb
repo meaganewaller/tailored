@@ -5,9 +5,12 @@ module BadgesHelper
   #   Active
   # <% end %>
   def badge(text = nil, options = {}, &block)
-    text, options = nil, text if block
-    base = options.delete(:base) || "rounded py-0.5 px-2 text-xs inline-block font-semibold leading-normal mr-2"
-    color = options.delete(:color) || "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+    if block
+      options = text
+      text = nil
+    end
+    base = options.delete(:base) || 'rounded py-0.5 px-2 text-xs inline-block font-semibold leading-normal mr-2'
+    color = options.delete(:color) || ''
     options[:class] = Array.wrap(options[:class]) + [base, color]
     tag.div(text, **options, &block)
   end

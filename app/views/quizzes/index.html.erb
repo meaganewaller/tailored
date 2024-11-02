@@ -6,14 +6,14 @@
     <div>
       <h1 class="h3">Quizzes</h1>
       <div class="text-sm font-medium">
-        <span class="text-gray-500 dark:text-gray-30/75">Sort by:</span>
-        <%= sortable @quizzes, :title, "Title", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-        <%= sortable @quizzes, :updated_at, "Date", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <span class="">Sort by:</span>
+        <%= sortable @quizzes, :title, "Title", class: "mr-1" %>
+        <%= sortable @quizzes, :updated_at, "Date", class: "mr-1" %>
       </div>
     </div>
   </div>
 
-  <%= tag.div id: ("quizzes" if first_page?), class: "grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 dark:bg-gray-900" do %>
+  <%= tag.div id: ("quizzes" if first_page?), class: "grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" do %>
   <%= render partial: "quizzes/quiz", collection: @quizzes, as: :quiz, cached: true %>
 
   <div class="hidden only:block text-center">

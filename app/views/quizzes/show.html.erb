@@ -1,12 +1,12 @@
 <%= content_for :title, "Quiz - #{@quiz.title}" %>
 <%= turbo_stream_from @quiz %>
 
-<div class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg" data-controller="quiz">
+<div class="max-w-4xl mx-auto p-8 rounded-lg shadow-lg" data-controller="quiz">
   <div class="flex items-center justify-between mb-4">
-    <h1 class="text-3xl mb-4 text-gray-800">
-      <%= link_to "Quizzes", quizzes_path, class: "font-light text-gray-700 dark:text-white" %>
-      <span class="text-gray-400 font-light mx-2">\</span>
-      <span class="text-primary-500 font-bold">Quiz <%= @quiz.title %></span>
+    <h1 class="text-3xl mb-4">
+      <%= link_to "Quizzes", quizzes_path, class: "font-light" %>
+      <span class="font-light mx-2">\</span>
+      <span class="font-bold">Quiz <%= @quiz.title %></span>
     </h1>
   </div>
   <p class="text-xs">Quiz started on: <%= @quiz_attempt.started_at %></p>
@@ -19,26 +19,26 @@
           data-index="<%= index %>"
           data-question-required="<%= quiz_question.required %>"
           data-action="click->quiz#clickQuestion">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-2 mt-5">
-            <span class="text-primary-500 font-normal mr-2"><%= index + 1 %>.</span>
+          <h2 class="text-2xl font-semibold mb-2 mt-5">
+            <span class="font-normal mr-2"><%= index + 1 %>.</span>
             <%= quiz_question.question.content %>
           </h2>
 
           <div class="flex items-center space-x-4 mt-2">
             <% if quiz_question.required %>
-              <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">Required</span>
+              <span class="inline-block text-sm font-semibold px-3 py-1 rounded-full">Required</span>
             <% else %>
-              <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full">Optional</span>
+              <span class="inline-block text-sm font-semibold px-3 py-1 rounded-full">Optional</span>
             <% end %>
 
             <% if quiz_question.shuffleable %>
-              <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Shuffleable</span>
+              <span class="inline-block text-sm font-semibold px-3 py-1 rounded-full">Shuffleable</span>
             <% end %>
           </div>
 
-          <ul class="mt-4 space-y-4 bg-gray-50 p-4 rounded-lg shadow-inner">
+          <ul class="mt-4 space-y-4 p-4 rounded-lg shadow-inner">
             <% quiz_question.question.question_options.each do |option| %>
-              <li class="pl-4 flex items-center hover:bg-blue-50 transition-all duration-150 p-2 rounded-lg">
+              <li class="pl-4 flex items-center transition-all duration-150 p-2 rounded-lg">
                 <%= form_with model: [@quiz_attempt, Answer.new], url: quiz_attempt_answers_path(@quiz_attempt), method: :post do |f| %>
                   <%= f.radio_button :question_option_id, option.id, data: { action: "change->quiz#selectOption" } %>
                   <%= f.label :question_option_id, option.content.to_plain_text %>
@@ -56,6 +56,6 @@
   </div>
 
   <div class="mt-4">
-    <a href="<%= quizzes_path %>" class="text-primary-500 hover:text-blue-800 underline">Back to all quizzes</a>
+    <a href="<%= quizzes_path %>" class="underline">Back to all quizzes</a>
   </div>
 </div>
