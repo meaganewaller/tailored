@@ -95,26 +95,31 @@ dialog.slideover[closing] {
   visibility: hidden;
 }
 
-#slideovernav .sidebar-item .sidebar-link {
-  @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-rose-800 dark:text-rose-200;
-}
-
 #sidebarnav {
-  @apply z-50 px-4 hidden lg:flex flex-col grow gap-y-5 text-center justify-between sticky fixed top-20 max-h-screen h-[calc(100vh-100px)];
+  @apply z-50 px-4 hidden lg:flex flex-col grow gap-y-5 text-center justify-between sticky fixed top-20 pb-5 max-h-screen h-[calc(100vh-80px)];
 
   &[data-expanded=false] {
     @apply flex-grow-0;
   }
 }
 
+#slideovernav .sidebar-item .sidebar-link {
+  @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md;
+  /* text-pink-800 dark:text-pink-200; */
+}
+
 #slideovernav .sidebar-item .sidebar-link:before {
-  @apply border-b-2 border-rose-600 absolute top-0 bottom-0 left-[-16px] w-0 h-full dark:border-rose-200;
+  /* border-pink-600 */
+  @apply border-b-2 absolute top-0 bottom-0 left-[-16px] w-0 h-full;
   content: "";
   z-index: -1;
   transition: all 0.4s ease-in-out;
 }
+
+
 #sidebarnav .sidebar-item .sidebar-link:before {
-  @apply bg-rose-600 absolute top-0 bottom-0 left-[-16px] w-0 h-full;
+  /* bg-pink-300 */
+  @apply absolute top-0 bottom-0 left-[-16px] w-0 h-full;
   content: "";
   z-index: -1;
   border-radius: 0px 24px 24px 0px;
@@ -137,37 +142,32 @@ dialog.slideover[closing] {
 
 #slideovernav .sidebar-item .sidebar-link,
 #sidebarnav .sidebar-item .sidebar-link {
-  @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md text-rose-800 dark:text-rose-200;
+  /* text-pink-500 dark:text-pink-200 */
+  @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md;
 }
 
 #slideovernav .sidebar-item .sidebar-link.active {
-  @apply border-rose-500 text-rose-500 italic dark:text-rose-200 dark:border-rose-200;
+  /* border-pink-500 text-pink-500 */
+  @apply italic;
 }
 
 #sidebarnav .sidebar-item .sidebar-link.active {
-  @apply text-rose-200 bg-rose-600 rounded-full;
+  /* text-pink-900 bg-pink-300 */
+  @apply rounded-full;
 }
 
 #slideovernav .sidebar-item .sidebar-link:hover {
-  @apply text-rose-500 italic dark:text-rose-100;
+  @apply italic;
 }
 
 #sidebarnav .sidebar-item .sidebar-link:hover {
-  @apply text-rose-300;
+  /* @apply text-pink-300; */
 }
 
 .dropdown-menu {
-  @apply dark:bg-rose-700 bg-rose-300 border-2 border-rose-200 border-r-rose-400 border-b-rose-400;
-  margin: 12px -12px;
-  padding: 0;
-  border-radius: 5px;
-  transition: opacity 0.2s, visibility 0.2s;
-}
+  min-width: 100%;
 
-.dropdown-menu a {
-  @apply dark:text-rose-200 dark:hover:bg-rose-800 text-rose-600 hover:bg-rose-200;
-}
-
-.dropdown-menu button {
-  @apply dark:hover:bg-rose-800 hover:bg-rose-200;
+  @screen lg {
+    min-width: 200px;
+  }
 }

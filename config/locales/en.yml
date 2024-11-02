@@ -511,6 +511,15 @@ en:
       sign_out: "Sign Out"
       admin: "Admin"
       dashboard: "Dashboard"
+    navbar:
+      profile: "Profile"
+      accounts: "Accounts"
+      admin: "Admin"
+      sign_out: "Sign Out"
+      password: "Password"
+      connected_accounts: "Connected Accounts"
+      billing: "Billing"
+      dashboard: "Dashboard"
   notifications:
     index:
       title: "Notifications"

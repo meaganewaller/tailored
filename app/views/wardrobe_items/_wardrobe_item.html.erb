@@ -1,17 +1,17 @@
 <!-- WardrobeItem Item -->
-<div id="<%= dom_id wardrobe_item %>" class="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+<div id="<%= dom_id wardrobe_item %>" class="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border shadow-md">
   <%= link_to wardrobe_item, class: "relative mt-3 flex h-60 lg:h-80 mx-auto overflow-hidden rounded-xl" do %>
     <% if wardrobe_item.images.any? %>
       <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "object-center" %>
     <% else %>
       <%= image_tag "placeholder_image.jpg", alt: "No Image Available", class: "object-cover" %>
     <% end %>
-    <span class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white"><%= wardrobe_item.category&.name %></span>
+    <span class="absolute top-0 left-0 m-2 rounded-full px-2 text-center text-sm font-medium"><%= wardrobe_item.category&.name %></span>
   <% end %>
 
   <div class="mt-4 px-5 pb-5">
     <%= link_to wardrobe_item do %>
-      <h5 class="text-base tracking-tight text-slate-900"><%= wardrobe_item.name.presence || "Unnamed Item" %></h5>
+      <h5 class="text-base tracking-tight"><%= wardrobe_item.name.presence || "Unnamed Item" %></h5>
     <% end %>
 
     <div class="mt-2 mb-5 flex items-center justify-between">
@@ -23,7 +23,7 @@
           </div>
         <% end %>
       <% else %>
-        <p class="text-gray-500 text-sm"><em>No colors detected</em></p>
+        <p class="text-sm"><em>No colors detected</em></p>
       <% end %>
     </div>
 
@@ -38,9 +38,9 @@
 
   <!-- Action Buttons -->
   <div class="z-10 flex text-center">
-    <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>" class="bg-yellow-200 w-1/2 py-2 text-yellow-900 hover:bg-yellow-300">
+    <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>" class="w-1/2 py-2">
       Edit
     </a>
-    <%= link_to t("delete"), wardrobe_item, class: "bg-red-200 w-1/2 py-2 text-red-900 hover:bg-red-300", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
+    <%= link_to t("delete"), wardrobe_item, class: "w-1/2 py-2", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
   </div>
 </div>

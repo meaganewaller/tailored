@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="<%= class_names("h-full min-h-screen antialiased bg-white", "dark": current_user&.dark_theme?) %>" lang="<%= I18n.locale %>">
+<html class="<%= class_names("antialiased", "dark": current_user&.dark_theme?) %>" lang="<%= I18n.locale %>">
   <head>
     <title>
       <% if content_for?(:title) %>
@@ -34,14 +34,14 @@
     <%= yield :head %>
   </head>
 
-  <body class="bg-rose-100 dark:bg-rose-800" data-theme-preference-value="<%= current_user&.theme %>" data-controller="theme sidebar slideover">
-    <%= render partial: "dashboard_nav" %>
-    <div class="bg-rose-300 dark:bg-rose-800 flex">
+  <body data-theme-preference-value="<%= current_user&.theme %>" data-controller="theme sidebar slideover">
+    <%= render partial: "layouts/navbar" %>
+    <div class="flex">
       <%= render partial: "layouts/sidebar" %>
       <%= render partial: "back_to_top" %>
       <%= render partial: "layouts/slideover" %>
 
-      <main class="bg-rose-100 w-full lg:w-5/6 p-4 flex-grow h-screen">
+      <main class="w-full lg:w-5/6 p-4 flex-grow">
         <%= yield %>
       </main>
     </div>

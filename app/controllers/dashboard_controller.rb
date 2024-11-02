@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
   def show
     @wardrobe_items = WardrobeItem.all
     @total_items = @wardrobe_items.count
+    @total_outfits = Outfit.all.count
     @top_categories = find_top_categories
     @outfit_suggestions = generate_outfit_suggestions
     @top_colors = find_top_colors

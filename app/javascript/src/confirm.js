@@ -24,15 +24,15 @@ function insertConfirmModal(message, element, button) {
   let content = `
     <dialog id="${id}" class="modal rounded-lg max-w-md w-full backdrop:backdrop-blur-sm backdrop:bg-black/50">
       <form method="dialog">
-        <div class="bg-white mx-auto rounded shadow p-6 max-w-md dark:bg-gray-900">
+        <div class="mx-auto rounded shadow p-6 max-w-md">
           <h5 class="text-lg">${message}</h5>
-          <p class="mt-2 text-sm text-gray-700 dark:text-gray-200">${description}</p>
+          <p class="mt-2 text-sm">${description}</p>
 
           ${confirmInput}
 
           <div class="flex justify-end items-center flex-wrap gap-2 mt-4">
-            <button value="cancel" class="btn btn-secondary">Cancel</button>
-            <button value="confirm" class="btn btn-danger">Confirm</button>
+            <button value="cancel" class="btn">Cancel</button>
+            <button value="confirm" class="btn">Confirm</button>
           </div>
         </div>
       </form>

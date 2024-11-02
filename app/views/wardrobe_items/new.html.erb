@@ -2,14 +2,14 @@
 
 <div class="container px-4 mx-auto my-8">
   <div class="flex items-center justify-between mb-4">
-    <h1 class="text-lg font-semibold text-gray-800 mb-1">
-      <%= link_to "Wardrobe Items", wardrobe_items_path, class: "text-black dark:text-white" %>
-      <span class="text-gray-400 font-light mx-2">\</span>
+    <h1 class="text-lg font-semibold mb-1">
+      <%= link_to "Wardrobe Items", wardrobe_items_path, class: "" %>
+      <span class="font-light mx-2">\</span>
       <%= t("scaffold.new.title", model: "Wardrobe Item") %>
     </h1>
   </div>
 
-  <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+  <div class="p-8 rounded shadow">
     <%= render "form", wardrobe_item: @wardrobe_item %>
   </div>
 </div>

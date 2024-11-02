@@ -16,11 +16,9 @@ body {
 }
 
 a {
-  @apply text-rose-800;
 
   &:hover,
   &:focus {
-    @apply text-sky-700;
     transform: none;
   }
 }

@@ -23,7 +23,7 @@ module AccountsHelper
     content = tag.span(account.name.to_s.first, class: 'initials')
     content += image_tag(avatar_url_for(current_user), class: 'avatar-small') if options[:include_user]
 
-    tag.span(content, class: "avatar bg-rose-500 #{classes}")
+    tag.span(content, class: "avatar #{classes}")
   end
 
   def account_user_roles(account, account_user)
