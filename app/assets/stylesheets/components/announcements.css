@@ -1,5 +1,5 @@
 .announcement-new {
-  @apply bg-coral-100 text-coral-600;
+  @apply bg-primary-100 text-primary-700;
 }
 
 .announcement-fix {

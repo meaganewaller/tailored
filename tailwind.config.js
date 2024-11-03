@@ -1,11 +1,12 @@
 // See the Tailwind default theme values here:
 // https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 // https://www.tints.dev/?primary=FF6F61&green=22C55E&coral=FF6F61&navy=2D3A66&blue=3B82F6&mint=00C2A8&red=EF4444&yellow=FFD166&lilac=E1BEE7&purple=A855F7&cream=FFF8E1
+const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 import { fontFamily as _fontFamily } from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config */
-  export const darkMode = ['class']
+    export const darkMode = ['class']
   export const plugins = [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms')({ strategy: "base" }),
@@ -23,125 +24,90 @@ import { fontFamily as _fontFamily } from 'tailwindcss/defaultTheme'
     './lib/jumpstart/app/helpers/**/*.rb',
   ]
   export const theme = {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    screens: {
-      '2xsm': '375px',
-      xsm: '425px',
-      '3xl': '2000px',
-      ...defaultTheme.screens
-    },
-    // Extend (add to) the default theme in the `extend` key
     extend: {
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        linspin: 'linspin 1568.2353ms linear infinite',
-        easespin: 'easespin 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
-        'left-spin':
-        'left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
-        'right-spin':
-        'right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
-        'ping-once': 'ping 5s cubic-bezier(0, 0, 0.2, 1)',
-        rotating: 'rotating 30s linear infinite',
-        topbottom: 'topbottom 60s infinite alternate linear',
-        bottomtop: 'bottomtop 60s infinite alternate linear',
-        'spin-1.5': 'spin 1.5s linear infinite',
-        'spin-2': 'spin 2s linear infinite',
-        'spin-3': 'spin 3s linear infinite',
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      borderWidth: {
-        6: '6px',
-      },
-      boxShadow: {
-        default: '0px 8px 13px -3px rgba(0, 0, 0, 0.07)',
-        card: '0px 1px 3px rgba(0, 0, 0, 0.12)',
-        'card-2': '0px 1px 2px rgba(0, 0, 0, 0.05)',
-        switcher: '0px 2px 4px rgba(0, 0, 0, 0.2), inset 0px 2px 2px #FFFFFF, inset 0px -1px 1px rgba(0, 0, 0, 0.1)',
-        'switch-1': '0px 0px 5px rgba(0, 0, 0, 0.15)',
-        1: '0px 1px 3px rgba(0, 0, 0, 0.08)',
-        2: '0px 1px 4px rgba(0, 0, 0, 0.12)',
-        3: '0px 1px 5px rgba(0, 0, 0, 0.14)',
-        4: '0px 4px 10px rgba(0, 0, 0, 0.12)',
-        5: '0px 1px 1px rgba(0, 0, 0, 0.15)',
-        6: '0px 3px 15px rgba(0, 0, 0, 0.1)',
-        7: '-5px 0 0 #313D4A, 5px 0 0 #313D4A',
-        8: '1px 0 0 #313D4A, -1px 0 0 #313D4A, 0 1px 0 #313D4A, 0 -1px 0 #313D4A, 0 3px 13px rgb(0 0 0 / 8%)',
-      },
-      dropShadow: {
-        1: '0px 1px 0px #E2E8F0',
-        2: '0px 1px 4px rgba(0, 0, 0, 0.12)',
-      },
-      fontSize: {
-        'title-xxl': ['44px', '55px'],
-        'title-xl': ['36px', '45px'],
-        'title-xl2': ['33px', '45px'],
-        'title-lg': ['28px', '35px'],
-        'title-md': ['24px', '30px'],
-        'title-md2': ['26px', '30px'],
-        'title-sm': ['20px', '26px'],
-        'title-xsm': ['18px', '24px'],
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+      colors: {
+        primary: colors.blue,
+        secondary: colors.gray,
+        tertiary: colors.gray,
+        danger: colors.red,
+        success: colors.green,
+        info: colors.blue,
+        warning: colors.yellow,
+        accent: colors.orange,
+        light: colors.gray,
+        dark: colors.gray,
+        disabled: colors.gray,
+        smoke: {
+          50: '#fbfaff',
+          100: '#f4f2f7',
+          200: '#efedf5',
+          300: '#dcdae3',
+          400: '#c2bfc9',
+          500: '#9995a1',
+          600: '#716e7a',
+          700: '#56525e',
+          800: '#3b3745',
+          900: '#221e2e',
+          950: '#06030e',
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        avocado: {
+          50: '#fcfef1',
+          100: '#f7fcde',
+          200: '#f1fab7',
+          300: '#e7fa7d',
+          400: '#d8f241',
+          500: '#b6cc37',
+          600: '#8ca30d',
+          700: '#6c7c0f',
+          800: '#566212',
+          900: '#3f4711',
+          950: '#282e05',
         },
-        linspin: {
-          '100%': { transform: 'rotate(360deg)' },
+        sage: {
+          50: '#f0fcf9',
+          100: '#e4f5f1',
+          200: '#ceebe4',
+          300: '#abdbd0',
+          400: '#73baaa',
+          500: '#388f7b',
+          600: '#1e6e5b',
+          700: '#045946',
+          800: '#003b2e',
+          900: '#002920',
+          950: '#001f18',
         },
-        easespin: {
-          '12.5%': { transform: 'rotate(135deg)' },
-          '25%': { transform: 'rotate(270deg)' },
-          '37.5%': { transform: 'rotate(405deg)' },
-          '50%': { transform: 'rotate(540deg)' },
-          '62.5%': { transform: 'rotate(675deg)' },
-          '75%': { transform: 'rotate(810deg)' },
-          '87.5%': { transform: 'rotate(945deg)' },
-          '100%': { transform: 'rotate(1080deg)' },
+        mint: {
+          50: '#f5fcf7',
+          100: '#e8fcef',
+          200: '#D9FAE3',
+          300: '#b1f2c3',
+          400: '#7ce99b',
+          500: '#1eaf47',
+          600: '#138f36',
+          700: '#0f6e2a',
+          800: '#0c5420',
+          900: '#014012',
+          950: '#00290b',
         },
-        'left-spin': {
-          '0%': { transform: 'rotate(130deg)' },
-          '50%': { transform: 'rotate(-5deg)' },
-          '100%': { transform: 'rotate(130deg)' },
-        },
-        'right-spin': {
-          '0%': { transform: 'rotate(-130deg)' },
-          '50%': { transform: 'rotate(5deg)' },
-          '100%': { transform: 'rotate(-130deg)' },
-        },
-        rotating: {
-          '0%, 100%': { transform: 'rotate(360deg)' },
-          '50%': { transform: 'rotate(0deg)' },
-        },
-        topbottom: {
-          '0%, 100%': { transform: 'translate3d(0, -100%, 0)' },
-          '50%': { transform: 'translate3d(0, 0, 0)' },
-        },
-        bottomtop: {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
-          '50%': { transform: 'translate3d(0, -100%, 0)' },
+        cornflower: {
+          50: '#f5f8ff',
+          100: '#ebf1ff',
+          200: '#dbe7ff',
+          300: '#bdd3ff',
+          400: '#89aef5',
+          500: '#668cd4',
+          600: '#3f69b5',
+          700: '#234c99',
+          800: '#0f357c',
+          900: '#122e62',
+          950: '#142a53',
         },
       },
-      transitionProperty: {
-        width: 'width',
-        stroke: 'stroke',
-      },
-    },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans]
+      }
+    }
   }
+
   export const future = {}
   export const variants = {}

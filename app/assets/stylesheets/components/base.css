@@ -4,7 +4,6 @@
 }
 
 body {
-  @apply max-h-screen;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -17,6 +16,7 @@ body {
 }
 
 a {
+  @apply text-primary-600;
 
   &:hover,
   &:focus {

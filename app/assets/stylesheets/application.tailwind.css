@@ -6,40 +6,40 @@
  * Jumpstart Pro default styles
  * Remove these if you'd like to use TailwindUI which expects a clean slate
 */
-/* @import "themes/dark"; */
-/* @import "themes/juicy"; */
-/* @import "themes/light"; */
+@import "themes/dark";
+@import "themes/juicy";
+@import "themes/light";
 @import "components/base";
 @import "components/actiontext";
 @import "components/alert";
 @import "components/animation";
 
-/* @import "components/announcements"; */
-/* @import "components/avatars"; */
+@import "components/announcements";
+@import "components/avatars";
 @import "components/buttons";
-/* @import "components/cards"; */
-/* @import "components/code"; */
-/* @import "components/connected_accounts"; */
-/* @import "components/direct_uploads"; */
-/* @import "components/docs"; */
+@import "components/cards";
+@import "components/code";
+@import "components/connected_accounts";
+@import "components/direct_uploads";
+@import "components/docs";
 @import "components/forms";
-/* @import "components/iframe"; */
-/* @import "components/modal"; */
-/* @import "components/nav"; */
-/* @import "components/notifications"; */
+@import "components/iframe";
+@import "components/modal";
+@import "components/nav";
+@import "components/notifications";
 @import "components/pagination";
-/* @import "components/pills"; */
+@import "components/pills";
 @import "components/sidebar";
-/* @import "components/strada"; */
-/* @import "components/tabs"; */
-/* @import "components/tooltips"; */
-/* @import "components/trix"; */
+@import "components/strada";
+@import "components/tabs";
+@import "components/tooltips";
+@import "components/trix";
 @import "components/typography";
 @import "components/util";
-/* @import "components/wells"; */
-/* @import "components/braintree"; */
-/* @import "components/outfits"; */
-/* @import "components/quizzes"; */
+@import "components/wells";
+@import "components/braintree";
+@import "components/outfits";
+@import "components/quizzes";
 
 @import "flatpickr/dist/flatpickr.css";
 @import "tippy.js/dist/tippy.css";
