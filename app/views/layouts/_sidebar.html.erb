@@ -1,6 +1,8 @@
 <aside
   data-controller="sidebar"
   data-expanded="<%= (cookies[:sidebar_expanded] || true) %>"
+  data-sidebar-expanded-value="<%= (cookies[:sidebar_expanded] || true) %>"
+  data-sidebar-target="sidebarContainer"
   id="sidebarnav">
   <div class="flex flex-col text-left pt-4">
     <span class="sidebar-item">

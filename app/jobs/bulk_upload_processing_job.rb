@@ -8,52 +8,35 @@ class BulkUploadProcessingJob < ApplicationJob
 
     return unless resource.images.attached?
 
-    Google::Cloud::Vision.configure { |vision| vision.credentials = Rails.application.credentials.dig(:google, :service_key) }
+    Google::Cloud::Vision.configure do |vision|
+      vision.credentials = Rails.application.credentials.dig(:google, :service_key)
+    end
 
-    image = resource.images.joins(:blob).find_by(active_storage_blobs: {key: image_key})
+    image = resource.images.joins(:blob).find_by(active_storage_blobs: { key: image_key })
 
-    if image
-      tags = tag_image_with_ai(image)
-      colors = detect_colors(image)
-      resource.update(tags:, colors:)
+    return unless image
 
-      if tags
-        matcher = CategoryMatcherService.new(tags)
-        matched = matcher.infer_categories
-        resource.category = matched[:category] if matched[:category]
-        resource.subcategories = matched[:subcategories] if matched[:subcategories]
-      end
+    tags = tag_image_with_ai(image)
+    colors = ColorMatcherService.detect_colors(image)
+    resource.update(tags:, colors:)
 
-      if resource.save
-        Rails.logger.info("Wardrobe item successfully created for image #{image.id}")
-      else
-        Rails.logger.error("Failed to create wardrobe item for image #{image.id}: #{wardrobe_item.errors.full_messages}")
-      end
+    if tags
+      matcher = CategoryMatcherService.new(tags)
+      matched = matcher.infer_categories
+      resource.category = matched[:category] if matched[:category]
+      resource.subcategories = matched[:subcategories] if matched[:subcategories]
+    end
+
+    if resource.save
+      Rails.logger.info("Wardrobe item successfully created for image #{image.id}")
+    else
+      Rails.logger.error("Failed to create wardrobe item for image #{image.id}: #{wardrobe_item.errors.full_messages}")
     end
 
     # BulkUploadWardrobeItemsNotifier.with(account:).deliver(resource.owner)
   end
 
   private
-
-  def detect_colors(image)
-    vision = Google::Cloud::Vision.image_annotator
-    image_file = StringIO.new(image.download)
-    response = vision.image_properties_detection(image: image_file)
-
-    return [] if response.responses.empty? || response.responses.first.image_properties_annotation.nil?
-
-    # Extract dominant colors from the response
-    dominant_colors = response.responses.first.image_properties_annotation.dominant_colors.colors
-
-    # Get hex values or descriptive colors from the dominant colors
-    dominant_colors.map do |color_info|
-      {
-        hex: hex_color_from_rgb(color_info.color),
-        score: color_info.score
-      }
-    end
-  end
 
   def tag_image_with_ai(image)
     arr = []
@@ -69,12 +52,5 @@ class BulkUploadProcessingJob < ApplicationJob
     end
 
     arr
-  end
-
-  def hex_color_from_rgb(color)
-    red = color.red.to_i
-    green = color.green.to_i
-    blue = color.blue.to_i
-    "#%02x%02x%02x" % [red, green, blue]
   end
 end

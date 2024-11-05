@@ -1,46 +1,72 @@
-<%= form_with(model: wardrobe_item, class: "p-6 rounded-lg shadow-md max-w-lg mx-auto space-y-6") do |form| %>
-  <%= render "error_messages", resource: form.object %>
-
-  <div>
-    <%= form.label :name, class: "block text-sm font-medium" %>
-    <%= form.text_field :name, placeholder: "E.g., Leather Jacket with Fringe" %>
-  </div>
-
-  <div>
-    <%= form.label :season, class: "block text-sm font-medium" %>
-    <%= form.select :season, ["Spring", "Summer", "Fall", "Winter"], { class: "mt-1 block w-full rounded-md shadow-sm sm:text-sm" } %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :occasions %>
-    <%= form.select :occasions, options_for_select([nil, 'Casual', 'Work', 'Evening', 'Formal', 'Party', 'Lounge'], wardrobe_item.occasions), class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :cost %>
-    <%= form.number_field :cost, step: 0.01, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :condition %>
-    <%= form.select :condition, options_for_select([nil, 'New', 'Like New', 'Good', 'Worn'], wardrobe_item.condition), class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <% wardrobe_item.images.each do |image| %>
-      <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+<div data-controller="image-preview">
+  <div class="flex">
+    <% if wardrobe_item.images.any? %>
+      <% wardrobe_item.images.each do |img| %>
+        <%= image_tag url_for(img), class: "m-3 w-[150px] h-[150px]" %>
+      <% end %>
     <% end %>
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
+    <div class="flex" id="image-preview" data-image-preview-target="preview"></div>
   </div>
 
-  <div class="mt-4">
-    <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
+  <%= form_with(model: wardrobe_item) do |form| %>
+    <%= render "error_messages", resource: form.object %>
 
-    <% if form.object.new_record? %>
-      <%= link_to t("cancel"), wardrobe_items_path, class: "btn btn-secondary" %>
-    <% else %>
-      <%= link_to t("cancel"), wardrobe_item_path(@wardrobe_item), class: "btn btn-secondary" %>
-    <% end %>
-  </div>
-<% end %>
+    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name, placeholder: "E.g., Leather Jacket with Fringe", class: "form-control" %>
+      </div>
+
+      <div>
+        <%= form.label :season %>
+        <%= form.select :season, ["Spring", "Summer", "Fall", "Winter"], class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+      <div>
+        <%= form.label :occasions %>
+        <%= form.select :occasions, options_for_select([nil, 'Casual', 'Work', 'Evening', 'Formal', 'Party', 'Lounge'], wardrobe_item.occasions) %>
+      </div>
+
+      <div>
+        <%= form.label :cost %>
+        <%= form.number_field :cost, step: 0.01, class: "form-control" %>
+      </div>
+
+      <div>
+        <%= form.label :condition %>
+        <%= form.select :condition, options_for_select([nil, 'New', 'Like New', 'Good', 'Worn'], wardrobe_item.condition) %>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <% wardrobe_item.images.each do |image| %>
+        <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+      <% end %>
+
+
+      <div class="relative border-dashed h-24 rounded-lg border-2 border-[var(--text-on-secondary)] bg-[var(--bg-secondary-hover)] flex justify-center items-center">
+        <div class="absolute">
+          <div class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10 text-primary-700">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776" />
+            </svg>
+            <span class="block text-gray-400 font-normal">Attach images here</span>
+          </div>
+        </div>
+
+        <%= form.file_field :images, multiple: true, accept: "image/*", class: "form-control-file h-full w-full opacity-0", data: { image_preview_target: "input", action: "change->image-preview#preview" } %>
+      </div>
+    </div>
+    <div class="mt-5 flex w-full justify-start gap-x-3 align-middle h-full">
+      <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary btn-xl w-[25%]" %>
+
+      <% if form.object.new_record? %>
+        <%= link_to t("cancel"), wardrobe_items_path, class: "btn btn-outline" %>
+      <% else %>
+        <%= link_to t("cancel"), wardrobe_item_path(@wardrobe_item), class: "btn btn-outline" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

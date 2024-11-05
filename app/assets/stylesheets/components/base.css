@@ -44,3 +44,11 @@ ol {
 .table-responsive {
   @apply block w-full overflow-x-auto;
 }
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog {
+  box-shaddow: 0 0 0 100vw rgb(0 0 0 / 0.5);
+}

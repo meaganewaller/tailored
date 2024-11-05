@@ -1,23 +1,35 @@
 <!-- WardrobeItem Item -->
-<div id="<%= dom_id wardrobe_item %>" class="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border shadow-md">
-  <%= link_to wardrobe_item, class: "relative mt-3 flex h-60 lg:h-80 mx-auto overflow-hidden rounded-xl" do %>
-    <% if wardrobe_item.images.any? %>
-      <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "object-center" %>
-    <% else %>
-      <%= image_tag "placeholder_image.jpg", alt: "No Image Available", class: "object-cover" %>
-    <% end %>
-    <span class="absolute top-0 left-0 m-2 rounded-full px-2 text-center text-sm font-medium"><%= wardrobe_item.category&.name %></span>
-  <% end %>
-
-  <div class="mt-4 px-5 pb-5">
+<div
+  id="<%= dom_id wardrobe_item %>"
+  class="rounded overflow-hidden border border-primary-800 dark:border-primary-500 flex flex-col dark:bg-primary-800/40 bg-primary-100/40">
+  <div class="relative">
     <%= link_to wardrobe_item do %>
-      <h5 class="text-base tracking-tight"><%= wardrobe_item.name.presence || "Unnamed Item" %></h5>
+      <% if wardrobe_item.images.any? %>
+        <%= image_tag wardrobe_item.images.first, alt: wardrobe_item.name, class: "w-full" %>
+      <% else %>
+        <%= image_tag "placeholder_image.jpg", alt: "No Image Available", class: "w-full" %>
+      <% end %>
     <% end %>
+    <% if wardrobe_item.category %>
+      <%= link_to wardrobe_item do %>
+        <div class="text-xs absolute top-0 right-0 bg-accent-600 px-4 py-2 text-accent-100 mt-3 mr-3 hover:bg-accent-100 hover:text-accent-600 transition duration-500 ease-in-out">
+          <%= wardrobe_item.category.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-    <div class="mt-2 mb-5 flex items-center justify-between">
+  <div class="px-6 py-4 mb-auto">
+    <%= link_to wardrobe_item, class: "font-medium text-lg inline-block hover:text-accent-600 transition duration-500 ease-in-out inline-block mb-2 text-accent-600 hover:text-accent-700 text-center" do %>
+      <%= wardrobe_item.name.presence || "Unnamed Item" %>
+    <% end %>
+  </div>
+
+  <div class="px-6 mb-auto">
+    <div class="flex gap-x-2">
       <% if wardrobe_item.colors.any? %>
         <% wardrobe_item.colors.each do |color_info| %>
-          <div class="h-4 w-4 rounded-full border" style="background-color: <%= color_info["hex"] %>;" title="Hex: <%= color_info['hex'] %>, Score: <%= (color_info['score'] * 100).round(2) %>%">
+          <div class="px-6 py-6 w-4 h-4 rounded-full" style="background-color: <%= color_info["hex"] %>;" title="Hex: <%= color_info['hex'] %>, Score: <%= (color_info['score'] * 100).round(2) %>%">
             <!-- Accessible tooltip for score -->
             <span class="sr-only"><%= color_info["score"] %></span>
           </div>
@@ -26,21 +38,19 @@
         <p class="text-sm"><em>No colors detected</em></p>
       <% end %>
     </div>
-
-    <!-- Additional info -->
-    <div class="flex flex-col leading-6">
-      <p><strong>Season:</strong> <%= wardrobe_item.season.presence || "All Season" %></p>
-      <p><strong>Occasions:</strong> <%= wardrobe_item.occasions.any? ? wardrobe_item.occasions.join(", ") : "<em>Not specified</em>".html_safe %></p>
-      <p><strong>Cost:</strong> <%= wardrobe_item.cost.present? ? number_to_currency(wardrobe_item.cost) : "<em>Not specified</em>".html_safe %></p>
-      <p><strong>Condition:</strong> <%= wardrobe_item.condition.present? ? wardrobe_item.condition.capitalize : "<em>Not specified</em>".html_safe %></p>
-    </div>
   </div>
 
-  <!-- Action Buttons -->
-  <div class="z-10 flex text-center">
-    <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>" class="w-1/2 py-2">
+  <div class="px-6 my-5">
+    <p><strong>Season:</strong> <%= wardrobe_item.season.presence || "All Season" %></p>
+    <p><strong>Occasions:</strong> <%= wardrobe_item.occasions.any? ? wardrobe_item.occasions.join(", ") : "<em>Not specified</em>".html_safe %></p>
+    <p><strong>Cost:</strong> <%= wardrobe_item.cost.present? ? number_to_currency(wardrobe_item.cost) : "<em>Not specified</em>".html_safe %></p>
+    <p><strong>Condition:</strong> <%= wardrobe_item.condition.present? ? wardrobe_item.condition.capitalize : "<em>Not specified</em>".html_safe %></p>
+  </div>
+
+  <div class="px-6 py-3 flex flex-row items-center justify-between bg-accent-100">
+    <a href="<%= edit_wardrobe_item_path(wardrobe_item) %>" class="text-accent-500 hover:text-accent-700">
       Edit
     </a>
-    <%= link_to t("delete"), wardrobe_item, class: "w-1/2 py-2", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
+    <%= link_to t("delete"), wardrobe_item, class: "text-accent-500 hover:text-accent-700", data: { turbo_method: :delete, turbo_confirm: t("are_you_sure") } %>
   </div>
 </div>

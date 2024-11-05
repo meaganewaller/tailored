@@ -2,14 +2,14 @@
 
 <%= turbo_stream_from :wardrobe_items %>
 
-<div class="px-20">
+<div class="sm:p-5 md:p-10">
   <div class="md:flex md:items-center md:justify-between mx-auto">
     <div class="min-w-0 flex-1">
       <h2 class="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight">My Wardrobe</h2>
     </div>
-    <div class="mt-4 flex md:ml-4 md:mt-0">
-      <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset" %>
-      <%= link_to t("Bulk Upload"), bulk_upload_wardrobe_items_path, class: "ml-3 inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" %>
+    <div class="mt-4 flex md:ml-4 md:mt-0 gap-x-2">
+      <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary" %>
+      <%= link_to t("Bulk Upload"), bulk_upload_wardrobe_items_path, class: "btn btn-secondary" %>
     </div>
   </div>
   <div class="flex items-center justify-between mb-4 mt-2">
@@ -21,13 +21,10 @@
       <%= sortable @wardrobe_items, :condition, "Condition", class: "mr-1" %>
     </div>
   </div>
-</div>
 
-<div class="w-full md:flex md:justify-around place-items-start">
-  <div class="py-3 sm:py-5">
-    <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-10" do %>
+  <div class="mx-auto">
+    <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10" do %>
       <%= render partial: "wardrobe_items/wardrobe_item", collection: @wardrobe_items, as: :wardrobe_item, cached: true %>
-
 
       <div class="hidden only:block text-center">
         <div class="text-center">
@@ -50,12 +47,12 @@
       </div>
     <% end %>
   </div>
-</div>
 
-<% if @pagy.pages > 1 %>
-  <div class="mx-20">
-    <div class="flex items-center justify-between border-t px-4 py-3 sm:px-6">
-      <%== pagy_nav(@pagy) %>
+  <% if @pagy.pages > 1 %>
+    <div class="mx-20">
+      <div class="flex items-center justify-between border-t px-4 py-3 sm:px-6">
+        <%== pagy_nav(@pagy) %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

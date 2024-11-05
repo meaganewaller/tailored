@@ -1,0 +1,62 @@
+dialog.slideover[open] {
+  animation: slide-in-from-left 200ms forwards ease-in-out;
+}
+
+dialog.slideover[closing] {
+  pointer-events: none;
+  animation: slide-out-to-left 200ms forwards ease-in-out;
+}
+
+#slideovernav .sidebar-item .sidebar-link {
+  @apply
+    gap-3
+    py-2.5
+    my-1
+    text-base
+    flex
+    items-center
+    relative
+    rounded-md
+    text-[var(--text-primary)]
+  ;
+}
+
+#slideovernav .sidebar-item .sidebar-link:before {
+  @apply border-b border-[var(--border-primary)] absolute top-0 bottom-0 left-[-16px] w-0 h-full;
+  content: "";
+  z-index: -1;
+  transition: all 0.4s ease-in-out;
+}
+
+#slideovernav .sidebar-item .sidebar-link:hover:before {
+  width: calc(100% + 16px);
+}
+
+#slideovernav .sidebar-item .sidebar-link.active:before {
+  width: calc(100% + 16px);
+}
+
+#slideovernav .sidebar-item .sidebar-link {
+  @apply gap-3 py-2.5 my-1 text-base flex items-center relative rounded-md;
+}
+
+#slideovernav .sidebar-item .sidebar-link.active {
+  @apply italic;
+}
+
+#slideovernav .sidebar-item .sidebar-link:hover {
+  @apply italic;
+}
+
+@keyframes slide-in-from-left {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-out-to-left{
+  to {
+    transform: translateX(-100%);
+  }
+}
+
