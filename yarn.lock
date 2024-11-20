@@ -3916,10 +3916,10 @@ tailwindcss-animate@^1.0.7:
   resolved "https://registry.yarnpkg.com/tailwindcss-animate/-/tailwindcss-animate-1.0.7.tgz#318b692c4c42676cc9e67b19b78775742388bef4"
   integrity sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==
 
-tailwindcss-stimulus-components@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-6.0.2.tgz#2ec586284a3e88d12b10a502f3f2807d2c49d7e4"
-  integrity sha512-gZ5/skX6idpgl4v1Ss+UcUlaU1+M/X1XBy83DVGSQnVRg2nX/VdT5V4BeAqPHgeETdsA3t0BME9127KO+8pSFg==
+tailwindcss-stimulus-components@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-6.1.2.tgz#6b5437fd21a279b553c0ef6ce91b732466101943"
+  integrity sha512-vdygj+iEr7pErLvaK2MyxTvZ4hvOWyFO1ypeBYQYM7WY/9ZPK7lkX+Rl8RhnEjx4OZHCROVEukSi/qG/qBxkIA==
 
 tailwindcss@^3.4.14:
   version "3.4.14"
