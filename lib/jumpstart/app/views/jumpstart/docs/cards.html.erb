@@ -1,17 +1,22 @@
-<% content_for :section_title, "Cards" %>
+content_for :section_title, "Cards"
+ %>
 
-<%= h2_with_anchor "Basic Cards" %>
+h2_with_anchor "Basic Cards"
+ %>
 
-<%= render "jumpstart/docs/snippet" do %>
+render "jumpstart/docs/snippet"
+ do %>
 <div class="card">
   <h3>Card title</h3>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 </div>
 <% end %>
 
-<%= h2_with_anchor "Basic Call To Action" %>
+h2_with_anchor "Basic Call To Action"
+ %>
 
-<%= render "jumpstart/docs/snippet" do %>
+render "jumpstart/docs/snippet"
+ do %>
 <div class="card">
   <div class="card-cta-basic">
     <div class="lg:flex-1">
@@ -20,15 +25,18 @@
     </div>
 
     <div class="lg:p-0 pt-4">
-      <%= link_to "Button", "", class: "btn btn-primary" %>
+link_to "Button", "", class: "btn btn-primary"
+ %>
     </div>
   </div>
 </div>
 <% end %>
 
-<%= h2_with_anchor "Card with Image" %>
+h2_with_anchor "Card with Image"
+ %>
 
-<%= render "jumpstart/docs/snippet" do %>
+render "jumpstart/docs/snippet"
+ do %>
 <div class="card card-image">
   <div class="image-placeholder">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-gray-500">
@@ -43,9 +51,11 @@
 </div>
 <% end %>
 
-<%= h2_with_anchor "Card with Image and Buttons" %>
+h2_with_anchor "Card with Image and Buttons"
+ %>
 
-<%= render "jumpstart/docs/snippet" do %>
+render "jumpstart/docs/snippet"
+ do %>
 <div class="card card-image">
   <div class="image-placeholder">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-gray-500">
@@ -56,7 +66,8 @@
   <div>
     <h3>Card title</h3>
     <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    <%= link_to "Button", "#", class: "btn btn-primary btn-small" %>
+link_to "Button", "#", class: "btn btn-primary btn-small"
+ %>
   </div>
 </div>
 <% end %>

@@ -3,13 +3,17 @@
 <p class="mt-8 text-sm text-gray-700 dark:text-gray-300">What kind of accounts does your application need?</p>
 <div class="mt-2 form-group">
   <div class="form-picker-group">
-    <%= f.radio_button :personal_accounts, true, checked: Jumpstart.config.personal_accounts?, id: "personal_accounts" %>
-    <%= label_tag "personal_accounts", "Personal and Team Accounts" %>
+f.radio_button :personal_accounts, true, checked: Jumpstart.config.personal_accounts?, id: "personal_accounts"
+ %>
+label_tag "personal_accounts", "Personal and Team Accounts"
+ %>
   </div>
 
   <div class="form-picker-group">
-    <%= f.radio_button :personal_accounts, false, checked: !Jumpstart.config.personal_accounts?, id: "team_accounts" %>
-    <%= label_tag "team_accounts", "Just Team Accounts" %>
+f.radio_button :personal_accounts, false, checked: !Jumpstart.config.personal_accounts?, id: "team_accounts"
+ %>
+label_tag "team_accounts", "Just Team Accounts"
+ %>
   </div>
 </div>
 
@@ -22,25 +26,31 @@
   <p>Switch accounts by:</p>
 
   <div class="form-picker-group toggle">
-    <%= check_box_tag "configuration[multitenancy][]", "session", Jumpstart::Multitenancy.session?, id: "multitenancy_session", disabled: true %>
+check_box_tag "configuration[multitenancy][]", "session", Jumpstart::Multitenancy.session?, id: "multitenancy_session", disabled: true
+ %>
     <div>
-      <%= label_tag "multitenancy_session", "Session Cookie" %>
+label_tag "multitenancy_session", "Session Cookie"
+ %>
       <p>Always enabled as a fallback</p>
     </div>
   </div>
 
   <div class="form-picker-group toggle">
-    <%= check_box_tag "configuration[multitenancy][]", "subdomain", Jumpstart::Multitenancy.subdomain?, id: "multitenancy_subdomain" %>
+check_box_tag "configuration[multitenancy][]", "subdomain", Jumpstart::Multitenancy.subdomain?, id: "multitenancy_subdomain"
+ %>
     <div>
-      <%= label_tag "multitenancy_subdomain", "Subdomains & Custom Domains" %>
+label_tag "multitenancy_subdomain", "Subdomains & Custom Domains"
+ %>
       <p>Such as you.example.org or mydomain.com</p>
     </div>
   </div>
 
   <div class="form-picker-group toggle">
-    <%= check_box_tag "configuration[multitenancy][]", "path", Jumpstart::Multitenancy.path?, id: "multitenancy_path" %>
+check_box_tag "configuration[multitenancy][]", "path", Jumpstart::Multitenancy.path?, id: "multitenancy_path"
+ %>
     <div>
-      <%= label_tag "multitenancy_path", "URL Path" %>
+label_tag "multitenancy_path", "URL Path"
+ %>
       <p>Prepends <code>/:account_id/</code> as the script_name before Rails routes</p>
     </div>
   </div>

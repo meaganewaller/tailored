@@ -1,6 +1,8 @@
-<% content_for :section_title, "Themes" %>
+content_for :section_title, "Themes"
+ %>
 
-<%= h2_with_anchor "Overview" %>
+h2_with_anchor "Overview"
+ %>
 
 <p>
 Jumpstart Pro comes with a default set of themes that can be used to quickly get started with a new
@@ -18,7 +20,8 @@ Semantic color names in Jumpstart’s color system make theming, customization, 
 to color (like swapping primary colors to match your brand) easier and more efficient.
 </p>
 
-<%= h3_with_anchor "Modifying the default themes" %>
+h3_with_anchor "Modifying the default themes"
+ %>
 
 <p>
 The light and dark themes that ship by default use semantically named color roles which are defined in
@@ -38,7 +41,8 @@ there do not affect this theme.
 The next sections will walk you through the default color roles and how to modify them.
 </p>
 
-<%= h5_with_anchor "Primary and Secondary colors" %>
+h5_with_anchor "Primary and Secondary colors"
+ %>
 
 <p>
 To start updating colors or creating your own theme, begin with Primary. Primary can be your main brand color or
@@ -49,7 +53,8 @@ a primary accent color that is high-emphasis.
 Secondary colors are used for less prominent components, but could still carry a color expression of your brand.
 </p>
 
-<%= h5_with_anchor "Danger, Success, Info, Warning & Accent" %>
+h5_with_anchor "Danger, Success, Info, Warning & Accent"
+ %>
 
 <p>
 Some colors communicate status in the UI—destructive or successful actions, warnings, alerts, etc.
@@ -60,19 +65,22 @@ If you change these, we recommend choosing from similar color palettes—pink or
 for success, etc.—as these are common associations understood by end users.
 </p>
 
-<%= h5_with_anchor "Dark and Light" %>
+h5_with_anchor "Dark and Light"
+ %>
 
 <p>
 Dark and light buttons are named for their background colors.
 </p>
 
-<%= h5_with_anchor "Disabled" %>
+h5_with_anchor "Disabled"
+ %>
 
 <p>
 If you change these, we recommend that you ensure disabled states are visually distinct from enabled states.
 </p>
 
-<%= h5_with_anchor "Base" %>
+h5_with_anchor "Base"
+ %>
 
 <p>
 These colors are used for baseline or default foundational design elements like page background, divider lines,
@@ -97,7 +105,8 @@ backgrounds and text color as another way to express brand (like in the juicy th
 color system easily supports either scenario.
 </p>
 
-<%= h3_with_anchor "Custom Themes" %>
+h3_with_anchor "Custom Themes"
+ %>
 
 <p>
 If you want to create a completely custom theme, you can do so by copying any of the default theme files
@@ -107,15 +116,15 @@ values to your liking. After that import your new theme in <code>app/assets/styl
 you're good to go.
 </p>
 
-<%= h4_with_anchor "Example: Changing the default color theme" %>
+h4_with_anchor "Example: Changing the default color theme"
+ %>
 
 <p>
 <em>⚠️ Changing the colors here will only affect light and dark themes and not the juicy theme.</em>
 </p>
 
 <p>
-<Here are the default semantic names for the colors used in the light and dark themes:
-</p>
+<Here are the default semantic names for the colors used in the light and dark themes:>
 
 <div class="not-prose">
   <pre><code>// tailwind.config.js
@@ -147,14 +156,17 @@ and dark modes.
 
 <p>
 These colors come from the Tailwind color palette. You can find the full list of Tailwind
-colors <%= link_to "here", "https://tailwindcss.com/docs/customizing-colors", target: "_blank" %>.
+link_to "here", "https://tailwindcss.com/docs/customizing-colors", target: "_blank"
+ %>.
 </p>
 
-<%= h5_with_anchor "Using 'on-*' to track relationships between colors" %>
+h5_with_anchor "Using 'on-*' to track relationships between colors"
+ %>
 
 <p>
 A color role’s semantic name gives clues about how a color may “bond” with other colors. Semantic names with
 <code>on-*</code> indicate a relationship to another color in the system. When choosing colors for
 a custom theme, consider checking the contrast ratio between these color pairs for accessibility with
-a tool like <%= link_to "WebAIM's Contrast Checker", "https://webaim.org/resources/contrastchecker/", target: "_blank" %>.
+link_to "WebAIM's Contrast Checker", "https://webaim.org/resources/contrastchecker/", target: "_blank"
+ %>.
 </p>

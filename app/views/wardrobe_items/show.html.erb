@@ -1,17 +1,23 @@
-<%= content_for :title, "Wardrobe Items ##{@wardrobe_item.id}" %>
-<%= turbo_stream_from @wardrobe_item %>
+content_for :title, "Wardrobe Items ##{@wardrobe_item.id}"
+ %>
+turbo_stream_from @wardrobe_item
+ %>
 
 <div class="container px-4 mx-auto my-8">
   <div class="flex items-center justify-between mb-4">
     <h1 class="h3">
-      <%= link_to "Wardrobe Items", wardrobe_items_path, class: "" %>
+link_to "Wardrobe Items", wardrobe_items_path, class: ""
+ %>
       <span class="font-light mx-2">\</span>
-      Wardrobe Item #<%= @wardrobe_item.id %>
+@wardrobe_item.id
+ %>
     </h1>
-    <%= link_to t("edit"), edit_wardrobe_item_path(@wardrobe_item), class: "btn" %>
+link_to t("edit"), edit_wardrobe_item_path(@wardrobe_item), class: "btn"
+ %>
   </div>
 
   <div class="p-8 dark:border rounded shadow">
-    <%= render @wardrobe_item %>
+render @wardrobe_item
+ %>
   </div>
 </div>

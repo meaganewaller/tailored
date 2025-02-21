@@ -1,14 +1,19 @@
 <head>
   <title>
     <% if content_for?(:title) %>
-      <%= yield :title %> |
+yield :title
+ %> |
     <% end %>
-    <%= Jumpstart.config.application_name %>
+Jumpstart.config.application_name
+ %>
   </title>
 
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= viewport_meta_tag %>
+csrf_meta_tags
+ %>
+csp_meta_tag
+ %>
+viewport_meta_tag
+ %>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
 
@@ -18,12 +23,18 @@
     </script>
   <% end %>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
-  <%= turbo_refreshes_with method: :morph, scroll: :reset %>
+stylesheet_link_tag "application", "data-turbo-track": "reload"
+ %>
+javascript_include_tag "application", "data-turbo-track": "reload"
+ %>
+turbo_refreshes_with method: :morph, scroll: :reset
+ %>
 
-  <%= render "favicons" %>
-  <%= render "payments_dependencies" %>
+render "favicons"
+ %>
+render "payments_dependencies"
+ %>
 
-  <%= yield :head %>
+yield :head
+ %>
 </head>

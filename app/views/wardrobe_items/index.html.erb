@@ -1,6 +1,8 @@
-<%= content_for :title, "My Wardrobe" %>
+content_for :title, "My Wardrobe"
+ %>
 
-<%= turbo_stream_from :wardrobe_items %>
+turbo_stream_from :wardrobe_items
+ %>
 
 <div class="sm:p-5 md:p-10">
   <div class="md:flex md:items-center md:justify-between mx-auto">
@@ -8,23 +10,31 @@
       <h2 class="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight">My Wardrobe</h2>
     </div>
     <div class="mt-4 flex md:ml-4 md:mt-0 gap-x-2">
-      <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary" %>
-      <%= link_to t("Bulk Upload"), bulk_upload_wardrobe_items_path, class: "btn btn-secondary" %>
+link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary"
+ %>
+link_to t("Bulk Upload"), bulk_upload_wardrobe_items_path, class: "btn btn-secondary"
+ %>
     </div>
   </div>
   <div class="flex items-center justify-between mb-4 mt-2">
     <div class="text-sm font-medium">
       <span class="">Sort by:</span>
-      <%= sortable @wardrobe_items, :name, "Name", class: "mr-1" %>
-      <%= sortable @wardrobe_items, :cost, "Cost", class: "mr-1" %>
-      <%= sortable @wardrobe_items, :season, "Season", class: "mr-1" %>
-      <%= sortable @wardrobe_items, :condition, "Condition", class: "mr-1" %>
+sortable @wardrobe_items, :name, "Name", class: "mr-1"
+ %>
+sortable @wardrobe_items, :cost, "Cost", class: "mr-1"
+ %>
+sortable @wardrobe_items, :season, "Season", class: "mr-1"
+ %>
+sortable @wardrobe_items, :condition, "Condition", class: "mr-1"
+ %>
     </div>
   </div>
 
   <div class="mx-auto">
-    <%= tag.div id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10" do %>
-      <%= render partial: "wardrobe_items/wardrobe_item", collection: @wardrobe_items, as: :wardrobe_item, cached: true %>
+tag.div id: ("wardrobe_items" if first_page?), class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10"
+ do %>
+render partial: "wardrobe_items/wardrobe_item", collection: @wardrobe_items, as: :wardrobe_item, cached: true
+ %>
 
       <div class="hidden only:block text-center">
         <div class="text-center">
@@ -43,7 +53,8 @@
           </div>
         </div>
         <p class="mb-4 h3">Add your first piece to your wardrobe</p>
-        <%= link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary" %>
+link_to t("scaffold.new.title", model: "Wardrobe Item"), new_wardrobe_item_path, class: "btn btn-primary"
+ %>
       </div>
     <% end %>
   </div>
@@ -51,7 +62,8 @@
   <% if @pagy.pages > 1 %>
     <div class="mx-20">
       <div class="flex items-center justify-between border-t px-4 py-3 sm:px-6">
-        <%== pagy_nav(@pagy) %>
+pagy_nav(@pagy)
+ %>
       </div>
     </div>
   <% end %>

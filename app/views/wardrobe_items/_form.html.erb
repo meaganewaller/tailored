@@ -1,50 +1,65 @@
 <div data-controller="image-preview">
   <div class="flex">
     <% if wardrobe_item.images.any? %>
-      <% wardrobe_item.images.each do |img| %>
-        <%= image_tag url_for(img), class: "m-3 w-[150px] h-[150px]" %>
+wardrobe_item.images.each
+ do |img| %>
+image_tag url_for(img), class: "m-3 w-[150px] h-[150px]"
+ %>
       <% end %>
     <% end %>
     <div class="flex" id="image-preview" data-image-preview-target="preview"></div>
   </div>
 
-  <%= form_with(model: wardrobe_item) do |form| %>
-    <%= render "error_messages", resource: form.object %>
+form_with(model: wardrobe_item)
+ do |form| %>
+render "error_messages", resource: form.object
+ %>
 
     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
       <div>
-        <%= form.label :name %>
-        <%= form.text_field :name, placeholder: "E.g., Leather Jacket with Fringe", class: "form-control" %>
+form.label :name
+ %>
+form.text_field :name, placeholder: "E.g., Leather Jacket with Fringe", class: "form-control"
+ %>
       </div>
 
       <div>
-        <%= form.label :season %>
-        <%= form.select :season, ["Spring", "Summer", "Fall", "Winter"], class: "form-control" %>
+form.label :season
+ %>
+form.select :season, ["Spring", "Summer", "Fall", "Winter"], class: "form-control"
+ %>
       </div>
     </div>
 
     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
       <div>
-        <%= form.label :occasions %>
-        <%= form.select :occasions, options_for_select([nil, 'Casual', 'Work', 'Evening', 'Formal', 'Party', 'Lounge'], wardrobe_item.occasions) %>
+form.label :occasions
+ %>
+form.select :occasions, options_for_select([nil, "Casual", "Work", "Evening", "Formal", "Party", "Lounge"], wardrobe_item.occasions)
+ %>
       </div>
 
       <div>
-        <%= form.label :cost %>
-        <%= form.number_field :cost, step: 0.01, class: "form-control" %>
+form.label :cost
+ %>
+form.number_field :cost, step: 0.01, class: "form-control"
+ %>
       </div>
 
       <div>
-        <%= form.label :condition %>
-        <%= form.select :condition, options_for_select([nil, 'New', 'Like New', 'Good', 'Worn'], wardrobe_item.condition) %>
+form.label :condition
+ %>
+form.select :condition, options_for_select([nil, "New", "Like New", "Good", "Worn"], wardrobe_item.condition)
+ %>
       </div>
     </div>
 
     <div class="mt-4">
-      <% wardrobe_item.images.each do |image| %>
-        <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+wardrobe_item.images.each
+ do |image| %>
+form.hidden_field :images, multiple: true, value: image.signed_id
+ %>
       <% end %>
-
 
       <div class="relative border-dashed h-24 rounded-lg border-2 border-[var(--text-on-secondary)] bg-[var(--bg-secondary-hover)] flex justify-center items-center">
         <div class="absolute">
@@ -56,16 +71,20 @@
           </div>
         </div>
 
-        <%= form.file_field :images, multiple: true, accept: "image/*", class: "form-control-file h-full w-full opacity-0", data: { image_preview_target: "input", action: "change->image-preview#preview" } %>
+form.file_field :images, multiple: true, accept: "image/*", class: "form-control-file h-full w-full opacity-0", data: {image_preview_target: "input", action: "change->image-preview#preview"}
+ %>
       </div>
     </div>
     <div class="mt-5 flex w-full justify-start gap-x-3 align-middle h-full">
-      <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary btn-xl w-[25%]" %>
+form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary btn-xl w-[25%]"
+ %>
 
       <% if form.object.new_record? %>
-        <%= link_to t("cancel"), wardrobe_items_path, class: "btn btn-outline" %>
+link_to t("cancel"), wardrobe_items_path, class: "btn btn-outline"
+ %>
       <% else %>
-        <%= link_to t("cancel"), wardrobe_item_path(@wardrobe_item), class: "btn btn-outline" %>
+link_to t("cancel"), wardrobe_item_path(@wardrobe_item), class: "btn btn-outline"
+ %>
       <% end %>
     </div>
   <% end %>

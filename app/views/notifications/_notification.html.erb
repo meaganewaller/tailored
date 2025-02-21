@@ -1,16 +1,19 @@
-<%= link_to notification_path(notification), data: {
-    notifications_target: "notification",
+link_to notification_path(notification), data: {
+                                               notifications_target: "notification",
     id: notification&.id,
     seen_at: notification&.seen_at,
-    read_at: notification&.read_at,
-  },
-  class: "flex items-center px-4 py-3" do %>
+    read_at: notification&.read_at
+                                             },
+      class: "flex items-center px-4 py-3"
+ do %>
   <div class="flex-1">
     <p class="mb-2 text-sm leading-5 font-medium">
-      <%= notification.message %>
+notification.message
+ %>
     </p>
 
-    <p class="text-sm"><%= local_time_ago notification&.created_at %></p>
+local_time_ago notification&.created_at
+ %></p>
   </div>
 
   <%# blue dot is toggled by CSS from the parent's data-read-at attribute presence %>

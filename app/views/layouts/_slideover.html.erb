@@ -12,25 +12,29 @@
   </div>
   <div class="flex flex-col text-left">
     <span class="sidebar-item">
-      <%= nav_link_to root_path, class: "sidebar-link" do %>
+nav_link_to root_path, class: "sidebar-link"
+ do %>
         <span>🏠</span>
         <span class="[[data-expanded=false]_&]:hidden">Home</span>
       <% end %>
     </span>
     <span class="sidebar-item">
-      <%= nav_link_to wardrobe_items_path, class: "sidebar-link", starts_with: "/wardrobe_items" do %>
+nav_link_to wardrobe_items_path, class: "sidebar-link", starts_with: "/wardrobe_items"
+ do %>
         <span>👗</span>
         <span class="[[data-expanded=false]_&]:hidden">My Wardrobe</span>
       <% end %>
     </span>
     <span class="sidebar-item">
-      <%= nav_link_to outfits_path, class: "sidebar-link", starts_with: "/outfits" do %>
+nav_link_to outfits_path, class: "sidebar-link", starts_with: "/outfits"
+ do %>
         <span>🪞</span>
         <span class="[[data-expanded=false]_&]:hidden">Outfits</span>
       <% end %>
     </span>
     <span class="sidebar-item">
-      <%= nav_link_to quizzes_path, class: "sidebar-link", starts_with: "/quizzes" do %>
+nav_link_to quizzes_path, class: "sidebar-link", starts_with: "/quizzes"
+ do %>
         <span>🧪</span>
         <span class="[[data-expanded=false]_&]:hidden">Quizzes</span>
       <% end %>

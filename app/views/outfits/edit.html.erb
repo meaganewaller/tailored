@@ -1,16 +1,21 @@
-<%= content_for :title, t("scaffold.edit.title", resource: "Outfit") %>
+content_for :title, t("scaffold.edit.title", resource: "Outfit")
+ %>
 
 <div class="container mx-auto px-4 my-8">
   <div class="flex items-center justify-between mb-4">
     <h1 class="h3">
-      <%= link_to "Outfits", outfits_path, class: "text-black dark:text-white" %>
+link_to "Outfits", outfits_path, class: "text-black dark:text-white"
+ %>
       <span class="font-light mx-2">\</span>
-      <%= t("scaffold.edit.title", resource: "Outfit") %>
+t("scaffold.edit.title", resource: "Outfit")
+ %>
     </h1>
-    <%= button_to t("delete"), @outfit, method: :delete, class: "btn btn-secondary", form: { data: { turbo_confirm: t("are_you_sure") } } %>
+button_to t("delete"), @outfit, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: t("are_you_sure")}}
+ %>
   </div>
 
   <div class="p-8 dark:border rounded shadow">
-    <%= render "form", outfit: @outfit %>
+render "form", outfit: @outfit
+ %>
   </div>
 </div>

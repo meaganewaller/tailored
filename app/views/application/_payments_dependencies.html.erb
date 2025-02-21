@@ -1,7 +1,9 @@
-<%= javascript_include_tag "https://js.stripe.com/v3/" if Jumpstart.config.stripe? %>
+javascript_include_tag "https://js.stripe.com/v3/" if Jumpstart.config.stripe?
+ %>
 
 <%# https://developer.paypal.com/braintree/docs/guides/paypal/client-side/javascript/v3/ %>
-<%= javascript_include_tag 'https://js.braintreegateway.com/web/dropin/1.20.2/js/dropin.min.js' if Jumpstart.config.braintree? || Jumpstart.config.paypal? %>
+javascript_include_tag "https://js.braintreegateway.com/web/dropin/1.20.2/js/dropin.min.js" if Jumpstart.config.braintree? || Jumpstart.config.paypal?
+ %>
 
 <% if Jumpstart.config.paypal? %>
   <!-- Load PayPal's checkout.js Library. -->

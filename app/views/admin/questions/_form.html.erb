@@ -14,58 +14,74 @@ and renders all form fields for a resource's editable attributes.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
 
-<%= form_for([namespace, page.resource], html: { class: "form" }, data: { controller: "question-options" }) do |f| %>
+form_for([namespace, page.resource], html: {class: "form"}, data: {controller: "question-options"})
+ do |f| %>
   <% if page.resource.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= t(
-          "administrate.form.errors",
-          pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
-          resource_name: display_resource_name(page.resource_name, singular: true)
-        ) %>
+t(
+                  "administrate.form.errors",
+              pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
+              resource_name: display_resource_name(page.resource_name, singular: true)
+        )
+ %>
       </h2>
 
       <ul>
-        <% page.resource.errors.full_messages.each do |message| %>
-          <li class="flash-error"><%= message %></li>
+page.resource.errors.full_messages.each
+ do |message| %>
+message
+ %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <% page.attributes(controller.action_name).each do |title, attributes| -%>
-    <fieldset class="<%= "field-unit--nested" if title.present? %>">
+page.attributes(controller.action_name).each
+ do |title, attributes| -%>
+"field-unit--nested" if title.present?
+ %>">
       <% if title.present? %>
-        <legend><%= t "helpers.label.#{f.object_name}.#{title}", default: title %></legend>
+t "helpers.label.#{f.object_name}.#{title}", default: title
+ %></legend>
       <% end %>
 
-      <% attributes.each do |attribute| %>
-        <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--<%= requireness(attribute) %>">
+attributes.each
+ do |attribute| %>
+requireness(attribute)
+ %>">
           <% if attribute.name === "question_options" %>
             <div data-question-options-target="container">
-              <%= f.fields_for :question_options do |option_form| %>
+f.fields_for :question_options
+ do |option_form| %>
                 <div class="nested-field">
-                  <%= render 'question_option_fields', f: option_form %>
+render "question_option_fields", f: option_form
+ %>
                 </div>
               <% end %>
             </div>
             <template data-question-options-target="template">
               <div class="nested-field" data-new-record="true">
-                <%= f.fields_for(:question_options, QuestionOption.new, child_index: "NEW_RECORD") do |option_form| %>
-                  <%= render 'question_option_fields', f: option_form %>
+f.fields_for(:question_options, QuestionOption.new, child_index: "NEW_RECORD")
+ do |option_form| %>
+render "question_option_fields", f: option_form
+ %>
                 <% end %>
               </div>
             </template>
 
             <button data-action="click->question-options#addOption">Add Option</button>
           <% else %>
-            <%= render_field attribute, f: f %>
+render_field attribute, f: f
+ %>
           <% end %>
 
-          <% hint_key = "administrate.field_hints.#{page.resource_name}.#{attribute.name}" %>
+"administrate.field_hints.#{page.resource_name}.#{attribute.name}"
+ %>
           <% if I18n.exists?(hint_key) -%>
             <div class="field-unit__hint">
-              <%= I18n.t(hint_key) %>
+I18n.t(hint_key)
+ %>
             </div>
           <% end -%>
         </div>
@@ -74,6 +90,7 @@ and renders all form fields for a resource's editable attributes.
   <% end %>
 
   <div class="form-actions">
-    <%= f.submit "Save Question" %>
+f.submit "Save Question"
+ %>
   </div>
 <% end %>

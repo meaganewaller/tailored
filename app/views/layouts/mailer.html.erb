@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="<%= I18n.locale %>">
+I18n.locale
+ %>">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -96,7 +97,8 @@
                         <tr>
                           <td valign="top">
                             <div>
-                              <%= yield %>
+yield
+ %>
                             </div>
                           </td>
                         </tr>
@@ -115,10 +117,13 @@
                         <tr>
                           <td valign="top" class="addressContent">
                             <div>
-                              <em><%= t(".copyright_html", year: Date.current.year) %></em>
+t(".copyright_html", year: Date.current.year)
+ %></em>
                               <br>
-                              <strong><%= t(".mailing_address") %></strong>
-                              <%= simple_format [Jumpstart.config.business_name, Jumpstart.config.business_address].join("\n") %>
+t(".mailing_address")
+ %></strong>
+simple_format [Jumpstart.config.business_name, Jumpstart.config.business_address].join("\n")
+ %>
                             </div>
                           </td>
                         </tr>
@@ -126,11 +131,14 @@
                           <td valign="middle" class="bodyContent">
                             <div>
                               &nbsp;
-                              <%= link_to t(".view_in_browser"), "#", target: :_blank %>
+link_to t(".view_in_browser"), "#", target: :_blank
+ %>
                               |
-                              <%= link_to t(".unsubscribe"), "#", target: :_blank %>
+link_to t(".unsubscribe"), "#", target: :_blank
+ %>
                               |
-                              <%= link_to t(".preferences"), "#", target: :_blank %>
+link_to t(".preferences"), "#", target: :_blank
+ %>
                               &nbsp;
                             </div>
                           </td>

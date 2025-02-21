@@ -1,5 +1,6 @@
 <div data-controller="slideover">
-  <%= component.content %>
+component.content
+ %>
 
   <dialog data-slideover-target="dialog" data-action="click->slideover#backdropClose" class="slideover h-dvh max-h-dvh m-0 ml-auto backdrop:bg-black/50">
     <div class="h-full w-96 p-8">
@@ -8,7 +9,8 @@
         <span class="sr-only">Close</span>
       </button>
 
-      <%= component.panel %>
+component.panel
+ %>
     </div>
   </dialog>
 </div>

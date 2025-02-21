@@ -1,29 +1,37 @@
-<% content_for :section_title, "TailwindCSS" %>
+content_for :section_title, "TailwindCSS"
+ %>
 
 <p class="text-xl">Use this system as a starting point for your own template. We created a set of UI components commonly seen in the wild. Tailor them and/or your Tailwind configuration to meet your own needs</p>
 <p>To the left are sections of components and their relative code snippets. You're welcome to change anything to match your own branding.</p>
 
-<%= h2_with_anchor "TailwindCSS" %>
+h2_with_anchor "TailwindCSS"
+ %>
 <p>Jumpstart Pro utilizes <a class="link" href="https://tailwindcss.com" target="_blank">Tailwind CSS</a> as a utility-first approach towards designing an application. Refer to the documentation to understand how it works and to configure for your own needs.</p>
 <p>TailwindCSS is configured to automatically purge styles and watches your Rails helpers, views, and Javascript files for CSS classes.</p>
 <p>
   You can modify the <code>tailwind.config.js</code> file to include any additional colors, fonts, and other customizations.
   For example, looking in <code>tailwind.config.js</code>, you will see that Jumpstart Pro has a CSS class called <code>primary</code> with a default value of <code>colors.blue</code>. This <code>primary</code> class is used throughout the application on various elements. One example is shown in the following screenshot:
 
-  <%= link_to("https://jumpstartpro.b-cdn.net/jumpstart-default-primary-color.png", target: "_blank") do %>
-    <%= image_tag "https://jumpstartpro.b-cdn.net/jumpstart-default-primary-color.png", class: "block mx-auto", alt: "Default primary color example in Jumpstart Pro", size: "900" %>
+link_to("https://jumpstartpro.b-cdn.net/jumpstart-default-primary-color.png", target: "_blank")
+ do %>
+image_tag "https://jumpstartpro.b-cdn.net/jumpstart-default-primary-color.png", class: "block mx-auto", alt: "Default primary color example in Jumpstart Pro", size: "900"
+ %>
   <% end %>
 
   If you need to change that color to fit your application theme, switching to a different color is a simple change to make as shown in the following screenshot:
 
-  <%= link_to("https://jumpstartpro.b-cdn.net/jumpstart-modified-primary-color.png", target: "_blank") do %>
-    <%= image_tag "https://jumpstartpro.b-cdn.net/jumpstart-modified-primary-color.png", class: "block mx-auto", alt: "Modified primary color example in Jumpstart Pro", size: "900" %>
+link_to("https://jumpstartpro.b-cdn.net/jumpstart-modified-primary-color.png", target: "_blank")
+ do %>
+image_tag "https://jumpstartpro.b-cdn.net/jumpstart-modified-primary-color.png", class: "block mx-auto", alt: "Modified primary color example in Jumpstart Pro", size: "900"
+ %>
   <% end %>
 
   </p>
 
-<%= h2_with_anchor "TailwindUI" %>
-<p><%= link_to "TailwindUI", "https://tailwindui.com", target: :_blank %> is a set of components you can purchase from the TailwindCSS team. It's a wonderful complement to Jumpstart Pro for adding beautifully designed cards, layouts, and other components to your application.</p>
+h2_with_anchor "TailwindUI"
+ %>
+link_to "TailwindUI", "https://tailwindui.com", target: :_blank
+ %> is a set of components you can purchase from the TailwindCSS team. It's a wonderful complement to Jumpstart Pro for adding beautifully designed cards, layouts, and other components to your application.</p>
 <p>Simply copy and paste TailwindUI components into your Jumpstart Pro application. There is no additional configuration needed to use TailwindUI components.</p>
 <p>Jumpstart Pro includes default styles for HTML elements to provide a nice experience with or without TailwindUI. Some of these styles may conflict with TailwindUI components, so you may need additional classes applied to override these default styles. You can also comment out the default styles in the CSS files if you would like to take that approach instead.</p>
 
@@ -33,7 +41,8 @@
   </div>
 </div>
 
-<%= h2_with_anchor "Purging Unused CSS" %>
+h2_with_anchor "Purging Unused CSS"
+ %>
 <p>When Tailwind compiles CSS, it will read each file in the <code>content: []</code> config entry. These files are searched for references to TailwindCSS classes and <em>only</em> the classes in these files will be in the final output.</p>
 <p>These files are not evaluated, so you must use the full class name. Dynamically generated classes <u>will not work</u>.</p>
 
@@ -46,7 +55,8 @@
 &lt;div class="&lt;%= color %&gt;"&gt;&lt;/div&gt;
 </code></pre>
 
-<%= h2_with_anchor "Debugging" %>
+h2_with_anchor "Debugging"
+ %>
 <p>Sometimes you may run into an issue where you add a TailwindCSS class and it seems to not be generated. Here are a few steps you can use for debugging:</p>
 
 <ul>

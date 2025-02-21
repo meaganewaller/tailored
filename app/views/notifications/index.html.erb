@@ -1,20 +1,25 @@
 <div class="sm:max-w-2xl mx-auto flex justify-between items-baseline">
-  <h1 class="h2 my-6"><%= t(".title") %></h1>
-  <%= button_to t(".mark_all_as_read"), mark_as_read_notifications_path, method: :patch, class: "btn btn-small" %>
+t(".title")
+ %></h1>
+button_to t(".mark_all_as_read"), mark_as_read_notifications_path, method: :patch, class: "btn btn-small"
+ %>
 </div>
 
 <div class="border rounded-lg sm:rounded-md sm:max-w-2xl sm:mx-auto">
   <ul class="divide-y">
-    <%= render partial: "notifications/notification", collection: @notifications, cached: true %>
+render partial: "notifications/notification", collection: @notifications, cached: true
+ %>
   </ul>
 
   <% if @notifications.empty? %>
-    <div class="px-4 py-3 text-center"><%= t(".empty_placeholder") %></div>
+t(".empty_placeholder")
+ %></div>
   <% end %>
 </div>
 
 <% if @pagy.pages > 1 %>
   <div class="text-center mt-8">
-    <%== pagy_nav(@pagy) %>
+pagy_nav(@pagy)
+ %>
   </div>
 <% end %>

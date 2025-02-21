@@ -1,8 +1,10 @@
-<% content_for :section_title, "Background Workers" %>
+content_for :section_title, "Background Workers"
+ %>
 
 <p class="text-xl">Jumpstart Pro makes adding background workers easy.</p>
 
-<%= h2_with_anchor "Choosing Your Background Workers" %>
+h2_with_anchor "Choosing Your Background Workers"
+ %>
 <p>The Jumpstart Pro config admin lets you select your preferred tool for processing background jobs.</p>
 
 <ul>
@@ -16,9 +18,11 @@
   <li><a href="https://github.com/brandonhilkert/sucker_punch" target="_blank">Sucker Punch</a> - doesn't require a separate process, but doesn't allow scheduling</li>
 </ul>
 
-<%= h2_with_anchor "Active Job" %>
+h2_with_anchor "Active Job"
+ %>
 <p>After selecting your background worker of choice and saving your config, Jumpstart Pro will add the gem and configure ActiveJob to use it as the default for all environments.</p>
 
-<%= h2_with_anchor "Sidekiq" %>
+h2_with_anchor "Sidekiq"
+ %>
 <p>If Sidekiq is enabled, we automatically enable the Sidekiq Web UI, restrict it to only admin users and add links to it in the navigation.</p>
 <p>Sidekiq requires Redis to operate. Ensure <a href="https://redis.io/docs/install/install-redis/" target="_blank">Redis is installed</a> and properly configured in your setup before enabling Sidekiq.</p>

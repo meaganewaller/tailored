@@ -1,15 +1,19 @@
-<%= content_for :title, t("scaffold.new.title", model: "Outfit") %>
+content_for :title, t("scaffold.new.title", model: "Outfit")
+ %>
 
 <div class="container px-4 mx-auto my-8">
   <div class="flex items-center justify-between mb-4">
     <h1 class="h3">
-      <%= link_to "Outfits", outfits_path, class: "" %>
+link_to "Outfits", outfits_path, class: ""
+ %>
       <span class="font-light mx-2">\</span>
-      <%= t("scaffold.new.title", model: "Outfit") %>
+t("scaffold.new.title", model: "Outfit")
+ %>
     </h1>
   </div>
 
   <div class="p-8 dark:border rounded shadow">
-    <%= render "form", outfit: @outfit %>
+render "form", outfit: @outfit
+ %>
   </div>
 </div>

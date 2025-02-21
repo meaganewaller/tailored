@@ -2,24 +2,29 @@
      data-tabs-active-tab-class=""
      data-tabs-inactive-tab-class="border-transparent">
 
-  <%= select_tag nil, options_for_select(component.tabs), class: "sm:hidden mb-4", data: {action: "tabs#change"} %>
+select_tag nil, options_for_select(component.tabs), class: "sm:hidden mb-4", data: {action: "tabs#change"}
+ %>
 
   <div class="hidden sm:block mb-4 border-b">
     <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-      <% component.tabs.each do |tab| %>
+component.tabs.each
+ do |tab| %>
         <a href="#"
            data-tabs-target="tab"
            data-action="click->tabs#change:prevent"
            class="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">
-          <%= tab %>
+tab
+ %>
         </a>
       <% end %>
     </nav>
   </div>
 
-  <% component.panels.each do |panel| %>
+component.panels.each
+ do |panel| %>
     <div class="hidden" data-tabs-target="panel">
-      <%= panel %>
+panel
+ %>
     </div>
   <% end %>
 </div>

@@ -1,17 +1,21 @@
-<%= content_for :title, t("scaffold.edit.title", resource: @wardrobe_item.name) %>
+content_for :title, t("scaffold.edit.title", resource: @wardrobe_item.name)
+ %>
 
 <div class="sm:p-5 md:p-10 lg:px-20 mx-auto">
   <div class="flex items-center justify-between mb-4">
     <h1 class="h3">
-      <%= link_to "Wardrobe Items", wardrobe_items_path, class: "" %>
+link_to "Wardrobe Items", wardrobe_items_path, class: ""
+ %>
       <span class="font-light mx-2">\</span>
-      <%= t("scaffold.edit.title", resource: @wardrobe_item.name) %>
+t("scaffold.edit.title", resource: @wardrobe_item.name)
+ %>
     </h1>
-    <%= button_to t("delete"), @wardrobe_item, method: :delete, class: "btn btn-secondary", form: { data: { turbo_confirm: t("are_you_sure") } } %>
+button_to t("delete"), @wardrobe_item, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: t("are_you_sure")}}
+ %>
   </div>
 
-
   <div class="max-w-4xl p-6 mx-auto">
-    <%= render "form", wardrobe_item: @wardrobe_item %>
+render "form", wardrobe_item: @wardrobe_item
+ %>
   </div>
 </div>

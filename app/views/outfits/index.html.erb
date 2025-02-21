@@ -1,18 +1,24 @@
-<%= content_for :title, "Outfits" %>
-<%= turbo_stream_from :outfits %>
+content_for :title, "Outfits"
+ %>
+turbo_stream_from :outfits
+ %>
 
 <div class="mx-auto align-center">
-  <%= tag.div id: ("outfits" if first_page?), class: "grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8" do %>
-    <%= render partial: "outfits/outfit", collection: @outfits, as: :outfit, cached: true %>
+tag.div id: ("outfits" if first_page?), class: "grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8"
+ do %>
+render partial: "outfits/outfit", collection: @outfits, as: :outfit, cached: true
+ %>
 
     <div class="hidden only:block only:w-full only:mx-auto">
-      <%= empty_state t("outfits.empty.title"), subtitle: t("outfits.empty.subtitle"), path: new_outfit_path %>
+empty_state t("outfits.empty.title"), subtitle: t("outfits.empty.subtitle"), path: new_outfit_path
+ %>
     </div>
   <% end %>
 
   <% if @pagy.pages > 1 %>
     <div class="my-6 text-center">
-      <%== pagy_nav(@pagy) %>
+pagy_nav(@pagy)
+ %>
     </div>
   <% end %>
 </div>

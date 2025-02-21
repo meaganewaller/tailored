@@ -1,15 +1,19 @@
-<% content_for :section_title, "Notifications" %>
+content_for :section_title, "Notifications"
+ %>
 
-<p class="text-xl">Notifications for Jumpstart Pro are built-in using the <%= link_to "Noticed gem", "https://github.com/excid3/noticed", target: :_blank, class: "link underline" %> and allows delivering notifications across any medium.</p>
+link_to "Noticed gem", "https://github.com/excid3/noticed", target: :_blank, class: "link underline"
+ %> and allows delivering notifications across any medium.</p>
 
-<%= h2_with_anchor "Creating Notifications" %>
+h2_with_anchor "Creating Notifications"
+ %>
 <p>To generate a new notification, run the following:</p>
 <div class="not-prose">
   <pre class="lang-bash"><code>rails g noticed:notifier NewComment</code></pre>
 </div>
 <p>This will generate <code>app/notifiers/new_comment_notifier.rb</code>. The Notifier file includes comments to help customize the message, url, and delivery methods.</p>
 
-<%= h2_with_anchor "Sending Notifications" %>
+h2_with_anchor "Sending Notifications"
+ %>
 <p>To deliver a notification to users, run the following:</p>
 
 <div class="not-prose">
@@ -18,13 +22,16 @@
 
 <p>This will write the notification to the database and perform any other deliveries that are configured for the Notifier.</p>
 
-<%= h2_with_anchor "ApplicationNotifier" %>
+h2_with_anchor "ApplicationNotifier"
+ %>
 <p>Jumpstart Pro ships with an <code>ApplicationNotifier</code> that notifiers inherit from. This parent class is responsible for handling anything that all notifications should have just like <code>ApplicationRecord</code> does for your models.</p>
 
-<%= link_to "#delivery-methods", class: "no-underline" do %>
+link_to "#delivery-methods", class: "no-underline"
+ do %>
   <h2 id="delivery-methods">Delivery Methods</h2>
 <% end %>
-<p>Check <%= link_to "the Noticed gem's readme", "https://github.com/excid3/noticed", target: :_blank, class: "link underline" %> to see the full list of delivery methods and how to create your own. Here are a few of the supported delivery methods:</p>
+link_to "the Noticed gem's readme", "https://github.com/excid3/noticed", target: :_blank, class: "link underline"
+ %> to see the full list of delivery methods and how to create your own. Here are a few of the supported delivery methods:</p>
 <ul>
   <li>Database</li>
   <li>Email</li>
@@ -34,7 +41,8 @@
   <li>Vonage</li>
 </ul>
 
-<%= h2_with_anchor "Navbar Notifications Menu" %>
+h2_with_anchor "Navbar Notifications Menu"
+ %>
 <p>Use the <code>:action_cable</code> delivery method to broadcast notifications to the navbar immediately. Generated notifications include ActionCable as an example by default.</p>
 
 <div class="not-prose">
@@ -61,7 +69,8 @@
 
 <p>Native browser notifications will only be shown if the user has granted permission.</p>
 
-<%= h2_with_anchor "Multitenancy" %>
+h2_with_anchor "Multitenancy"
+ %>
 <p>Notifiers have been modified to have a <code>belongs_to :account</code> association. This allows you to send notifications to a specific account for a user if you would like.</p>
 <p>By default, <code>ApplicationNotification</code> writes the recipient's personal account ID but you can override this by passing in <code>account: recipients_account_to_notify</code> in the notification params. Just make sure the account is one of the recipient's accounts.</p>
 

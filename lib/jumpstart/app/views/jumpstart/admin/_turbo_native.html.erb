@@ -1,6 +1,7 @@
 <h4>Turbo Native Integration</h4>
 <p class="text-sm text-gray-600 dark:text-gray-300/75">
-  Configuration for Turbo Native mobile apps. See <%= link_to "Jumpstart Pro iOS", "https://jumpstartrails.com/ios", target: :_blank %> and <%= link_to "Jumpstart Pro Android", "https://jumpstartrails.com/android", target: :_blank %>.
+link_to "Jumpstart Pro Android", "https://jumpstartrails.com/android", target: :_blank
+ %>.
 </p>
 
 <h5 class="mt-8">Apple Push Notifications</h5>
@@ -11,11 +12,14 @@
   </p>
 
   <div class="form-picker-group toggle">
-    <%= f.check_box :apns, value: true, checked: Jumpstart.config.apns? %>
+f.check_box :apns, value: true, checked: Jumpstart.config.apns?
+ %>
     <div>
-      <%= f.label :apns, "Apple Notifications" %>
+f.label :apns, "Apple Notifications"
+ %>
       <p>
-        Don't forget to follow the <%= link_to "iOS documentation in Noticed", "https://github.com/excid3/noticed/blob/master/docs/delivery_methods/ios.md", target: :_blank %> to configure your credentials.
+link_to "iOS documentation in Noticed", "https://github.com/excid3/noticed/blob/master/docs/delivery_methods/ios.md", target: :_blank
+ %> to configure your credentials.
       </p>
     </div>
   </div>
@@ -29,11 +33,14 @@
 </p>
 
 <div class="form-picker-group toggle">
-  <%= f.check_box :fcm, value: true, checked: Jumpstart.config.fcm? %>
+f.check_box :fcm, value: true, checked: Jumpstart.config.fcm?
+ %>
   <div>
-    <%= f.label :fcm, "Android Notifications" %>
+f.label :fcm, "Android Notifications"
+ %>
     <p>
-      Don't forget to follow the <%= link_to "FCM documentation in Noticed", "https://github.com/excid3/noticed/blob/master/docs/delivery_methods/fcm.md", target: :_blank %> to configure your credentials.
+link_to "FCM documentation in Noticed", "https://github.com/excid3/noticed/blob/master/docs/delivery_methods/fcm.md", target: :_blank
+ %> to configure your credentials.
     </p>
   </div>
 </div>

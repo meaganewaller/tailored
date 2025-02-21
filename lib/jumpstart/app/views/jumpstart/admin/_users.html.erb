@@ -10,15 +10,17 @@
     </tr>
   </thead>
   <tbody id="admin_users">
-<%= render partial: "jumpstart/users/user", collection: User.where(admin: true).order(created_at: :asc), as: :user %>
+render partial: "jumpstart/users/user", collection: User.where(admin: true).order(created_at: :asc), as: :user
+ %>
   </tbody>
 </table>
 
 <h4>Add an admin</h4>
-<%= select_tag :id, [], placeholder: "Search users by email", form: :admin_user, data: {
-  controller: :select,
+select_tag :id, [], placeholder: "Search users by email", form: :admin_user, data: {
+      controller: :select,
   select_url_value: users_path(format: :json),
   select_label_field_value: :email,
   select_value_field_value: :id,
   select_submit_on_change_value: true
-} %>
+    }
+ %>

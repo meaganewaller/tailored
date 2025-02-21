@@ -1,16 +1,22 @@
 <% if existing_action?(collection_presenter.resource_name, :edit) %>
-  <td><%= link_to(
+if accessible_action?(resource, :edit)
+            link_to(
     t("administrate.actions.edit"),
     [:edit, namespace, resource],
     class: "action-edit",
-  ) if accessible_action?(resource, :edit) %></td>
+  )
+          end
+ %></td>
 <% end %>
 
 <% if existing_action?(collection_presenter.resource_name, :destroy) %>
-  <td><%= link_to(
+if accessible_action?(resource, :destroy)
+            link_to(
     t("administrate.actions.destroy"),
     [namespace, resource],
     class: "text-color-red",
     data: { turbo_confirm: t("administrate.actions.confirm"), turbo_method: :delete }
-  ) if accessible_action?(resource, :destroy) %></td>
+  )
+          end
+ %></td>
 <% end %>

@@ -1,12 +1,17 @@
-<%= turbo_frame_tag "notifications" do %>
-  <%= render partial: "notifications/notification", collection: @notifications.limit(10), cached: true %>
+turbo_frame_tag "notifications"
+ do %>
+render partial: "notifications/notification", collection: @notifications.limit(10), cached: true
+ %>
 
   <% if @notifications.any? %>
-    <%= link_to "See more notifications", notifications_path, class: "block px-4 py-3 font-medium" %>
+link_to "See more notifications", notifications_path, class: "block px-4 py-3 font-medium"
+ %>
   <% end %>
 
   <div class="hidden p-4 text-center only:block">
-    <div class="mb-2"><%= t("notifications.empty") %></div>
-    <div class=""><%= t("notifications.empty_description") %></div>
+t("notifications.empty")
+ %></div>
+t("notifications.empty_description")
+ %></div>
   </div>
 <% end %>

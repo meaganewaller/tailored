@@ -1,13 +1,18 @@
-<%= form_with model: @config, url: config_path do |f| %>
+form_with model: @config, url: config_path
+ do |f| %>
   <div data-controller="tabs" data-tabs-update-anchor-value="true" class="flex">
     <div class="sticky top-0 w-full px-4 pt-4 md:w-1/5 md:max-w-[300px] lg:px-8">
-      <%= link_to root_path, class: "block" do %>
-        <%= inline_svg_tag "jumpstart.svg", title: "Logo", aria: true, class: "fill-current text-gray-800 dark:text-gray-200" %>
+link_to root_path, class: "block"
+ do %>
+inline_svg_tag "jumpstart.svg", title: "Logo", aria: true, class: "fill-current text-gray-800 dark:text-gray-200"
+ %>
       <% end %>
 
       <div class="mt-4 flex flex-col gap-2">
-        <%= link_to "← Back", main_app.root_path, class: "btn btn-secondary btn-small" %>
-        <%= link_to "Documentation", docs_path, class: "btn btn-secondary btn-small", target: :_blank %>
+link_to "← Back", main_app.root_path, class: "btn btn-secondary btn-small"
+ %>
+link_to "Documentation", docs_path, class: "btn btn-secondary btn-small", target: :_blank
+ %>
       </div>
 
       <h4 class="h5 mt-4 font-semibold text-gray-800 dark:text-gray-100">Configuration</h4>
@@ -23,7 +28,8 @@
       </div>
 
       <div class="mt-4">
-        <%= f.button button_text("Save changes"), class: "btn btn-block btn-primary" %>
+f.button button_text("Save changes"), class: "btn btn-block btn-primary"
+ %>
 
         <p class="text-gray-600 dark:text-gray-300 text-xs mt-2">Jumpstart Pro will install any new dependencies after saving and automatically restart your app.</p>
       </div>
@@ -32,12 +38,16 @@
     <div class="flex flex-col w-full h-full bg-white border-l border-gray-200 dark:bg-gray-900 dark:border-gray-700 md:w-4/5 docs-main">
       <div class="px-4 pt-4 md:px-20 lg:px-40 xl:px-56">
         <div class="mb-4">
-          <%= render "flash" %>
+render "flash"
+ %>
         </div>
 
-        <% %w{ application multitenancy dependencies integrations oauth payments turbo_native users }.each do |name| %>
-          <%= tag.div id: name, class: "hidden", data: { tabs_target: "panel" } do %>
-            <%= render name, f: f %>
+%w[application multitenancy dependencies integrations oauth payments turbo_native users].each
+ do |name| %>
+tag.div id: name, class: "hidden", data: {tabs_target: "panel"}
+ do %>
+render name, f: f
+ %>
           <% end %>
         <% end %>
       </div>
@@ -45,7 +55,8 @@
   </div>
 <% end %>
 
-<%= form_with url: users_path, id: :admin_user %>
+form_with url: users_path, id: :admin_user
+ %>
 
 <script>
   document.addEventListener("turbo:load", function() {
