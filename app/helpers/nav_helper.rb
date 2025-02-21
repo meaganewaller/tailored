@@ -11,8 +11,8 @@ module NavHelper
     url = url_for(options)
     starts_with = html_options.delete(:starts_with)
     html_options[:class] = Array.wrap(html_options[:class])
-    active_class = html_options.delete(:active_class) || 'active'
-    inactive_class = html_options.delete(:inactive_class) || ''
+    active_class = html_options.delete(:active_class) || "active"
+    inactive_class = html_options.delete(:inactive_class) || ""
 
     active = get_active_path(starts_with, url)
     classes = active ? active_class : inactive_class
@@ -26,8 +26,8 @@ module NavHelper
   end
 
   # Generates a header with a link with an anchor for sharing
-  def header_with_anchor(title, header_tag: :h2, id: nil, icon: nil, header_class: 'group',
-                         link_class: 'hidden align-middle group-hover:inline-block p-1', icon_class: 'h-4 w-4')
+  def header_with_anchor(title, header_tag: :h2, id: nil, icon: nil, header_class: "group",
+    link_class: "hidden align-middle group-hover:inline-block p-1", icon_class: "h-4 w-4")
     id ||= title.parameterize
     icon ||= <<~LINK.html_safe
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="#{icon_class}">

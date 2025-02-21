@@ -20,15 +20,15 @@ module AccountsHelper
       return avatar_image_tag(account.avatar.variant(resize_to_fit: [size, size]), account, options)
     end
 
-    content = tag.span(account.name.to_s.first, class: 'initials')
-    content += image_tag(avatar_url_for(current_user), class: 'avatar-small') if options[:include_user]
+    content = tag.span(account.name.to_s.first, class: "initials")
+    content += image_tag(avatar_url_for(current_user), class: "avatar-small") if options[:include_user]
 
     tag.span(content, class: "avatar #{classes}")
   end
 
   def account_user_roles(account, account_user)
     roles = []
-    roles << 'Owner' if account_user.respond_to?(:user_id) && account.owner_id == account_user.user_id
+    roles << "Owner" if account_user.respond_to?(:user_id) && account.owner_id == account_user.user_id
     AccountUser::ROLES.each do |role|
       roles << role.to_s.humanize if account_user.public_send(:"#{role}?")
     end
@@ -60,7 +60,7 @@ module AccountsHelper
       link_to(*[label, root_url(script_name: "/#{account.id}")].compact, options, &block)
     else
       button_to(*[label, switch_account_path(account, return_to: options[:return_to])].compact,
-                options.merge(method: :patch), &block)
+        options.merge(method: :patch), &block)
     end
   end
 end

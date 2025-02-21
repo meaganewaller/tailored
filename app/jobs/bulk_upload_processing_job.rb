@@ -12,7 +12,7 @@ class BulkUploadProcessingJob < ApplicationJob
       vision.credentials = Rails.application.credentials.dig(:google, :service_key)
     end
 
-    image = resource.images.joins(:blob).find_by(active_storage_blobs: { key: image_key })
+    image = resource.images.joins(:blob).find_by(active_storage_blobs: {key: image_key})
 
     return unless image
 

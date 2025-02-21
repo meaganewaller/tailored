@@ -28,6 +28,6 @@ class ColorMatcherService
     red = color.red.to_i
     green = color.green.to_i
     blue = color.blue.to_i
-    format('#%02x%02x%02x', red, green, blue)
+    format("#%02x%02x%02x", red, green, blue)
   end
 end

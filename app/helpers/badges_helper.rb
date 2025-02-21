@@ -9,8 +9,8 @@ module BadgesHelper
       options = text
       text = nil
     end
-    base = options.delete(:base) || 'rounded py-0.5 px-2 text-xs inline-block font-semibold leading-normal mr-2'
-    color = options.delete(:color) || ''
+    base = options.delete(:base) || "rounded py-0.5 px-2 text-xs inline-block font-semibold leading-normal mr-2"
+    color = options.delete(:color) || ""
     options[:class] = Array.wrap(options[:class]) + [base, color]
     tag.div(text, **options, &block)
   end

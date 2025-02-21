@@ -35,7 +35,7 @@ class WardrobeItem < ApplicationRecord
   broadcasts_refreshes
 
   belongs_to :category, optional: true
-  has_and_belongs_to_many :subcategories, class_name: 'Category', join_table: 'wardrobe_item_subcategories'
+  has_and_belongs_to_many :subcategories, class_name: "Category", join_table: "wardrobe_item_subcategories"
   has_many_attached :images
   has_and_belongs_to_many :outfits
 
@@ -45,7 +45,7 @@ class WardrobeItem < ApplicationRecord
   before_save :populate_combined_metadata
 
   validate :colors_must_be_valid_json
-  validates :cost, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :cost, numericality: {greater_than_or_equal_to: 0}, allow_nil: true
   validate :subcategories_belong_to_category, unless: -> { category.nil? || subcategories.empty? }
 
   def detect_colors
@@ -60,13 +60,13 @@ class WardrobeItem < ApplicationRecord
   def subcategories_belong_to_category
     subcategories.each do |subcategory|
       unless subcategory.parent == category
-        errors.add(:subcategories, I18n.t('wardrobe_items.errors.invalid_subcategory_parent_id'))
+        errors.add(:subcategories, I18n.t("wardrobe_items.errors.invalid_subcategory_parent_id"))
       end
     end
   end
 
   def set_default_values
-    self.season ||= 'All Season'
+    self.season ||= "All Season"
     self.occasions ||= []
   end
 
@@ -93,11 +93,11 @@ class WardrobeItem < ApplicationRecord
 
     colors.each do |color|
       if color.is_a?(Hash)
-        unless valid_hex?(color['hex']) && color['score'].is_a?(Numeric)
-          errors.add(:colors, 'Each color must have a valid hex value and score.')
+        unless valid_hex?(color["hex"]) && color["score"].is_a?(Numeric)
+          errors.add(:colors, "Each color must have a valid hex value and score.")
         end
       else
-        errors.add(:colors, 'must be a valid JSON object')
+        errors.add(:colors, "must be a valid JSON object")
       end
     end
   end
