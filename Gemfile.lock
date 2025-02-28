@@ -411,7 +411,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.3-x86_64-linux-gnu)
       racc (~> 1.4)
-    noticed (2.4.3)
+    noticed (2.6.0)
       rails (>= 6.1.0)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -726,7 +726,7 @@ DEPENDENCIES
   minitest-reporters
   name_of_person (~> 1.0)
   nokogiri (>= 1.12.5)
-  noticed (~> 2.2)
+  noticed (~> 2.6)
   omniauth (~> 2.1)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
