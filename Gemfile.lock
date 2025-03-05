@@ -447,7 +447,7 @@ GEM
     parser (3.3.5.1)
       ast (~> 2.4.1)
       racc
-    pay (7.3.0)
+    pay (8.3.0)
       rails (>= 6.0.0)
     pdf-core (0.10.0)
     pg (1.5.8)
@@ -478,7 +478,7 @@ GEM
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.10)
+    rack (3.1.11)
     rack-protection (4.1.1)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
@@ -732,7 +732,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0)
   overcommit
   pagy (~> 9.0)
-  pay (~> 7.1)
+  pay (~> 8.3)
   pg
   prefixed_ids (~> 1.2)
   pretender (~> 0.4)
